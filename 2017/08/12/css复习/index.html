@@ -5,16 +5,21 @@
   
   <title>xuebbnju的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人博客">
-<meta property="og:type" content="website">
+  <meta name="description" content="CSS基础知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，CSS的五个来源 因为浏览器默认样式的存在，我们需要为每个页面写上重置样式，简单重置样式如：* {margin:0; padding:0;}；复杂一点的网上有很多已经成熟的可以很好地处理浏览器兼容问题的重置样式文件可以引用,如：cssreset.com。 用户样式表，用户设置之后会覆盖浏览器的默认">
+<meta property="og:type" content="article">
 <meta property="og:title" content="xuebbnju的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/08/12/css复习/index.html">
 <meta property="og:site_name" content="xuebbnju的个人博客">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="CSS基础知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，CSS的五个来源 因为浏览器默认样式的存在，我们需要为每个页面写上重置样式，简单重置样式如：* {margin:0; padding:0;}；复杂一点的网上有很多已经成熟的可以很好地处理浏览器兼容问题的重置样式文件可以引用,如：cssreset.com。 用户样式表，用户设置之后会覆盖浏览器的默认">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2017/08/12/598eae254679b.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/08/12/598ed3bab0438.jpg">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/08/12/598ed3ba8e403.jpg">
+<meta property="og:updated_time" content="2017-08-12T10:20:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xuebbnju的个人博客">
-<meta name="twitter:description" content="个人博客">
+<meta name="twitter:description" content="CSS基础知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，CSS的五个来源 因为浏览器默认样式的存在，我们需要为每个页面写上重置样式，简单重置样式如：* {margin:0; padding:0;}；复杂一点的网上有很多已经成熟的可以很好地处理浏览器兼容问题的重置样式文件可以引用,如：cssreset.com。 用户样式表，用户设置之后会覆盖浏览器的默认">
+<meta name="twitter:image" content="https://i.loli.net/2017/08/12/598eae254679b.png">
   
     <link rel="alternate" href="/atom.xml" title="xuebbnju的个人博客" type="application/atom+xml">
   
@@ -67,79 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-html复习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/12/html复习/" class="article-date">
-  <time datetime="2017-08-12T12:32:45.233Z" itemprop="datePublished">2017-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="HTML基础知识复习总结"><a href="#HTML基础知识复习总结" class="headerlink" title="HTML基础知识复习总结"></a>HTML基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
-<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
-<h2 id="一，HTML元素分类"><a href="#一，HTML元素分类" class="headerlink" title="一，HTML元素分类"></a>一，HTML元素分类</h2><h3 id="1-块状元素"><a href="#1-块状元素" class="headerlink" title="1. 块状元素"></a>1. 块状元素</h3><ul>
-<li>块状元素前后元素转行，自己独占一行。</li>
-<li>可以设置高度，宽度，以及顶部和底部边距。</li>
-<li>宽度默认为父元素宽度的100%。</li>
-<li>常见的块状元素有：<code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</code>。<h3 id="2-内联元素"><a href="#2-内联元素" class="headerlink" title="2. 内联元素"></a>2. 内联元素</h3></li>
-<li>与其它元素在一行</li>
-<li>不可设置高度，宽度，以及顶部和底部边距。</li>
-<li>宽度由包裹的的内容物宽度决定</li>
-<li>常见的内联元素：<code>&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</code>。<h3 id="3-内联块元素"><a href="#3-内联块元素" class="headerlink" title="3. 内联块元素"></a>3. 内联块元素</h3></li>
-<li>与其它元素在一行</li>
-<li>可以设置高度，宽度，以及顶部和底部边距。</li>
-<li>常见的内联块元素：<code>&lt;img&gt;、&lt;input&gt;</code>。<h2 id="二，浏览器渲染页面"><a href="#二，浏览器渲染页面" class="headerlink" title="二，浏览器渲染页面"></a>二，浏览器渲染页面</h2></li>
-</ul>
-<ol>
-<li>浏览器解析HTML构建DOM树，深度遍历，当前节点的子节点都构建完成之后才会去解析下一个兄弟节点。</li>
-<li>解析CSS构造CSS规则树。</li>
-<li>根据DOM Tree 和 CSS Rule Tree构建Rendering Tree 渲染树。</li>
-<li>Js通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree,执行绑定事件等，页面显示完成.</li>
-</ol>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/08/12/598ecc01d5e3f.png" alt=""></p>
-<blockquote>
-<p>浏览器将载入的html变为dom树，但是此时没有任何显示样式。所有显示的样式，都是css定义的，浏览器只会通过css来渲染视图样式。<br>不要再说div天生就是block——这句话应该换成：浏览器默认样式天生规定了div是block——所以才导致了div是block！是浏览器的默认样式规定的，不是浏览器的内核规定的。</p>
-</blockquote>
-<h2 id="三，一些容易被忽略的知识点"><a href="#三，一些容易被忽略的知识点" class="headerlink" title="三，一些容易被忽略的知识点"></a>三，一些容易被忽略的知识点</h2><ul>
-<li>HTML 文档 = 网页，HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。</li>
-<li>属性总是在 HTML 元素的开始标签中规定。</li>
-<li>当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</li>
-<li>div宽度和父容器相同，table宽度根据内容而定——即table具有“包裹性”。</li>
-<li><p><code>&lt;b&gt;&lt;/b&gt;</code>和<code>&lt;i&gt;</code>是物理元素,<code>&lt;strong&gt;&lt;/strong&gt;</code>和<code>&lt;em&gt;</code>是逻辑元素。</p>
-<blockquote>
-<p>物理元素所强调的是一种物理行为，比如说我把一段文字用b标记加粗了，我的意思是告诉浏览器应该给我加粗了显示这段文字，从单词的语义也可以分析得出，b是Bold(加粗)的简写，所以这个B标记所传达的意思只是加粗，没有任何其它的作用。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>而Strong我们从字面理解就可以知道他是强调的意思，所以我们用这个标记向浏览器传达了一个强调某段文字的消息，而这个Strong就是我们所说的逻辑元素，他是强调文档逻辑的，并非是通知浏览器应该如何显示。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>em是什么？——em是一个浏览器识别的长度单位，但是它不是绝对的、固定的，而是相对的。大家都知道px是一个绝对的长度单位制，它永远不会改变。浏览器默认情况下令1em === 16px。现在你知道为何p默认是16px了吧。而且你还知道了h1是p高度的两倍，h2是p高度的1.5倍……</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/html复习/" data-id="cj69a7wvg0001ygv0kw6asbgc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css复习" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-css复习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/12/css复习/" class="article-date">
   <time datetime="2017-08-12T12:32:45.229Z" itemprop="datePublished">2017-08-12</time>
@@ -198,36 +131,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-js复习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/12/js复习/" class="article-date">
-  <time datetime="2017-08-12T12:32:45.226Z" itemprop="datePublished">2017-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+    <a href="/2017/08/12/html复习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/js复习/" data-id="cj69a7wuh0000ygv0eu3psaj9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/12/js复习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
   
 </article>
-
-
-  
 
 </section>
         
