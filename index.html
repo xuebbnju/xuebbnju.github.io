@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-html复习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js之函数与对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/12/html复习/" class="article-date">
-  <time datetime="2017-08-12T12:32:45.233Z" itemprop="datePublished">2017-08-12</time>
+    <a href="/2017/08/16/js之函数与对象/" class="article-date">
+  <time datetime="2017-08-16T13:07:58.899Z" itemprop="datePublished">2017-08-16</time>
 </a>
     
   </div>
@@ -81,55 +81,96 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="HTML基础知识复习总结"><a href="#HTML基础知识复习总结" class="headerlink" title="HTML基础知识复习总结"></a>HTML基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+        <h1 id="js之对象与函数与对象复习总结"><a href="#js之对象与函数与对象复习总结" class="headerlink" title="js之对象与函数与对象复习总结"></a>js之对象与函数与对象复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
 <p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
-<h2 id="一，HTML元素分类"><a href="#一，HTML元素分类" class="headerlink" title="一，HTML元素分类"></a>一，HTML元素分类</h2><h3 id="1-块状元素"><a href="#1-块状元素" class="headerlink" title="1. 块状元素"></a>1. 块状元素</h3><ul>
-<li>块状元素前后元素转行，自己独占一行。</li>
-<li>可以设置高度，宽度，以及顶部和底部边距。</li>
-<li>宽度默认为父元素宽度的100%。</li>
-<li>常见的块状元素有：<code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</code>。<h3 id="2-内联元素"><a href="#2-内联元素" class="headerlink" title="2. 内联元素"></a>2. 内联元素</h3></li>
-<li>与其它元素在一行</li>
-<li>不可设置高度，宽度，以及顶部和底部边距。</li>
-<li>宽度由包裹的的内容物宽度决定</li>
-<li>常见的内联元素：<code>&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</code>。<h3 id="3-内联块元素"><a href="#3-内联块元素" class="headerlink" title="3. 内联块元素"></a>3. 内联块元素</h3></li>
-<li>与其它元素在一行</li>
-<li>可以设置高度，宽度，以及顶部和底部边距。</li>
-<li>常见的内联块元素：<code>&lt;img&gt;、&lt;input&gt;</code>。<h2 id="二，浏览器渲染页面"><a href="#二，浏览器渲染页面" class="headerlink" title="二，浏览器渲染页面"></a>二，浏览器渲染页面</h2></li>
+</blockquote>
+<h2 id="一，对象"><a href="#一，对象" class="headerlink" title="一，对象"></a>一，对象</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><ul>
+<li>若干属性的集合。属性时一对<code>（key，value）</code>，key必须是字符串的。</li>
+<li>方法也是一种属性。因为它的属性表示为键值对的形式。</li>
+<li>javascript中的对象可以任意的扩展属性，没有class的约束。</li>
 </ul>
-<ol>
-<li>浏览器解析HTML构建DOM树，深度遍历，当前节点的子节点都构建完成之后才会去解析下一个兄弟节点。</li>
-<li>解析CSS构造CSS规则树。</li>
-<li>根据DOM Tree 和 CSS Rule Tree构建Rendering Tree 渲染树。</li>
-<li>Js通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree,执行绑定事件等，页面显示完成.</li>
+<h3 id="2-创建"><a href="#2-创建" class="headerlink" title="2. 创建"></a>2. 创建</h3><ol>
+<li>字面量 ：<code>var obj={x:1;y:2}</code>（这种方法创建的对象的原型默认指向<code>object.prototype</code>）。</li>
+<li><code>new</code>构造器：<code>prototype</code>指向对象创建器的那个函数的<code>prototype</code>。</li>
+<li><code>obj.create</code> ：<code>Object.create(proto [, propertiesObject ])</code> 是E5中提出的一种新的对象创建方式，第一个参数是要继承的原型，如果不是一个子函数，可以传一个null，第二个参数是对象的属性描述符，这个参数是可选的。<code>var obj=object.creat({x:1;y;2})</code>,<code>prototype是{x:1;y:2}</code>,最终都会指向<code>object.prototype</code>。</li>
 </ol>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/08/12/598ecc01d5e3f.png" alt=""></p>
-<blockquote>
-<p>浏览器将载入的html变为dom树，但是此时没有任何显示样式。所有显示的样式，都是css定义的，浏览器只会通过css来渲染视图样式。<br>不要再说div天生就是block——这句话应该换成：浏览器默认样式天生规定了div是block——所以才导致了div是block！是浏览器的默认样式规定的，不是浏览器的内核规定的。</p>
-</blockquote>
-<h2 id="三，一些容易被忽略的知识点"><a href="#三，一些容易被忽略的知识点" class="headerlink" title="三，一些容易被忽略的知识点"></a>三，一些容易被忽略的知识点</h2><ul>
-<li>HTML 文档 = 网页，HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。</li>
-<li>属性总是在 HTML 元素的开始标签中规定。</li>
-<li>当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</li>
-<li>div宽度和父容器相同，table宽度根据内容而定——即table具有“包裹性”。</li>
-<li><p><code>&lt;b&gt;&lt;/b&gt;</code>和<code>&lt;i&gt;</code>是物理元素,<code>&lt;strong&gt;&lt;/strong&gt;</code>和<code>&lt;em&gt;</code>是逻辑元素。</p>
-<blockquote>
-<p>物理元素所强调的是一种物理行为，比如说我把一段文字用b标记加粗了，我的意思是告诉浏览器应该给我加粗了显示这段文字，从单词的语义也可以分析得出，b是Bold(加粗)的简写，所以这个B标记所传达的意思只是加粗，没有任何其它的作用。</p>
-</blockquote>
+<p><strong>注意一点：</strong>如果，<code>var obj=object.creat(null )</code>,<code>prototype</code>就不能指向<code>object.prototype</code>，就无法用tostring等方法。</p>
+<h3 id="3-属性操作"><a href="#3-属性操作" class="headerlink" title="3. 属性操作"></a>3. 属性操作</h3><ul>
+<li>属性读写：<code>obi.x</code>或<code>obj[‘x’]</code>,或者<code>for in</code>（可能会访问原型链上的属性,顺序不确定）。</li>
+<li>属性删除：<code>delete</code>之后变为<code>undefined</code>，有些属性不允许被删除，有权限，比如<code>object.prototype</code>, 全局变量，局部变量，函数变量也都不可以被删除（隐式不用var定义的可以被删除，eval中的变量也可以）。</li>
+<li>属性检测：<code>in</code> 往原型链上查找。<ul>
+<li><code>.hasOwnPrototypr</code>：对象上这个属性是否存在。</li>
+<li><code>.prototypeIsEnumerable</code>：属性是否可以枚举而输出，原型链上的大部分属性默认为<code>false</code>。</li>
+</ul>
+</li>
+<li>getter和setter方法：，get,set是关键字，自己写完方法后，读写属性时默认直接调用写的方法。<ul>
+<li>对象原型链上有某个属性并且有getter和setter方法，对象本身没有这个属性时，对这个属性进行赋值操作不会像平常那样在这个对象内创建这个属性，而是调用set方法对原型链上的那个属性操作。</li>
+<li>即便没有getter和setter方法，若原型链上的那个属性<code>writable</code>为<code>false</code>，那么对象本身也无法添加这个属性。</li>
+<li>如果想在这个对象内部创建那个同名属性，只能通过<code>definePropotry</code>方法。</li>
+</ul>
 </li>
 </ul>
-<blockquote>
-<p>而Strong我们从字面理解就可以知道他是强调的意思，所以我们用这个标记向浏览器传达了一个强调某段文字的消息，而这个Strong就是我们所说的逻辑元素，他是强调文档逻辑的，并非是通知浏览器应该如何显示。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>em是什么？——em是一个浏览器识别的长度单位，但是它不是绝对的、固定的，而是相对的。大家都知道px是一个绝对的长度单位制，它永远不会改变。浏览器默认情况下令1em === 16px。现在你知道为何p默认是16px了吧。而且你还知道了h1是p高度的两倍，h2是p高度的1.5倍……</p>
-</blockquote>
+<h3 id="4-属性标签"><a href="#4-属性标签" class="headerlink" title="4. 属性标签"></a>4. 属性标签</h3><ul>
+<li><code>getOwnPropotryDescriptor</code>方法获取属性标签。</li>
+<li><code>object.definePropotry</code>：增加属性并设置标签，是否可以枚举<code>enumerable</code>，可写<code>writable</code>等标签，默认为<code>false</code>。</li>
+<li>其他方法创建的属性的标签都默认为<code>true</code>。</li>
+<li><code>object.key(obj)</code>,获取obj的所有属性的key。</li>
+<li><code>object.definePropotries</code>：定义多个属性。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/08/13/59901aa3c6675.png" alt=""></p>
+<h3 id="5-对象标签"><a href="#5-对象标签" class="headerlink" title="5. 对象标签"></a>5. 对象标签</h3><ul>
+<li>proto标签</li>
+<li>class标签：无法直接查看，可以通过<code>Object.prototype.toString</code>（即便参数是值类型也会转化成对象处理）获取。</li>
+<li>extensible标签：是否可以扩展属性。<ul>
+<li><code>Object.isExtensible(obj)</code>是否可以添加。</li>
+<li><code>Object.preventExtensions(obj)</code>阻止对象扩展属性，而不影响现有属性的标签。</li>
+<li><code>Object.seal(obj)</code>让对象所有属性<code>configurable: false</code>。<code>Object.isSealed(obj);</code>。</li>
+<li><code>Object.freeze(obj)</code>让对象所有属性<code>configurable: false,, writable: false</code>。<code>Object.isFrozen(obj);</code>。</li>
+<li>以上操作不影响原型链，除非遍历原型链把所有原型都设置一遍。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-序列化"><a href="#6-序列化" class="headerlink" title="6. 序列化"></a>6. 序列化</h3><ul>
+<li><code>JSON.stringify(obj)</code>：把js对象转化为字符串（json格式）。</li>
+<li>属性值为<code>undefine</code>会把属性不存在处理，<code>NaN,Infiity</code>变<code>null</code>。</li>
+<li><code>JSON.parse(&#39;{&quot;x&quot; : 1}&#39;)</code>把字符串解析成js对象。</li>
+<li>可以为属性自定义<code>toJSON</code>方法。</li>
+<li>可以为对象自定义<code>toString</code>方法。</li>
+<li><code>valeOf</code>尝试把对象转换为基本类型是调用，也可以自定义重写。</li>
+<li>先找<code>valeOf</code>，之后找<code>toString</code>。</li>
+</ul>
+<h2 id="二，函数"><a href="#二，函数" class="headerlink" title="二，函数"></a>二，函数</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
+<li>函数是一块JavaScript代码,被定义一次,但可执行和调用多次。</li>
+<li>JS中的函数也是对象,所以JS函数可以像其它对象那样操作和传递所以我们也常叫JS中的函数为函数对象。</li>
+<li>函数就是包裹在花括号中的代码块，前面使用了关键词 <code>function</code>。</li>
+</ul>
+<h3 id="2-局部变量与全局变量"><a href="#2-局部变量与全局变量" class="headerlink" title="2. 局部变量与全局变量"></a>2. 局部变量与全局变量</h3><ul>
+<li>在 JavaScript 函数内部声明的变量（使用<code>var</code>）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。</li>
+<li>您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。</li>
+<li>只要函数运行完毕，本地变量就会被删除。</li>
+<li>在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。</li>
+<li>如果您把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。</li>
+<li>无var的变量一律是全局的无论在哪写的。</li>
+</ul>
+<h3 id="3-创建"><a href="#3-创建" class="headerlink" title="3. 创建"></a>3. 创建</h3><ul>
+<li>函数声明：<code>fun add(){}</code>。</li>
+<li>函数表达式：<code>var add=fun(){} ;</code>。</li>
+<li>命名函数表达式:<code>var add=fun foo(){}</code>。<br><a href="http://www.cnblogs.com/TomXu/archive/2011/12/29/2290308.html" target="_blank" rel="external">学习文章</a></li>
+<li>函数构造器：<code>var func = new  Function(&#39;a&#39;,  &#39;b&#39;,  &#39;console.log(a  + b);&#39;);</code>。</li>
+<li><code>(fun(){})()</code>：直接调用，立即执行。</li>
+<li>函数前面加括号和<code>!</code>,是为了让声明变成表达式，不被前置，且立即执行</li>
+</ul>
+<h3 id="4-函数属性"><a href="#4-函数属性" class="headerlink" title="4. 函数属性"></a>4. 函数属性</h3><ul>
+<li><code>.length</code>：参数个数。</li>
+<li><code>.name</code>：函数名。</li>
+<li><code>arguments</code>,是一个类数组，没有join那些普通数组的操作函数，我的理解是，函数传进来参数之后，会自动创建一个arguments类数组来储存这些实参（严格模式下不成立）。</li>
+<li><code>arguments.length</code>:实参个数 。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/html复习/" data-id="cj69a7wvg0001ygv0kw6asbgc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/16/js之函数与对象/" data-id="cj6f1jaox0008ncv0odxl3rqa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,10 +180,10 @@
 
 
   
-    <article id="post-css复习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js之ajax,json,z正则" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/12/css复习/" class="article-date">
-  <time datetime="2017-08-12T12:32:45.229Z" itemprop="datePublished">2017-08-12</time>
+    <a href="/2017/08/16/js之ajax,json,z正则/" class="article-date">
+  <time datetime="2017-08-16T12:45:37.722Z" itemprop="datePublished">2017-08-16</time>
 </a>
     
   </div>
@@ -151,48 +192,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CSS基础知识复习总结"><a href="#CSS基础知识复习总结" class="headerlink" title="CSS基础知识复习总结"></a>CSS基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+        <h1 id="js复习总结之ajax-json-正则表达式"><a href="#js复习总结之ajax-json-正则表达式" class="headerlink" title="js复习总结之ajax,json,正则表达式"></a>js复习总结之ajax,json,正则表达式</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
 <p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
 </blockquote>
-<h2 id="一，CSS的五个来源"><a href="#一，CSS的五个来源" class="headerlink" title="一，CSS的五个来源"></a>一，CSS的五个来源</h2><ol>
-<li>因为浏览器默认样式的存在，我们需要为每个页面写上重置样式，简单重置样式如：<code>* {margin:0; padding:0;}</code>；复杂一点的网上有很多已经成熟的可以很好地处理浏览器兼容问题的重置样式文件可以引用,如：<a href="http://cssreset.com" target="_blank" rel="external">cssreset.com</a>。</li>
-<li>用户样式表，用户设置之后会覆盖浏览器的默认样式。</li>
-<li><code>&lt;link&gt;</code>引用的CSS文件，外部式CSS样式，写在单独的一个文件中。</li>
-<li><code>&lt;style&gt;</code>中编写的样式代码，嵌入式CSS样式，写在HTML文件中。</li>
-<li><code>&lt;a style=’ ’&gt;</code>中编写的样式代码,内联式CSS样式，写在HTML标签中。</li>
+<h2 id="一，ajax"><a href="#一，ajax" class="headerlink" title="一，ajax"></a>一，ajax</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><ul>
+<li>AJAX = 异步 JavaScript 和 XML。</li>
+<li>AJAX 是一种用于创建快速动态网页的技术。</li>
+<li>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</li>
+</ul>
+<h3 id="2-实现语法"><a href="#2-实现语法" class="headerlink" title="2.实现语法"></a>2.实现语法</h3><ol>
+<li>创建 XMLHttpRequest 对象：<code>variable=new XMLHttpRequest();</code></li>
+<li><p>GET 请求:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(&quot;GET&quot;,&quot;demo_get2.asp?fname=Bill&amp;lname=Gates&quot;,true);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+</li>
+<li><p>POST 请求:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(&quot;POST&quot;,&quot;ajax_test.asp&quot;,true);</div><div class="line">xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);//添加 HTTP 头</div><div class="line">xmlhttp.send(&quot;fname=Bill&amp;lname=Gates&quot;);</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<p><img src="https://i.loli.net/2017/08/12/598eae254679b.png" alt=""></p>
-<h2 id="二，CSS之层叠"><a href="#二，CSS之层叠" class="headerlink" title="二，CSS之层叠"></a>二，CSS之层叠</h2><h3 id="1-层叠的概念"><a href="#1-层叠的概念" class="headerlink" title="1. 层叠的概念"></a>1. 层叠的概念</h3><p>浏览器在解析CSS样式时，会将不同来源的CSS叠加在一起，再最终确定样式的结果。</p>
-<h3 id="2-层叠的规则"><a href="#2-层叠的规则" class="headerlink" title="2. 层叠的规则"></a>2. 层叠的规则</h3><ul>
-<li>后三种样式是有优先级的：内联式 &gt; 嵌入式 &gt; 外部式,遵循就近原则（离被设置元素越近优先级别越高）。</li>
-<li>同一种样式中覆盖的默认规则是后者覆盖前者，即后写的覆盖先写的。</li>
-<li>上面所总结的优先级是在相同权值的情况下。权值指一个选择器的重要程度，标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。</li>
-<li>权值的两个特例：<code>!important</code>优先级最高，高于上面一切。<code>*</code>选择器最低，低于一切。</li>
-<li>还有一个权值比较特殊–继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</li>
+<h3 id="3-响应及事件"><a href="#3-响应及事件" class="headerlink" title="3.响应及事件"></a>3.响应及事件</h3><ul>
+<li>responseText属性获得字符串形式的响应数据。</li>
+<li>responseXML属性获得 XML 形式的响应数据。</li>
+<li>readyState 属性存有 XMLHttpRequest 的状态信息。<ul>
+<li>0: 请求未初始化</li>
+<li>1: 服务器连接已建立</li>
+<li>2: 请求已接收</li>
+<li>3: 请求处理中</li>
+<li>4: 请求已完成，且响应已就绪</li>
 </ul>
-<h2 id="三，CSS之选择器"><a href="#三，CSS之选择器" class="headerlink" title="三，CSS之选择器"></a>三，CSS之选择器</h2><h3 id="1-标签选择器"><a href="#1-标签选择器" class="headerlink" title="1. 标签选择器"></a>1. 标签选择器</h3><ul>
-<li>通用选择 <code>*</code>。</li>
-<li>单标签。</li>
-<li>多标签，主要有以下几种：子选择器（<code>div&gt;p</code>），后代选择器(<code>div p</code>)，兄弟选择器（<code>li+li</code>），同胞选择器(<code>span~a</code>)。<h3 id="2-属性选择器"><a href="#2-属性选择器" class="headerlink" title="2.属性选择器"></a>2.属性选择器</h3></li>
-<li>ID选择器</li>
-<li>类选择器</li>
-<li>只通过属性名选择和通过属性名和属性值选择<h2 id="四，伪类和伪元素"><a href="#四，伪类和伪元素" class="headerlink" title="四，伪类和伪元素"></a>四，伪类和伪元素</h2><h3 id="1-伪类"><a href="#1-伪类" class="headerlink" title="1. 伪类"></a>1. 伪类</h3></li>
-<li>CSS 伪类用于向某些选择器添加特殊的效果。</li>
+</li>
+<li>每当 readyState 改变时，就会触发 onreadystatechange 事件。</li>
+<li>status属性：200: “OK”；404: 未找到页面。</li>
 </ul>
-<p><img src="https://ooo.0o0.ooo/2017/08/12/598ed3bab0438.jpg" alt=""></p>
-<h3 id="2-伪元素"><a href="#2-伪元素" class="headerlink" title="2. 伪元素"></a>2. 伪元素</h3><ul>
-<li>CSS 伪元素用于将特殊的效果添加到某些选择器。</li>
+<h2 id="二，json"><a href="#二，json" class="headerlink" title="二，json"></a>二，json</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><ul>
+<li>JavaScript 对象表示法（JavaScript Object Notation）。</li>
+<li>是存储和交换文本信息的语法。</li>
 </ul>
-<p><img src="https://ooo.0o0.ooo/2017/08/12/598ed3ba8e403.jpg" alt=""></p>
-<h3 id="3-二者区别"><a href="#3-二者区别" class="headerlink" title="3. 二者区别"></a>3. 二者区别</h3><blockquote>
-<p>伪类的效果可以通过添加一个实际的类来达到，而伪元素的效果则需要通过添加一个实际的元素才能达到，这也是为什么他们一个称为伪类，一个称为伪元素的原因。 <code>css3</code>为了区分两者，已经明确规定了伪类用一个冒号来表示，而伪元素则用两个冒号来表示。</p>
-</blockquote>
-<p><strong>个人理解：</strong> 伪类是为使用伪类的选择器按照一定条件选出来的元素本身添加样式。伪元素是在使用伪元素的选择器选出来的元素基础上创建了一些新元素，进而为这些创建的元素添加样式。</p>
+<h3 id="2-语法规则（-JavaScript-对象表示法语法的子集）"><a href="#2-语法规则（-JavaScript-对象表示法语法的子集）" class="headerlink" title="2.语法规则（ JavaScript 对象表示法语法的子集）"></a>2.语法规则（ JavaScript 对象表示法语法的子集）</h3><ul>
+<li>数据在名称/值对中</li>
+<li>数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+<h3 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h3><ul>
+<li>JSON 值：数字（整数或浮点数），字符串（在双引号中），逻辑值（true 或 false），数组（在方括号中），对象（在花括号中），null。</li>
+<li>JSON 对象：<code>{ &quot;firstName&quot;:&quot;John&quot; , &quot;lastName&quot;:&quot;Doe&quot; }</code>。</li>
+<li>JSON 数组：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;employees&quot;: [</div><div class="line">&#123; &quot;firstName&quot;:&quot;John&quot; , &quot;lastName&quot;:&quot;Doe&quot; &#125;,</div><div class="line">&#123; &quot;firstName&quot;:&quot;Anna&quot; , &quot;lastName&quot;:&quot;Smith&quot; &#125;,</div><div class="line">&#123; &quot;firstName&quot;:&quot;Peter&quot; , &quot;lastName&quot;:&quot;Jones&quot; &#125;</div><div class="line">]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="三，正则表达式"><a href="#三，正则表达式" class="headerlink" title="三，正则表达式"></a>三，正则表达式</h2><h3 id="1-基本概念-2"><a href="#1-基本概念-2" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><ul>
+<li>提供一种模式提供检索或替换的规则</li>
+<li>字面量或者reg对象</li>
+</ul>
+<h3 id="2-三flag"><a href="#2-三flag" class="headerlink" title="2. 三flag"></a>2. 三flag</h3><ul>
+<li>global：全部查询完，否则查到第一个就结束 </li>
+<li>ignoreCase:区分大小写 </li>
+<li>multline:是否跨行识别 </li>
+</ul>
+<h3 id="3-四个属性"><a href="#3-四个属性" class="headerlink" title="3.四个属性"></a>3.四个属性</h3><p>global，ignorecase，multiline查询三个flag设置情况，source是正则的内容</p>
+<h3 id="4-对象方法"><a href="#4-对象方法" class="headerlink" title="4.对象方法"></a>4.对象方法</h3><ul>
+<li>exec:返回匹配的内容</li>
+<li>test：是否匹配</li>
+<li>tostring：正则内容</li>
+<li>compile：改变属性内容</li>
+<li>与字符串的方法组合使用，正则表达式当参数传进去</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/css复习/" data-id="cj69a7wvm0002ygv0m3r3tjkh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/16/js之ajax,json,z正则/" data-id="cj6f1jaok0005ncv0fkotb2iw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,10 +270,10 @@
 
 
   
-    <article id="post-js复习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/12/js复习/" class="article-date">
-  <time datetime="2017-08-12T12:32:45.226Z" itemprop="datePublished">2017-08-12</time>
+    <a href="/2017/08/16/js闭包/" class="article-date">
+  <time datetime="2017-08-16T12:45:35.373Z" itemprop="datePublished">2017-08-16</time>
 </a>
     
   </div>
@@ -214,11 +282,562 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="js之执行上下文，this，闭包复习总结"><a href="#js之执行上下文，this，闭包复习总结" class="headerlink" title="js之执行上下文，this，闭包复习总结"></a>js之执行上下文，this，闭包复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，执行上下文"><a href="#一，执行上下文" class="headerlink" title="一，执行上下文"></a>一，执行上下文</h2><h3 id="1-全局环境的准备工作（一条一条执行代码之前）"><a href="#1-全局环境的准备工作（一条一条执行代码之前）" class="headerlink" title="1.全局环境的准备工作（一条一条执行代码之前）"></a>1.全局环境的准备工作（一条一条执行代码之前）</h3><ol>
+<li>变量、函数表达式——变量声明，默认赋值为undefined；</li>
+<li>this——赋值；</li>
+<li>函数声明——赋值；</li>
+</ol>
+<h3 id="2-局部环境的准备工作（函数体的语句执行之前）"><a href="#2-局部环境的准备工作（函数体的语句执行之前）" class="headerlink" title="2.局部环境的准备工作（函数体的语句执行之前）"></a>2.局部环境的准备工作（函数体的语句执行之前）</h3><ul>
+<li><p>函数每被调用一次，都会产生一个新的执行上下文环境。</p>
+<ol>
+<li>参数，<code>arguments</code>赋值。</li>
+<li>this赋值</li>
+<li>局部变量声明，赋值<code>undefined</code>。</li>
+</ol>
+</li>
+<li><p>当函数调用完成时，这个上下文环境以及其中的数据都会被消除，再重新回到全局上下文环境。</p>
+</li>
+<li>函数在定义的时候（不是调用的时候），就已经确定了函数体内部自由变量的作用域。</li>
+</ul>
+<h3 id="3-执行上下文栈"><a href="#3-执行上下文栈" class="headerlink" title="3. 执行上下文栈"></a>3. 执行上下文栈</h3><ul>
+<li>处于活动状态的执行上下文环境只有一个。</li>
+<li>未调用函数时，处于全局的上下文环境，执行每行代码做的是赋值工作。</li>
+<li>执行函数体语句之前，会创建一个新的执行上下文环境（为函数体内的局部变量做准备工作），并将这个执行上下文环境压栈，设置为活动状态。</li>
+</ul>
+<h2 id="二，作用域"><a href="#二，作用域" class="headerlink" title="二，作用域"></a>二，作用域</h2><h3 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h3><ul>
+<li>javascript除了全局作用域之外，只有函数可以创建的作用域。</li>
+<li>作用域有上下级的关系，上下级关系的确定就看函数是在哪个作用域下创建的。</li>
+<li>作用域最大的用处就是隔离变量，不同作用域下同名变量不会有冲突。</li>
+</ul>
+<h3 id="2-作用域链"><a href="#2-作用域链" class="headerlink" title="2. 作用域链"></a>2. 作用域链</h3><ul>
+<li><strong>自由变量：</strong> 在A作用域中使用的变量x，却没有在A作用域中声明（即在其他作用域中声明的），对于A作用域来说，x就是一个自由变量。</li>
+<li>要到创建这个函数的那个作用域中取值——是“创建”，而不是“调用”。</li>
+<li><strong>“作用域链”过程：</strong><ol>
+<li>第一步，现在当前作用域查找a，如果有则获取并结束。如果没有则继续；</li>
+<li>第二步，如果当前作用域是全局作用域，则证明a未定义，结束；否则继续；</li>
+<li>第三步，（不是全局作用域，那就是函数作用域）<font color="Coral">将创建该函数的作用域作为当前作用域</font>；</li>
+<li>跳转到第一步。</li>
+</ol>
+</li>
+</ul>
+<h2 id="三，作用域与上下文环境"><a href="#三，作用域与上下文环境" class="headerlink" title="三，作用域与上下文环境"></a>三，作用域与上下文环境</h2><ul>
+<li>作用域在函数定义时就已经确定了。而不是在函数调用时确定。</li>
+<li>作用域只是一个“地盘”，一个抽象的概念，其中没有变量。要通过作用域对应的执行上下文环境来获取变量的值。</li>
+<li>同一个作用域下，不同的调用会产生不同的执行上下文环境，继而产生不同的变量的值。</li>
+<li>作用域中变量的值是在执行过程中产生的确定的，而作用域却是在函数创建时就确定了。</li>
+<li>如果要查找一个作用域下某个变量的值，就需要找到这个作用域对应的执行上下文环境，再在其中寻找变量的值。<br><img src="https://i.loli.net/2017/08/13/5990419222c63.png" alt=""></li>
+</ul>
+<p><strong>一些重点：</strong> 一个作用域下可能包含若干个上下文环境。有可能从来没有过上下文环境（函数从来就没有被调用过）；有可能有过，现在函数被调用完毕后，上下文环境被销毁了；有可能同时存在一个或多个（闭包）。</p>
+<h2 id="四，闭包"><a href="#四，闭包" class="headerlink" title="四，闭包"></a>四，闭包</h2><ol>
+<li>函数作为返回值。</li>
+<li>函数作为参数被传递。</li>
+</ol>
+<p><strong>核心：</strong>作为返回值或者参数的函数，会创建一个作用域，而且需要使用一个不属于这个函数内部的自由变量，这使得这个自由变量所在的函数即便已经执行完了，它的上下文环境也不能被销毁，还需要在上下文栈中，但不是作为活动上下文环境存在。所以使用闭包会增加内容开销。</p>
+<h2 id="五，this"><a href="#五，this" class="headerlink" title="五，this"></a>五，this</h2><h3 id="1-普遍的五种情况"><a href="#1-普遍的五种情况" class="headerlink" title="1.普遍的五种情况"></a>1.普遍的五种情况</h3><p><strong>情况1：</strong>构造函数(new对象的函数)具体构造出的哪个对象调用自己this就指谁。</p>
+<p><strong>情况2：</strong>函数作为对象的一个属性 函数中的this指向该对象。</p>
+<p><strong>情况3：</strong>函数用call或者apply调用 this的值就取传入的对象的值。</p>
+<p><strong>情况4：</strong>全局 &amp; 调用普通函数 在全局环境下，this永远是window。</p>
+<p><strong>情况5：</strong>不仅仅是构造函数的prototype，即便是在整个原型链中，this代表的也都是当前对象的值。</p>
+<h3 id="2-一些特例"><a href="#2-一些特例" class="headerlink" title="2. 一些特例"></a>2. 一些特例</h3><ul>
+<li>函数定义在一个对象的属性函数内，它仍然是一个普通的函数，this仍然指向window。</li>
+<li>一个对象的函数属性被赋值给一个变量，然后通过这个变量调用函数时this仍然指向window。</li>
+</ul>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><ul>
+<li>除非这个函数明确是某个对象属性或者是作为函数构造器构造为对象之后调用，都是指向window，与定义在哪里的位置无关。</li>
+<li>函数体有点像C++中的静态函数，不管哪个引用指向此函数体，函数体的内容都是一样的，执行语句一样，只是this不一样，传进来的参数不一样导致了区别，所以函数赋值只是赋给引用，并不是全部复制。</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/js复习/" data-id="cj69a7wuh0000ygv0eu3psaj9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/16/js闭包/" data-id="cj6f1jaoz0009ncv0u1ttqm9z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/js原型链/" class="article-date">
+  <time datetime="2017-08-16T12:45:31.826Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js原型链复习总结"><a href="#js原型链复习总结" class="headerlink" title="js原型链复习总结"></a>js原型链复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，函数和对象的关系"><a href="#一，函数和对象的关系" class="headerlink" title="一，函数和对象的关系"></a>一，函数和对象的关系</h2><ul>
+<li>对象都是通过函数创建的。</li>
+<li>而函数却又是一种对象。</li>
+</ul>
+<h2 id="二，prototype原型"><a href="#二，prototype原型" class="headerlink" title="二，prototype原型"></a>二，prototype原型</h2><ul>
+<li>每个函数都有一个属性叫做<code>prototype</code>。</li>
+<li><code>prototype</code>的属性值是一个对象（属性的集合，再次强调！），默认的只有一个叫做<code>constructor</code>的属性，指向这个函数本身。</li>
+<li>每个对象都有一个<strong>proto</strong>，可称为隐式原型，指向创建该对象的函数的prototype。</li>
+</ul>
+<p><strong>以上几条达到的结果是：</strong>Fn是一个函数，fn对象是从Fn函数new出来的，这样fn对象就可以调用<code>Fn.prototype</code>中的属性。</p>
+<h2 id="三，环形结构"><a href="#三，环形结构" class="headerlink" title="三，环形结构"></a>三，环形结构</h2><ul>
+<li>自定义函数的<code>prototype</code>本质上就是和 <code>var obj = {}</code>是一样的，都是被Object创建，所以它的<code>__proto__</code>指向的就是<code>Object.prototype</code>。</li>
+<li><code>Object.prototype</code>确实一个特例——它的<code>__proto__</code>指向的是<code>null</code>。</li>
+<li>函数也是一种对象，函数也有<code>__proto__</code>，Function创建了函数,所以指向<code>Function.prototype</code>。</li>
+<li><code>Function.__proto__</code>指向<code>Function.prototype</code>。</li>
+<li>Function.prototype指向的对象，它的<strong>proto</strong>也指向Object.prototype</li>
+</ul>
+<p><img src="https://i.loli.net/2017/08/13/59902f82266fd.png" alt=""></p>
+<h2 id="四，实现继承"><a href="#四，实现继承" class="headerlink" title="四，实现继承"></a>四，实现继承</h2><p><strong>父类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 定义一个动物类</div><div class="line">function Animal (name) &#123;</div><div class="line">  // 属性</div><div class="line">  this.name = name || &apos;Animal&apos;;</div><div class="line">  // 实例方法</div><div class="line">  this.sleep = function()&#123;</div><div class="line">    console.log(this.name + &apos;正在睡觉！&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// 原型方法</div><div class="line">Animal.prototype.eat = function(food) &#123;</div><div class="line">  console.log(this.name + &apos;正在吃：&apos; + food);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1. 原型链继承"></a>1. 原型链继承</h3><p><strong>实现原理:</strong> 将父类的实例作为子类的原型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Cat()&#123;  </div><div class="line">&#125;</div><div class="line">Cat.prototype = new Animal();</div><div class="line">Cat.prototype.name = &apos;cat&apos;;</div><div class="line">//　Test Code</div><div class="line">var cat = new Cat();</div><div class="line">console.log(cat.name);</div><div class="line">console.log(cat.eat(&apos;fish&apos;));</div><div class="line">console.log(cat.sleep());</div><div class="line">console.log(cat instanceof Animal); //true </div><div class="line">console.log(cat instanceof Cat); //true</div></pre></td></tr></table></figure></p>
+<h3 id="2-构造继承"><a href="#2-构造继承" class="headerlink" title="2.构造继承"></a>2.构造继承</h3><p><strong>实现原理:</strong> 使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Cat(name)&#123;</div><div class="line">  Animal.call(this);</div><div class="line">  this.name = name || &apos;Tom&apos;;</div><div class="line">&#125;</div><div class="line">// Test Code</div><div class="line">var cat = new Cat();</div><div class="line">console.log(cat.name);</div><div class="line">console.log(cat.sleep());</div><div class="line">console.log(cat instanceof Animal); // false</div><div class="line">console.log(cat instanceof Cat); // true</div></pre></td></tr></table></figure></p>
+<p>后续更新</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/js原型链/" data-id="cj6f1jaot0007ncv0hs0h8yvb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bootstrap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/bootstrap/" class="article-date">
+  <time datetime="2017-08-16T12:44:59.108Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Bootstrap知识复习总结"><a href="#Bootstrap知识复习总结" class="headerlink" title="Bootstrap知识复习总结"></a>Bootstrap知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，致敬页面知识点"><a href="#一，致敬页面知识点" class="headerlink" title="一，致敬页面知识点"></a>一，致敬页面知识点</h2><h3 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h3><ul>
+<li>Bootstrap 是移动设备优先的。</li>
+<li>栅格运用：最外层容器添加<code>row</code>类，每一列的<code>div</code>添加<code>col-xs-*</code>类，一共12列，*代表所占列数。</li>
+<li><code>col-xs-*</code>类下可以继续套<code>col-xs-*</code>类。</li>
+<li>自适应大小选择<code>col-xs-*</code>、<code>col-sm-*</code>、<code>col-md-*</code>。</li>
+<li><code>col-sm-offset-*</code>设置偏移的列数，可以用来实现居中。</li>
+<li><code>container</code>类。。。。。。</li>
+</ul>
+<h3 id="2-用到的知识"><a href="#2-用到的知识" class="headerlink" title="2. 用到的知识"></a>2. 用到的知识</h3><ul>
+<li><code>Jumbotron类</code>：顾名思义该组件可以增加标题的大小，并为登陆页面内容添加更多的外边距（<code>margin</code>）。使用超大屏幕（Jumbotron）的步骤如下：<ol>
+<li>创建一个带有 <code>class .jumbotron</code>. 的容器 <code>&lt;div&gt;</code>。</li>
+<li>除了更大的<code>&lt;h1&gt;</code>，字体粗细 <code>font-weight</code> 被减为 200。</li>
+<li>为了获得占用全部宽度且不带圆角的超大屏幕，请在所有的 <code>.container class</code> 外使用 <code>.jumbotron class</code>。</li>
+<li>总而言之：增加标题字号，🏠外边距，背景颜色，以及圆角，不想要圆角就放在<code>container</code>类的外面。</li>
+</ol>
+</li>
+<li><code>thumbnail</code>类：缩略图类，放在<code>img</code>标签外的<code>a</code>或者<code>div</code>标签中,会添加四个像素的内边距和一个灰色的边框，边框是圆角的（也可以放文字）。</li>
+<li>通过为 <code>&lt;img&gt;</code>元素添加以下相应的类，可以让图片呈现不同的形状。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-rounded&quot;&gt;</div><div class="line">&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-circle&quot;&gt;</div><div class="line">&lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-thumbnail&quot;&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="" alt="图片"></p>
+<h2 id="二，个人主页知识点"><a href="#二，个人主页知识点" class="headerlink" title="二，个人主页知识点"></a>二，个人主页知识点</h2><h3 id="1-导航"><a href="#1-导航" class="headerlink" title="1. 导航"></a>1. 导航</h3><ul>
+<li>导航条是一个包含导航栏的容器，添加<code>navbar</code>类。类<code>navbar-default</code>必须有，用来添加默认导航条样式。类<code>navbar-fixed-top/bottom</code>设置导航条固定在顶部或底部。</li>
+<li>导航栏需要添加<code>nav</code>类，<code>nav-tabs/nav-pills</code>等用来设置不同的样式。如果放在了导航条中还必须添加<code>navbar-nav</code>类。</li>
+<li>导航条中除了放导航栏还可以放文字或者表单之类的，添加一个头部说明如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;navbar-header&quot;&gt;</div><div class="line">     &lt;a href=&quot;#top&quot; class=&quot;navbar-brand scrollable&quot;&gt;作品集&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>当屏幕太小需要把导航栏折叠式，需要一个替代按钮，添加类<code>navbar-toggle</code>。并且为导航栏添加<code>&lt;nav&gt;&lt;/nav&gt;</code>容器,添加<code>collapse</code>和<code>navbar-collapse</code>。</li>
+<li>按钮属性设置<code>data-toggle=&quot;collapse&quot; data-target=&quot;#nav&quot;</code>，<code>#nav</code>为<code>&lt;nav&gt;&lt;/nav&gt;</code>容器<code>id</code>。</li>
+<li>解决导航条bug问题（导航条固定位置后会遮盖主页内容）：设置了一个空的<code>a</code>元素，<code>block</code>，高度和<code>navbar</code>一样，且把它的<code>id</code>设为home的链接。</li>
+</ul>
+<h3 id="2-实现知识点"><a href="#2-实现知识点" class="headerlink" title="2. 实现知识点"></a>2. 实现知识点</h3><ul>
+<li><code>container</code>和<code>flex</code>合用时：<code>container</code>中有默认的<code>before</code>和<code>after</code>伪素会影响布局所以需要<code>display：none</code>；</li>
+<li>为了改变bootstrap的默认设置有些样式需要<code>！important</code>。</li>
+<li>虽然填写表单的动作触发在<code>input</code>元素，但是因为事件冒泡，将此事件绑定在了<code>input</code>元素的容器上了，也是后面会出现<code>this</code>和<code>event.targe</code>区分的原因。</li>
+<li>虽然填写表单项时时需要动态地改变样式的是表单下的<code>label</code>元素，但是确实动态地为<code>label</code>元素添加类名，通过<code>.form-filled label</code>写样式来动态地改变<code>label</code>元素的样式。</li>
+<li><p>媒体查询的运用，实现自适应:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@media(min-width:1023px)&#123;#Contact div form, #Contact div&gt;div&#123;</div><div class="line">flex-basis: 40%;</div><div class="line">&#125;&#125;</div><div class="line">@media(max-width:768px)&#123;</div><div class="line">    #Contact div form, #Contact div&gt;div&#123;</div><div class="line">     flex-basis: 80%;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>滚动时相应导航项高亮的实现：<code>$(&#39;body&#39;).scrollspy({ target: &#39;#banner&#39; });</code>。<code>#banner</code>是滚动内容的<code>id</code>。</p>
+</li>
+</ul>
+<h3 id="3-几个高宽值"><a href="#3-几个高宽值" class="headerlink" title="3. 几个高宽值"></a>3. 几个高宽值</h3><ul>
+<li><code>height</code>：指元素内容的高度  ，<code>jQuery</code>中的<code>height()</code>方法返回的就是这个高度。</li>
+<li><code>clientHeight</code>：内容高度+<code>padding</code>高度 ，jQuery中的<code>innerHeight()</code>方法返回的就是这个高度。</li>
+<li><code>offsetHeight</code>：内容高度+<code>padding</code>高度+边框宽度  ，jQuery中的<code>outerHeight()</code>方法返回的就是这个高度。</li>
+<li><code>width</code>：指元素内容的宽度  ，jQuery中的<code>width()</code>方法返回的就是这个宽度。</li>
+<li><code>clientWidth</code>：内容高度+<code>padding</code>宽度  ，jQuery中的<code>innerWidtht()</code>方法返回的就是这个宽度。</li>
+<li><code>offsetWidth</code>：内容高度+<code>padding</code>高度+边框宽度  ，jQuery中的<code>outerWidth()</code>方法返回的就是这个宽度。</li>
+</ul>
+<h3 id="4-js和jQuery知识点"><a href="#4-js和jQuery知识点" class="headerlink" title="4. js和jQuery知识点"></a>4. js和jQuery知识点</h3><ul>
+<li><code>on()</code>方法在被选元素及子元素上添加一个或多个事件处理程序。</li>
+<li>使用 <code>on()</code>方法添加的事件处理程序适用于当前及未来的元素（比如由脚本创建的新元素）。（动态的，简单的<code>onclick</code>都是静态的，由脚本创建的新元素不适用）。</li>
+<li>如需移除事件处理程序，请使用 <code>off()</code>方法。</li>
+<li>如需添加只运行一次的事件然后移除，请使用<code>one()</code> 方法:<br><code>$(selector).on(event,childSelector,data,function,map)</code>。</li>
+<li><code>$(function(){})</code> 是 <code>$(document).ready(function(){})</code> 的简写。</li>
+</ul>
+<h3 id="5-即时搜索"><a href="#5-即时搜索" class="headerlink" title="5. 即时搜索"></a>5. 即时搜索</h3><p>  <strong>概念：</strong> 用户输入一个字就去发请求匹配，相应的结果并显示出来。</p>
+<ol>
+<li><p><code>change</code>事件，这个事件不太友好，触发必须满足两个条件：a）当前对象的值发生改变，并且是由<br>键盘或鼠标事件激发的（脚本触发无效）；b）当前对象要失去焦点<code>(onblur)</code></p>
+</li>
+<li><p><code>keypress</code>事件，这个一般，对比上面的要好，就是只能监听键盘事件，鼠标复制黏贴等操作就无能为力了</p>
+</li>
+<li><p><code>propertychange</code>和<code>input</code>事件，这两个事件其实是一回事，只是不同的标准罢了，可以同时绑定。</p>
+<ul>
+<li><code>input</code>是标准的浏览器（W3C）事件，一般应用于<code>input</code>元素，当<code>input</code>的value发生变化就会发生，无论是键盘输入还是鼠标,重点是黏贴的改变都能及时监听到变化；</li>
+<li><code>propertychange</code>是IE专属的事件，只要当前对象属性值发生改变就能触发。</li>
+</ul>
+</li>
+</ol>
+<h3 id="6-event和this"><a href="#6-event和this" class="headerlink" title="6. event和this"></a>6. event和this</h3><ul>
+<li><code>event.targe</code>是实际的触发事件的元素，而<code>this</code>是给哪个元素绑定了事件。</li>
+<li><code>event.target</code>代表当前触发事件的元素，可以通过当前元素对象的一系列属性来判断是不是我们想要的元素。</li>
+<li>js中事件是会冒泡的，所以<code>this</code>是可以变化的，但<code>event.target</code>不会变化，它永远是直接接受事件的目标DOM元素；</li>
+<li><code>this</code>和<code>event.target</code>都是dom对象。</li>
+<li>如果要使用jquey中的方法可以将他们转换为jQuery对象。比如<code>this</code>和<code>$(this)</code>的使用、<code>event.target</code>和<code>$(event.target)</code>的使用；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/bootstrap/" data-id="cj6f1jann0000ncv07w71rodx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-弹幕墙" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/弹幕墙/" class="article-date">
+  <time datetime="2017-08-16T12:44:55.801Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="弹幕墙实例练习知识总结"><a href="#弹幕墙实例练习知识总结" class="headerlink" title="弹幕墙实例练习知识总结"></a>弹幕墙实例练习知识总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，野狗云"><a href="#一，野狗云" class="headerlink" title="一，野狗云"></a>一，野狗云</h2><h3 id="1-创建实例"><a href="#1-创建实例" class="headerlink" title="1. 创建实例"></a>1. 创建实例</h3><ul>
+<li>添加引用<code>&lt;script src=&quot;https://cdn.wilddog.com/sdk/js/2.5.8/wilddog.js&quot;&gt;&lt;/script&gt;</code>。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var config = &#123;syncURL: &quot;https://wd4762749852uxvqau.wilddogio.com&quot; &#125;;</div><div class="line">wilddog.initializeApp(config);</div><div class="line">var ref = wilddog.sync().ref();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-基本操作"><a href="#2-基本操作" class="headerlink" title="2. 基本操作"></a>2. 基本操作</h3><ul>
+<li><code>ref.child(&#39;message&#39;).push(text);</code>为子节点<code>message</code>添加新的键值对，<code>text</code>为值，<code>key</code>会自动创建随机的名称，按时间顺序排列。</li>
+<li><code>ref.remove();</code>清空所有键值和子节点。</li>
+<li><code>ref.child(&quot;message&quot;).on(&quot;child_added&quot;,function(snapshot){})</code>为子节点添加事件监听，增加新的键值对节点时触发。</li>
+<li><code>snapshot.val()</code>获取添加的键值对的值内容。</li>
+</ul>
+<h2 id="二，-实现原理"><a href="#二，-实现原理" class="headerlink" title="二， 实现原理"></a>二， 实现原理</h2><h3 id="1-基本操作原理"><a href="#1-基本操作原理" class="headerlink" title="1. 基本操作原理"></a>1. 基本操作原理</h3><ul>
+<li>点击发射按钮时为野狗云实例<code>message</code>子节点添加键值对，同时将输入框中的内容清空。</li>
+<li>按回车键时，通过<code>trigger(&quot;click&quot;);</code>触发发射按钮点击事件。</li>
+<li><code>message</code>子节点监听到添加键值对事件后，将添加的键值对的值内容取出压入保存弹幕内容的数组中。</li>
+<li><p>创建以此值内容为文本的弹幕<code>div</code>,并添加到弹幕框<code>div</code>中(注意要将DOM对象转化成jQuery对象):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj=$(&quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line"> obj.text(text);</div><div class="line">$(&quot;.dnm_show&quot;).append(obj);</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后将此弹幕<code>div</code>实现运动。</p>
+</li>
+<li><ul>
+<li>由于每次新添加的弹幕<code>div</code>只会跑一次，为了让弹幕框里一直有弹幕滚动，设置一个定时器函数，每个一段时间就从保存弹幕内容的数组中随机抽一个弹幕出来，添加弹幕<code>div</code>让它实现移动。</li>
+</ul>
+</li>
+<li>点击清屏按钮时调用<code>ref.remove();</code>清空所有键值和子节点。并情况保存弹幕内容的数组。</li>
+</ul>
+<h3 id="2-弹幕运用原理"><a href="#2-弹幕运用原理" class="headerlink" title="2. 弹幕运用原理"></a>2. 弹幕运用原理</h3><ol>
+<li>弹幕<code>div</code>需要<code>absolute</code>定位，<code>top</code>偏移每次都比上次多50px,以防重叠，到达弹幕框底部时，再归为初始值。</li>
+<li>左右偏移设置为<code>right</code>为0，让弹幕从弹幕框最右侧开始运动。</li>
+<li>为弹幕添加动画，通过目标值设为左偏移为负的自身宽度，让弹幕<code>div</code>从左到右运动一次。并随机添加颜色和时间设置。</li>
+<li>随机时间通过生产随机数实现，随机颜色通过从0-9和a-f中随机选取一个字符出来，随机地选6次组成颜色字符串。</li>
+<li>动画的回调函数需要设置成删除此<code>div</code>节点，否则一直存在，浪费空间。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/弹幕墙/" data-id="cj6f1japp000hncv0x7ynej9t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-qq面板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/qq面板/" class="article-date">
+  <time datetime="2017-08-16T12:44:49.431Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QQ面板实例练习总结"><a href="#QQ面板实例练习总结" class="headerlink" title="QQ面板实例练习总结"></a>QQ面板实例练习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，基础知识"><a href="#一，基础知识" class="headerlink" title="一，基础知识"></a>一，基础知识</h2><h3 id="1-事件流"><a href="#1-事件流" class="headerlink" title="1. 事件流"></a>1. 事件流</h3><ol>
+<li>事件冒泡:<br>事件冒泡，即事件最开始由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上转播至最不具体的节点(文档)。</li>
+<li>事件捕获:<br>事件捕获的思想是不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。</li>
+</ol>
+<h3 id="2-事件处理程序"><a href="#2-事件处理程序" class="headerlink" title="2. 事件处理程序"></a>2. 事件处理程序</h3><ol>
+<li>在html代码元素中添加事件为Html事件。</li>
+<li>使用元素的onclick方法为DOM0级事件处理。</li>
+<li>使用事件添加方法为元素添加事件:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chrome:addEventListener,removeEventListener//它们都接收三个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。</div><div class="line">IE:attachEvent,detachEvent //接收相同的两个参数：事件处理程序名称与事件处理函数。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-事件对象"><a href="#3-事件对象" class="headerlink" title="3. 事件对象"></a>3. 事件对象</h3><p><strong>兼容问题:</strong><code>e=e || window.event;</code></p>
+<ol>
+<li>DOM中的事件对象<ul>
+<li>type:获取事件类型</li>
+<li>target：事件目标</li>
+<li>stopPropagation() 阻止事件冒泡</li>
+<li>preventDefault() 阻止事件的默认行为</li>
+</ul>
+</li>
+<li>IE中的事件对象<ul>
+<li>type:获取事件类型</li>
+<li>srcElement：事件目标</li>
+<li>cancelBubble=true阻止事件冒泡</li>
+<li>returnValue=false阻止事件的默认行为</li>
+</ul>
+</li>
+</ol>
+<h3 id="二，拖拽与切换状态"><a href="#二，拖拽与切换状态" class="headerlink" title="二，拖拽与切换状态"></a>二，拖拽与切换状态</h3><h3 id="1-background-position-学习文章"><a href="#1-background-position-学习文章" class="headerlink" title="1. background-position 学习文章"></a>1. <code>background-position</code> <a href="http://www.php230.com/1411189681.html" target="_blank" rel="external">学习文章</a></h3><ul>
+<li>位置设定是指图片与坐标原点的偏移量</li>
+<li>原点是不会动的，移动的是图片，超出容器的部分隐藏。</li>
+<li>X坐标为正则图片左上角向右平移，为负则图片左上角向左平移。</li>
+<li>Y坐标为正则图片左上角向下平移，为负则左上角向上平移。</li>
+<li>百分比的计算是有公式的：X轴( 容器宽度 – 图片宽度 )*含符号百分比。</li>
+<li>Y轴( 容器高度 – 图片高度)*含符号百分比。</li>
+</ul>
+<h3 id="2-拖拽原理"><a href="#2-拖拽原理" class="headerlink" title="2. 拖拽原理"></a>2. 拖拽原理</h3><ul>
+<li>监听<code>onmousedown</code>事件。</li>
+<li><p>在监听函数中计算出出发时鼠标离面板左上角的上下距离。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">disX=event.clientX-oDrag.offsetLeft,</div><div class="line">disY=event.clientY-oDrag.offsetTop;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后再在函数中添加两个事件监听<code>onmousemove</code>和<code>onmouseup</code>。</p>
+</li>
+<li>触发<code>onmousemove</code>事件意味鼠标在移动，获取<code>onmousemove</code>事件鼠标的位置。</li>
+<li>将鼠标位置减去与面板左上角的距离之后就是面板所在位置，通过样式设定<code>left</code>和<code>top</code>定位即可。</li>
+<li>因为鼠标可以移动到角落，会导致面板位置超出窗口可视区域，需要将位置合理化，具体如下：<pre><code>* 面板左上角横坐标小于0都设为0，面板横坐标过大导致面板右侧不可见时，设为最大值（window宽度减去面板宽度）
+* 面板左上角纵坐标坐标小于0都设为0（有时因为边距之类的问题需要比0大一点），面板纵坐标过大导致面板底部不可见时，设为最大值（window高度减去面板高度）。
+</code></pre></li>
+<li>触发<code>onmouseup</code>事件意味着停止拖拽，此时清除监听<code>onmousemove</code>（赋值为<code>null</code>），因为此时鼠标移动时就不拖拽了。</li>
+</ul>
+<h3 id="3-切换状态原理"><a href="#3-切换状态原理" class="headerlink" title="3. 切换状态原理"></a>3. 切换状态原理</h3><p>1.<strong>样式设置要点:</strong></p>
+<ul>
+<li>显示的状态图标和状态文字<code>div</code>要同时有类名和<code>id</code>,类名用于设置所有状态图标和文字的通用样式，<code>id</code>用来获取<code>div</code>。</li>
+<li>列表中的，<code>li</code>包含了备选的状态图标和状态文字<code>div</code>,为了在获取的时候区分状态和文字要添加不同的类名。</li>
+<li>列表中的状态图标和显示的状态图标<code>div</code>都要一个标志自己的类名用来设置自己独有的样式。</li>
+<li>为了方便获取每个状态图标的独特类名，将它的父元素<code>li</code>的<code>id</code>和这个类名设置成一样的。</li>
+</ul>
+<p>2.<strong>实现原理:</strong></p>
+<ul>
+<li>点击状态区域，备选状态列表<code>diplay:block</code>。</li>
+<li>遍历列表，对每种状态的<code>li</code>添加监听事件。</li>
+<li>触发<code>onmouseover</code>事件，<code>li</code>背景色改变，凸显鼠标滑过效果。</li>
+<li>触发<code>onmouseout</code>事件，<code>li</code>背景色改为本来颜色。</li>
+<li>触发点击事件，获取这个状态<code>li</code>下的状态图标的独特类名(通过父元素<code>id</code>),然后将显示状态的<code>div</code>的独特类名改为这个选中的<code>li</code>下的状态图标的独特类名。<code>stateShow.className=&#39;login-state-show &#39;+id;</code></li>
+<li>获取这个状态<code>li</code>下的状态文字，将显示状态文字的<code>div</code>的内容改写为这个选中的<code>li</code>下的状态文字。<code>stateTxt.innerHTML=getByClass(&#39;stateSelect_text&#39;,id)[0].innerHTML;</code></li>
+<li>给整个文档绑定点击事件触发之后状态备选列表<code>display:none</code>消失。（其它绑定了点击事件的元素被点击之后因为事件冒泡会触发文档元素的点击事件，这是我们所不希望看到的，所以要阻止事件冒泡）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/qq面板/" data-id="cj6f1japf000encv0q6oruiu1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-瀑布流" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/瀑布流/" class="article-date">
+  <time datetime="2017-08-16T12:44:43.419Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="切图实例练习总结"><a href="#切图实例练习总结" class="headerlink" title="切图实例练习总结"></a>切图实例练习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，样式设置"><a href="#一，样式设置" class="headerlink" title="一，样式设置"></a>一，样式设置</h2><ol>
+<li>所有装照片的<code>div</code>宽度一致，高度<code>auto</code>。</li>
+<li>所有装照片的<code>div</code>会设置为<code>absolute</code>,所以父元素需要<code>relative</code>。</li>
+<li>计算出可以放置的列数，然后设置最外层盒子的宽度。</li>
+</ol>
+<h2 id="二，实现思路"><a href="#二，实现思路" class="headerlink" title="二，实现思路"></a>二，实现思路</h2><ol>
+<li>遍历所有的照片<code>div</code>，对它们进行定位设置。</li>
+<li>建立一个数组，储存第一排元素的<code>outerHeight</code>,作为每一列的高度初始值.</li>
+<li>从第二排的第一个照片<code>div</code>开始，找出现在高度最小的那一列，便通过设置样式将元素放在这一列。</li>
+<li>更新这一列的高度值。</li>
+<li>储存每列高度值的数组需要在循环函数之外定义，否则会成为循环函数的内部变量，每次都会重新定义赋值。</li>
+<li>当滑动到最后一个照片一半的时候，创建一排新的照片<code>div</code>，然后循环以上步骤。</li>
+</ol>
+<h2 id="三，各种高宽值区别"><a href="#三，各种高宽值区别" class="headerlink" title="三，各种高宽值区别"></a>三，各种高宽值区别</h2><ol>
+<li>通过style.width(style.height)或者jQuery的$(divObj).width()/$(divObj).height()获取/设置元素的宽高</li>
+<li>若要获取元素包含边框的宽度，则可通过divObj.offsetWidth/divObj.offsetHeight或jQuery的$(divObj).outerWidth(false)/$(divObj).outerHeight(false)获取</li>
+<li>通过$(divObj).outerWidth(true)/$(divObj).outerHeight(true)获取带外边距的宽度</li>
+<li><p>通过$(divObj).innerWidth()/$(divObj).innerHeight()获取不包含边框、不包含外边距的宽度</p>
+<p>  <a href="http://blog.csdn.net/javaloveiphone/article/details/50855436" target="_blank" rel="external">学习文章</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/瀑布流/" data-id="cj6f1japh000fncv08bw350wg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-物体运动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/物体运动/" class="article-date">
+  <time datetime="2017-08-16T12:44:23.315Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="物体运动案例练习总结"><a href="#物体运动案例练习总结" class="headerlink" title="物体运动案例练习总结"></a>物体运动案例练习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，单物体单一属性变化"><a href="#一，单物体单一属性变化" class="headerlink" title="一，单物体单一属性变化"></a>一，单物体单一属性变化</h2><h3 id="1-思路"><a href="#1-思路" class="headerlink" title="1. 思路"></a>1. 思路</h3><ol>
+<li>通过<code>setInterval()</code>函数实现物体属性连续变化。</li>
+<li>每次调用都会对当前属性进行增加（减少）操作。</li>
+<li>当前属性达到目标值时清除定时器<code>clearInterval()</code>。</li>
+</ol>
+<h3 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2. 注意事项"></a>2. 注意事项</h3><ul>
+<li>每次调用<code>setInterval()</code>函数前先<code>clearInterval()</code>，否则多次触发事件会激活多个定时器。</li>
+<li>普通属性读取时利用<code>offset</code>（获得数值）,写时就直接赋值需要加单位变字符串。</li>
+<li>速度根据目标值与当前值的大小关系确定正负。</li>
+<li>为了实现缓冲效果，可以动态地设置速度为目标值与当前值之差的某个倍数（需要取整，否则无法正好达到目标值）。</li>
+</ul>
+<h3 id="3-特殊的透明度属性"><a href="#3-特殊的透明度属性" class="headerlink" title="3.特殊的透明度属性"></a>3.特殊的透明度属性</h3><ul>
+<li>由于无法直接获取当前取值，需要手动用一个变量记录当前值。</li>
+<li>特殊的赋值方式：<code>oDiv.style.filter=&#39;alpha(opacity:&#39;+alpha+&#39;)&#39;;</code></li>
+<li>赋值还需要考虑兼容性问题。</li>
+</ul>
+<h3 id="二，多物体运动单一属性变化"><a href="#二，多物体运动单一属性变化" class="headerlink" title="二，多物体运动单一属性变化"></a>二，多物体运动单一属性变化</h3><ul>
+<li>思路与单物体运动一样，只是需要每个物体有单独的定时器，否则会混淆。</li>
+<li>透明度变化时，也需要为每个物体设置一个储存当前值得变量不可共用。</li>
+</ul>
+<h3 id="三，单一属性变化通用函数"><a href="#三，单一属性变化通用函数" class="headerlink" title="三，单一属性变化通用函数"></a>三，单一属性变化通用函数</h3><ul>
+<li>把要变化的属性作为参数传入。</li>
+<li><p>通过通用的获取样式方法获取此属性的当前值。(浏览器兼容)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function getStyle(obj,attr) &#123;</div><div class="line">            if (obj.currentStyle) &#123;</div><div class="line">                return obj.currentStyle[attr];</div><div class="line">            &#125; else &#123;</div><div class="line">                return getComputedStyle(obj,false)[attr];</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>其它操作如常，只是透明度需要单独判断操作（因为有些是浮点数，还有百分比转化无法直接取值和赋值）。</p>
+</li>
+</ul>
+<h3 id="四，同时运动（多个属性同时变化）"><a href="#四，同时运动（多个属性同时变化）" class="headerlink" title="四，同时运动（多个属性同时变化）"></a>四，同时运动（多个属性同时变化）</h3><ul>
+<li>多个属性和目标值以json格式作为参数传入。</li>
+<li>设置定时器函数，每隔一段时间就遍历一次属性并同时进行加减操作（这样才实现了同时）。</li>
+<li>通过设置<code>flag</code>,三个属性都到达目标值时清除定时器。</li>
+</ul>
+<h3 id="五，链式运动（多个属性接连变化）"><a href="#五，链式运动（多个属性接连变化）" class="headerlink" title="五，链式运动（多个属性接连变化）"></a>五，链式运动（多个属性接连变化）</h3><ul>
+<li>增加一个回调函数作为最后一个参数。</li>
+<li>每个属性变化完之后会判断是否还有需要变化的属性，有的话就继续调用，没有就结束。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">startMove(li,400,&apos;width&apos;,function () &#123;</div><div class="line">            startMove(li,200,&apos;height&apos;,function () &#123;</div><div class="line">                startMove(li,100,&apos;opacity&apos;);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">/////////////////////////////</div><div class="line">if (cur==iTarget) &#123;</div><div class="line">             clearInterval(obj.timer);</div><div class="line">             if (fn) &#123;</div><div class="line">                fn();</div><div class="line">             &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/物体运动/" data-id="cj6f1japl000gncv0xueybxqt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-京东导航" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/京东导航/" class="article-date">
+  <time datetime="2017-08-16T12:43:47.300Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="导航实例练习总结"><a href="#导航实例练习总结" class="headerlink" title="导航实例练习总结"></a>导航实例练习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，京东导航"><a href="#一，京东导航" class="headerlink" title="一，京东导航"></a>一，京东导航</h2><h3 id="1-样式设置"><a href="#1-样式设置" class="headerlink" title="1. 样式设置"></a>1. 样式设置</h3><ul>
+<li>二级导航<code>div</code>放在一级导航的<code>li</code>中。</li>
+<li>最外层<code>div</code>设为<code>relative</code>,二级导航<code>div</code>设为<code>absolute</code>。</li>
+<li>二级导航<code>div</code>初始时<code>display: none;</code>。</li>
+<li>鼠标滑过一级导航的<code>li</code>时改变二级导航为<code>display:block;</code>。</li>
+<li>鼠标滑过<code>li</code>样式改变，高度变为2倍，</li>
+<li>两种改变方式直接利用伪类<code>:hover</code>,或者利用js触发<code>onmouseover</code>事件时添加类名。</li>
+<li>利用<code>z-index</code>实现遮盖效果。</li>
+</ul>
+<h3 id="2-一些技巧"><a href="#2-一些技巧" class="headerlink" title="2. 一些技巧"></a>2. 一些技巧</h3><ul>
+<li>文字养好写<code>text-align</code>的习惯，即便是默认的局左。</li>
+<li><code>hover</code>补丁<code>behavior:url(css/csshover.htc)</code>;</li>
+<li>考虑特殊情况二级导航<code>div</code>离自己的一级导航<code>li</code>太远时重新定位。</li>
+</ul>
+<h2 id="二，定位导航"><a href="#二，定位导航" class="headerlink" title="二，定位导航"></a>二，定位导航</h2><h3 id="1-样式设置-1"><a href="#1-样式设置-1" class="headerlink" title="1. 样式设置"></a>1. 样式设置</h3><ul>
+<li>导航锚点a的<code>herf</code>设为目标<code>div</code>的<code>#id</code>。</li>
+<li><code>li</code>两两排列不一定用<code>float</code>，设为<code>inline-block</code>,宽度设为父容器一般即可。</li>
+</ul>
+<h3 id="2-定位原理"><a href="#2-定位原理" class="headerlink" title="2. 定位原理"></a>2. 定位原理</h3><ul>
+<li>触发滚动事件时，遍历目标<code>div</code>，通过<code>sctollTop</code>和目标<code>div``offsetTop</code>大小关系确定当前滚动到哪个<code>div</code>,记录下它的<code>id</code>。</li>
+<li>通过遍历所有导航锚点，对照<code>herf</code>与当前<code>div</code>的id，二者相同的锚点设为活动状态。</li>
+<li>通过添加类名改变样式设置锚点为活动状态。</li>
+<li>要判断一下旧的活动锚点是不是已经指向新的当前<code>div</code>，不一样的话再添加样式，并且去掉旧的活动锚点的样式。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/京东导航/" data-id="cj6f1jap8000cncv0g1808fx2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,6 +848,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -258,15 +881,23 @@
       <ul>
         
           <li>
-            <a href="/2017/08/12/html复习/">(no title)</a>
+            <a href="/2017/08/16/js之函数与对象/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/08/12/css复习/">(no title)</a>
+            <a href="/2017/08/16/js之ajax,json,z正则/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/08/12/js复习/">(no title)</a>
+            <a href="/2017/08/16/js闭包/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js原型链/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/bootstrap/">(no title)</a>
           </li>
         
       </ul>

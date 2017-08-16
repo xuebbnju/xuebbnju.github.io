@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xuebbnju的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xuebbnju的个人博客">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="xuebbnju的个人博客">
+<meta property="og:description" content="个人博客">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xuebbnju的个人博客">
+<meta name="twitter:description" content="个人博客">
+  
+    <link rel="alternate" href="/atom.xml" title="xuebbnju的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xuebbnju的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录自己前端的学习之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-切图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/切图/" class="article-date">
+  <time datetime="2017-08-16T12:26:51.133Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="切图实例练习总结"><a href="#切图实例练习总结" class="headerlink" title="切图实例练习总结"></a>切图实例练习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，zara主页"><a href="#一，zara主页" class="headerlink" title="一，zara主页"></a>一，zara主页</h2><h3 id="1，样式技巧"><a href="#1，样式技巧" class="headerlink" title="1，样式技巧"></a>1，样式技巧</h3><ul>
+<li>不常更换的图片最好写成背景图片，用div,写长宽才能显示。</li>
+<li>Li中有a,设置li的字体并不可以改变a的字体和颜色，继承性问题。</li>
+<li>清除浮动的样式不改变最好写在重置样式中。</li>
+<li>不定宽元素居中方法。</li>
+<li><code>vertical-align</code>垂直对齐。适用于<code>inline-block</code>元素<a href="http://www.zhangxinxu.com/wordpress/2010/05/我对css-vertical-align的一些理解与认识（一）/" target="_blank" rel="external">学习文章</a></li>
+<li>通过设置空<code>&lt;i&gt;&lt;/i&gt;</code>的<code>border</code>实现横隔线，这是<code>inline</code>元素可与其他元素一行。</li>
+</ul>
+<h3 id="2-css三角"><a href="#2-css三角" class="headerlink" title="2. css三角"></a>2. css三角</h3><ul>
+<li>当盒子内容的宽度和高度远小于边框的时候，边框的显示为等腰梯形。</li>
+<li><p>将 div 的宽高都设为0的时候，代表盒子内容的方形会消失，于此同时，边框显示为等腰三角形。</p>
+<p>  <img src="https://i.loli.net/2017/08/14/59913a4ee2ba6.png" alt=""></p>
+</li>
+<li><p>三角形高度由自己的<code>width</code>确定，底边长度由相邻两个<code>border</code>的<code>width</code>确定，且需要把颜色设为<code>transparent</code>。</p>
+</li>
+<li>倒三角需要利用<code>after</code>伪元素。</li>
+</ul>
+<h2 id="二，扁平化风格博客"><a href="#二，扁平化风格博客" class="headerlink" title="二，扁平化风格博客"></a>二，扁平化风格博客</h2><h3 id="1-样式技巧"><a href="#1-样式技巧" class="headerlink" title="1. 样式技巧"></a>1. 样式技巧</h3><ul>
+<li><code>li</code>横排<code>display:inline-block</code>就好<code>` li</code>本来是<code>block</code>。</li>
+<li>文字垂直居中尽量用<code>line-height=height</code>，适用于<code>inline-block</code>元素。</li>
+<li>想让<code>a</code>元素选择区域不只局限于文字，将它设置成<code>display:inline-block</code>即可，再将宽度设置的和父元素一样高即可。</li>
+<li>即便约束了<code>img</code>父元素宽度，<code>img</code>也会是原宽，需要约束<code>img</code>宽度为100%。</li>
+<li>通过设置空<code>&lt;div&gt;&lt;/div&gt;</code>，高宽背景颜色实现横隔线，是<code>block</code>元素，自己占一行。</li>
+<li>两列布局，都左浮动就好，是块，设置宽度。</li>
+<li>网页背景图片设置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.main-wrapper&#123;</div><div class="line">    background: #444 url(../img/banner.jpg );</div><div class="line">    background-attachment: fixed;</div><div class="line">    background-repeat: no-repeat;</div><div class="line">    background-size: cover;</div><div class="line">    background-position: center center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-组件设置"><a href="#2-组件设置" class="headerlink" title="2. 组件设置"></a>2. 组件设置</h3><ul>
+<li><p>侧边栏出来的时候，网页被覆盖了一层，设置<code>mask</code>元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.mask&#123;</div><div class="line">    display: none;</div><div class="line">    position: fixed;//上下左右都为0时拉伸覆盖全部，相当于设置高宽</div><div class="line">    top:0;</div><div class="line">    right: 0;</div><div class="line">    bottom: 0;</div><div class="line">    left: 0;</div><div class="line">    background: rgba(0,0,0, 0.3);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>transation transform animation</code>区别。<br><a href="http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/" target="_blank" rel="external">学习文章</a></p>
+</li>
+</ul>
+<h3 id="3-组件实现思路"><a href="#3-组件实现思路" class="headerlink" title="3. 组件实现思路"></a>3. 组件实现思路</h3><ul>
+<li>回到顶部按钮先<code>diplay:none</code>。触发<code>scroll</code>事件后判断滚动的高度是否大于<code>window</code>高度，大于时<code>fadeIn</code>,小于时<code>fadeOut</code>。</li>
+<li>点击回到顶部按钮时，添加滚动到0的动画。</li>
+<li>点击侧边栏时，mask<code>fadeIn</code>,出现，且侧边栏通过<code>transition</code>(right从-300到0)出现。</li>
+<li>点击mask时，<code>fadeOut</code>消失，侧边栏通过<code>transition</code>(right从0到-300)消失。</li>
+<li>先要触发<code>scroll</code>事件，让回到顶部按钮消失。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/切图/" data-id="cj6f1japb000dncv042zm9j65" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js之数组和字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/js之数组和字符串/" class="article-date">
+  <time datetime="2017-08-16T12:25:48.561Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js之数组和字符串知识复习总结"><a href="#js之数组和字符串知识复习总结" class="headerlink" title="js之数组和字符串知识复习总结"></a>js之数组和字符串知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，数组"><a href="#一，数组" class="headerlink" title="一，数组"></a>一，数组</h2><h3 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h3><ul>
+<li>数组就像是对象的一个子集</li>
+<li>有序，元素可以不同类型，是数组，也可以是对象 ,动态的无需指定大小。</li>
+<li>创建：字面量 不建议，长度0——2的23幂-1。<code>new array</code>构造器 <code>new</code>可以省略。</li>
+<li>与字符串的数据不可变不同，数组的数据是可变的，并且可以自由地改变。</li>
+<li>二维数组：数组的元素是数组。</li>
+<li>稀疏数组：并不含有0的连续索引，<code>length</code>比实际元素个数多 <code>var arr=[,,]</code>(俩元素)，不常用，遍历用<code>for in</code>，<code>for</code>的话需要判断是否为undefined。</li>
+</ul>
+<h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2. 常用操作"></a>2. 常用操作</h3><ul>
+<li>元素删除：<code>delete</code>之后便<code>undefined</code>，长度不变 ,但依旧会占位置，但是用<code>in</code>这           个索引返回<code>false</code>，和<code>arr[这个索引]=undefined</code>是不一样的。</li>
+<li>尾部删除： 将<code>arr.length</code>减一，也会删除元素变成<code>undefined</code> ，<code>arr.pop（）</code>。</li>
+<li>头部删除：<code>arr.shift()</code>。</li>
+<li>尾部添加： <code>arr[arr.Length]=4</code>  等价于<code>arr.push(4)</code>。</li>
+<li>头部添加：<code>arr.unshift()</code>。</li>
+<li>遍历：<code>for</code> ，<code>for in</code>（受原型链影响，最好hasOwnpropotry,还有坑。）.</li>
+<li><code>join</code>方法：数组转为字符串，添加分隔符，实现重复元素的数组<code>[a,a,a]</code>。</li>
+<li><code>reverse</code>:倒序数组，会修改原数组</li>
+<li><code>sort</code>：排序，按字符串顺序排序，修改原数组，传一个函数当参数，实现数字排序</li>
+<li><code>contact</code>：数组合并，不修改原数组，传进去的参数是数组会被拉平，但只拉平第一次。</li>
+<li><code>slice</code>：返回片段，参数是首尾索引，左闭右开，负数表示倒数，只有一个的话就是到最后，不修改原数组</li>
+<li><code>spice</code>：数组拼接，修改原数组，保留剩下的，还可以添加，一个参数的话，删除从这个位置开始的片段，🏠一个参数是个数，后面的参数可以使删除位置补上的元素 </li>
+</ul>
+<h3 id="3-IE9以上操作"><a href="#3-IE9以上操作" class="headerlink" title="3. IE9以上操作"></a>3. IE9以上操作</h3><ul>
+<li><code>for each</code>：函数作为参数，值，索引。</li>
+<li><code>map</code>：映射，参数为函数，不修改原数组。</li>
+<li><code>filter</code>：函数作为参数，过滤删选，不修改原数组。</li>
+<li><code>every</code>：判断，是否每一个元素都符合这个条件，返回布尔值。</li>
+<li><code>some</code>：判断有一个就行，返回布尔值。</li>
+<li><code>reduce</code>：不修改原数组，返回计算结果。</li>
+<li><code>reduceRight</code>:从右到左的reduce。</li>
+<li><code>indexof</code>：返回子串位置，从左往右，第二个参数。</li>
+<li><code>lastindexOf</code>:右往左</li>
+<li><code>Array.isArray([])</code>，别的数组无法调用。</li>
+</ul>
+<h2 id="二，字符串"><a href="#二，字符串" class="headerlink" title="二，字符串"></a>二，字符串</h2><h3 id="1-基础概念-1"><a href="#1-基础概念-1" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h3><ul>
+<li>String 对象用于处理已有的字符块。</li>
+<li>在 JavaScript 中，字符串 的值是 不可变的，这意味着一旦字符串被创建就不能被改变。</li>
+<li>改变字符串的唯一方法是重新给它赋一个值。</li>
+<li>可以通过索引访问某个字符。</li>
+<li>如果把数字与字符串相加，结果将成为字符串。</li>
+</ul>
+<h3 id="2-常用操作-1"><a href="#2-常用操作-1" class="headerlink" title="2. 常用操作"></a>2. 常用操作</h3><ul>
+<li><code>charAt()</code>：返回在指定位置的字符。</li>
+<li><code>charCodeAt()</code>：返回在指定的位置的字符的 Unicode 编码。</li>
+<li><code>concat()</code>：连接字符串，本身并没有被更改。</li>
+<li><code>fromCharCode()</code>：从字符编码创建一个字符串。<code>String.fromCharCode(numX,numX,...,numX)</code>。</li>
+<li><code>indexOf()</code>:检索字符串位置。</li>
+<li><code>lastIndexOf()</code>：从后向前搜索字符串。</li>
+<li><code>match()</code>：可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配，返回值。</li>
+<li><code>replace()</code>：用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串，返回一个新的字符串。</li>
+<li><code>search()</code> ：用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，返回索引。</li>
+<li><code>slice()</code> ：可提取字符串的某个部分，并以新的字符串返回被提取的部分，参数是起始索引。</li>
+<li><code>sub()</code>： 把字符串显示为下标。</li>
+<li><code>substr()</code>：从起始索引号提取字符串中指定数目的字符。</li>
+<li><code>toLowerCase()</code>： 把字符串转换为小写。</li>
+<li><code>toUpperCase()</code> ：  把字符串转换为大写。</li>
+<li><code>toString()</code> ：  返回原始字符串。</li>
+<li><code>valueOf()</code>  ： 返回某个字符串对象的原始值。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/js之数组和字符串/" data-id="cj6f1jaop0006ncv0a8bu1ejv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/js基础知识/" class="article-date">
+  <time datetime="2017-08-16T12:25:29.046Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js基础知识复习总结"><a href="#js基础知识复习总结" class="headerlink" title="js基础知识复习总结"></a>js基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，数据类型"><a href="#一，数据类型" class="headerlink" title="一，数据类型"></a>一，数据类型</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h3><ul>
+<li>原始类型：<code>number,string , boollean 。</code></li>
+<li>合成类型：<code>object (function,array,date，正则)</code>.</li>
+<li>特殊的值：<code>null ,undefined.</code></li>
+</ul>
+<h3 id="2-特性"><a href="#2-特性" class="headerlink" title="2. 特性"></a>2. 特性</h3><ul>
+<li>JavaScript 拥有动态类型。这意味着相同的变量可储存不同类型的数据。</li>
+<li>JavaScript 变量均为对象。当您声明一个变量时，就创建了一个新的对象。</li>
+<li>一切（引用类型）都是对象，对象是属性的集合。</li>
+</ul>
+<h3 id="3-undefined"><a href="#3-undefined" class="headerlink" title="3. undefined"></a>3. undefined</h3><ul>
+<li>当 JavaScript中的变量被声明但没有初始化赋值的时候，程序内部会给它一个初始值 <code>undefined</code>。</li>
+<li>当你对一个值为<code>undefined</code>的变量进行运算操作的时候，算出来的结果将会是<code>NaN</code>，<code>NaN</code> 的意思是 “Not a Number”。</li>
+<li>当你用一个没有 定义 的变量来做字符串连接操作的时候，它会如实的输出<code>undefined</code>。</li>
+</ul>
+<h3 id="4-undefined和null"><a href="#4-undefined和null" class="headerlink" title="4. undefined和null"></a>4. undefined和null</h3><ul>
+<li>最初设计:<code>null</code>是一个表示”无”的对象，转为数值时为0；<code>undefined</code>是一个表示”无”的原始值，转为数值时为<code>NaN</code>。</li>
+<li>目前用法：<code>null</code>表示”没有对象”，即该处不应该有值。<code>undefined</code>表示”缺少值”，就是此处应该有一个值，但是还没有定义。</li>
+<li>undefined:<ol>
+<li>变量被声明了，但没有赋值时，就等于undefined。</li>
+<li>调用函数时，应该提供的参数没有提供，该参数等于undefined。</li>
+<li>对象没有赋值的属性，该属性的值为undefined。</li>
+<li>函数没有返回值时，默认返回undefined。</li>
+</ol>
+</li>
+<li>null:<ol>
+<li>作为函数的参数，表示该函数的参数不是对象。</li>
+<li>作为对象原型链的终点。</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-两个“不变”的特性"><a href="#5-两个“不变”的特性" class="headerlink" title="5. 两个“不变”的特性"></a>5. 两个“不变”的特性</h3><ul>
+<li>如果重新声明 JavaScript 变量，该变量的值不会丢失，在以下两条语句执行后，变量 carname 的值依然是 “Volvo”：<code>var carname=&quot;Volvo&quot;;var carname;</code>。</li>
+<li>在 JavaScript 中，字符串的值是不可变的，这意味着一旦字符串被创建就不能被改变。改变字符串 的唯一方法是重新给它赋一个值。</li>
+</ul>
+<h2 id="二，类型判断与检测"><a href="#二，类型判断与检测" class="headerlink" title="二，类型判断与检测"></a>二，类型判断与检测</h2><h3 id="1-判断相等"><a href="#1-判断相等" class="headerlink" title="1. 判断相等"></a>1. 判断相等</h3><ol>
+<li>严格等于===:先判断类型，不同返回false，在判断值，null===null，undefind===undefind， 特殊：NaN与谁比较都不相等，即便是自己，对象比较其实比较的是引用，也不相等。</li>
+<li>等于==:类型相同时和===相同。类型不同时会进行类型转换。<ul>
+<li><code>null==undefined</code>；</li>
+<li><code>string==num，string</code>转换成数字；</li>
+<li><code>Boolean==？</code>，先转换成<code>number，false：0，true：1</code>；</li>
+<li><code>对象==number||string,object</code>转换为基本类型；</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-类型检测"><a href="#2-类型检测" class="headerlink" title="2. 类型检测"></a>2. 类型检测</h3><ol>
+<li><p>typeof:返回字符串，适合基本类型的检测和函数,对象。不能判断出数组和null，array和null返回object。<br><img src="https://i.loli.net/2017/08/13/598fe9ada69b5.png" alt=""></p>
+</li>
+<li><p>instance of: 用于判断一个变量是否某个对象的实例。左操作数是对象，否则是<code>false</code>，右操作数是判断的类型，原型链，不同window下是不一样的。沿着A的<strong>proto</strong>这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。</p>
+</li>
+<li><p>object.prototype.toString.apply();</p>
+</li>
+</ol>
+<h2 id="三，除类型外的一些概念"><a href="#三，除类型外的一些概念" class="headerlink" title="三，除类型外的一些概念"></a>三，除类型外的一些概念</h2><h3 id="1-表达式"><a href="#1-表达式" class="headerlink" title="1. 表达式"></a>1. 表达式</h3><ul>
+<li>一些短语，会产生值。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/08/13/598feca52664c.png" alt=""></p>
+<h3 id="2-运算符"><a href="#2-运算符" class="headerlink" title="2. 运算符"></a>2. 运算符</h3><ul>
+<li>普通运算符：一元，二元，三元；赋值运算符，比较运算符，算数运算符，位运算符，逻辑运算符，字符串运算符（字符串+）。</li>
+<li>特殊运算符：<ol>
+<li>条件运算符<code>c?a:b</code>;</li>
+<li><code>val=(1,2,3);val=3</code>；从左到右依次计算，取最后的值。</li>
+<li><code>delete</code>运算符，删除对象上的属性，变成<code>undefined</code>。</li>
+<li><code>in</code>运算符，是否含有某一个key值。</li>
+<li><code>instanceof</code>和<code>typeof</code>。</li>
+<li><code>new</code>创建实例。</li>
+<li><code>this</code>全局情况下指向window。</li>
+<li>void 不管后面的操作数是多少，都返回undefined 。<code>void 0 //undefined；void (0) //undefined</code>。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-语句"><a href="#3-语句" class="headerlink" title="3. 语句"></a>3. 语句</h3><ul>
+<li>块语句：没有块级作用域。比如<code>for</code>循环块语句。</li>
+<li>声明语句 ：<code>var</code>。</li>
+<li><code>try catch</code>语句：<code>try</code>后面必须接<code>catch</code>或<code>finally</code>.</li>
+<li><code>for in</code>语句： 顺序不确定，依赖引擎，属性描述器为false不出现，受原型链影响 。</li>
+<li><code>switch</code>语句：不要忘记<code>break</code>，可以一个<code>case</code>合用.</li>
+<li>循环语句：<code>for,while</code>等。</li>
+<li><code>with</code>语句：修改作用域，不建议使用.</li>
+<li>function声明语句：用来创建对象 ，函数声明前面可以调用语句，但是函数表达式前面不可以调用。</li>
+</ul>
+<h3 id="4-一些区别"><a href="#4-一些区别" class="headerlink" title="4. 一些区别"></a>4. 一些区别</h3><ol>
+<li><p>语句和表达式：</p>
+<ul>
+<li>JavaScript中的表达式和语句是有区别的.一个表达式会产生一个值,它可以放在任何需要一个值的地方,比如,作为一个函数调用的参数。</li>
+<li>语句可以理解成一个行为.循环语句和if语句就是典型的语句。</li>
+<li>一个程序是由一系列语句组成的.JavaScript中某些需要语句的地方,你可以使用一个表达式来代替.这样的语句称之为表达式语句。</li>
+<li>但反过来不可以:你不能在一个需要表达式的地方放一个语句.比如,一个if语句不能作为一个函数的参数。<br><img src="https://i.loli.net/2017/08/13/598ff177dc972.png" alt=""><br><a href="http://www.cnblogs.com/ziyunfei/archive/2012/09/16/2687589.html" target="_blank" rel="external">来源</a></li>
+</ul>
+</li>
+<li><p>函数声明和函数表达式</p>
+<ul>
+<li><p>函数声明：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">     // 函数声明</div><div class="line">function funDeclaration(type)&#123;</div><div class="line">    return type===&quot;Declaration&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数表达式：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">      // 函数表达式</div><div class="line">var funExpression = function(type)&#123;</div><div class="line">    return type===&quot;Expression&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数声明在JS解析时进行函数提升，因此在同一个作用域内，不管函数声明在哪里定义，该函数都可以进行调用。</p>
+</li>
+<li>而函数表达式的值是在JS运行时确定，并且在表达式赋值完成后，该函数才能调用。</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-跳出语句"><a href="#5-跳出语句" class="headerlink" title="5. 跳出语句"></a>5. 跳出语句</h3><ul>
+<li>continue 语句（带有或不带标签引用）只能用在循环中。</li>
+<li>break 语句（不带标签引用），只能用在循环或 switch 中。</li>
+<li>通过标签引用，break 语句可用于跳出任何 JavaScript 代码块。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/js基础知识/" data-id="cj6f1jap5000bncv0rs9ctqwj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-position" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/position/" class="article-date">
+  <time datetime="2017-08-16T12:24:16.727Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="position复习总结"><a href="#position复习总结" class="headerlink" title="position复习总结"></a>position复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，position：relative"><a href="#一，position：relative" class="headerlink" title="一，position：relative"></a>一，position：relative</h2><ol>
+<li>没有完全脱离文档流，relative元素原本所占的空间仍保留。</li>
+<li>元素框相对原来位置偏移某个距离，而不会影响其他元素的位置、大小的变化。</li>
+<li>元素仍保持其未定位前的形状。</li>
+<li><code>z-index</code>高于普通元素，会覆盖普通元素。</li>
+<li><code>position:relative</code>天生可以限制<code>position:absolute</code>,作为<code>position:absolute</code>偏移的相对对象存在。</li>
+</ol>
+<h2 id="二，position-absolute"><a href="#二，position-absolute" class="headerlink" title="二，position:absolute"></a>二，position:absolute</h2><h3 id="1-absolute的特性"><a href="#1-absolute的特性" class="headerlink" title="1. absolute的特性"></a>1. absolute的特性</h3><ol>
+<li><strong>破坏性：</strong> absolute元素脱离了文档结构，其他元素的位置重新排列了。只要元素会脱离文档结构，它就会产生破坏性，导致父元素坍塌（absolute绝对定位不仅让高度塌陷，又由于不在DOM tree上，所以宽度也是塌陷的）。</li>
+<li><strong>包裹性：</strong> 让元素inline-block化，宽度变成自适应内部元素的宽度。</li>
+<li><strong>跟随性：</strong> absolute元素 无依赖（没有可以依赖的relative父元素）情况下不设置top left 停留在static位置。</li>
+</ol>
+<h3 id="2-，使用时的知识点"><a href="#2-，使用时的知识点" class="headerlink" title="2.，使用时的知识点"></a>2.，使用时的知识点</h3><ul>
+<li>在不设置<code>top left</code>时，实现的是一定意义上的相对定位，相对定位之王，相对于原来位置，因为在<code>static</code>位置，设置<code>margin</code>是相对原来位置定位。</li>
+<li>absolute元素会悬浮在页面上方，会遮挡住下方的页面内容。</li>
+<li>absolute 去浮动，双重叠加生效的是absolute（除去IE7,会始终以元素<code>inline-block</code>位置，设置空<code>div</code>即可 ）。</li>
+<li>如果有多个悬浮元素，层级如何确定？答案是“后来者居上”.</li>
+<li>重叠效果：两个的话用文档流前后控制上下，多个的话用<code>z-index:1</code>控制，只有弹窗会大于2，要不然就是冗余.</li>
+<li><code>absolute:left+right top+bottom</code>会拉伸元素，替代高宽（IE7+支持）,同时使用时优先级是宽度高度更高。</li>
+<li>动画尽量用在绝对定位元素上，因为脱离了文档流这样就不影响其它元素。</li>
+</ul>
+<h2 id="三，position：fixed"><a href="#三，position：fixed" class="headerlink" title="三，position：fixed"></a>三，position：fixed</h2><p>其实fixed和absolute是一样的，唯一的区别在于：absolute元素是根据最近的定位上下文确定位置，而fixed永远根据浏览器确定位置。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/position/" data-id="cj6f1jap1000ancv0wkuonunx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-float" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/float/" class="article-date">
+  <time datetime="2017-08-16T12:24:11.750Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="float复习总结"><a href="#float复习总结" class="headerlink" title="float复习总结"></a>float复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h1 id="一，float的概述"><a href="#一，float的概述" class="headerlink" title="一，float的概述"></a>一，float的概述</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><p>float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现<font color="Coral">文字环绕效果</font>，所以具有了<strong>包裹性</strong>和<strong>破坏性</strong>两大特性。</p>
+<h2 id="2-float的破坏性"><a href="#2-float的破坏性" class="headerlink" title="2.float的破坏性"></a>2.float的破坏性</h2><ul>
+<li>被设置了float的元素会脱离文档流。（父元素高度坍塌，宽度不变的，但由于浮动元素仍在凡间DOM tree，父元素宽度没有坍塌）</li>
+<li>因为脱离了文档流，文档的普通流中的其它元素表现得就像浮动框不存在一样地正常排列，而由于float被设计的初衷——实现<font color="Coral">文字环绕效果</font>,所以如果有文字(其实不止局限于文字，内联元素和内联块元素也是如此)是在float元素的覆盖范围内，即只要与float元素相接触时，会以环绕的方式排列在元素周围，甚至会脱离所在容器。</li>
+<li>破坏性会去空格化，并使元素block化，所以适合砌砖头。回车空格如果在标签末尾就不会显示。“清空格”这一特性的根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。</li>
+</ul>
+<h2 id="3-float的包裹性"><a href="#3-float的包裹性" class="headerlink" title="3.float的包裹性"></a>3.float的包裹性</h2><ul>
+<li>div设置了float之后，其宽度会自动调整为包裹住内容宽度，而不是撑满整个父容器。</li>
+<li>因为包裹性，浮动元素所在那一行的行框被缩短，从而给浮动框留出空间，行框围绕浮动。</li>
+<li>有多个浮动元素时，如下图所示，如果包含框太窄，无法容纳水平排列的三个浮动元素，那么其它浮动块向下移动，直到有足够的空间。如果浮动元素的高度不同，那么当它们向下移动时可能被其它浮动元素“卡住”：</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png" alt=""></p>
+<h1 id="二，清除float带来的影响–解决高度塌陷的问题"><a href="#二，清除float带来的影响–解决高度塌陷的问题" class="headerlink" title="二，清除float带来的影响–解决高度塌陷的问题"></a>二，清除float带来的影响–解决高度塌陷的问题</h1><ul>
+<li><strong><code>clear</code>去浮动：</strong>通过在所有浮动元素下方添加一个clear:both的元素，可以消除float的破坏性。可以通过伪元素<code>after</code>实现。clear 属性规定元素的哪一侧不允许其他浮动元素。</li>
+<li><strong>父元素包裹性去浮动：</strong>为父元素添加可以具有包裹性的css设置，如：<code>overflow:hidden ，zoom:1 ，display:inline-block ，position:absolute ，float:left</code>等。</li>
+<li><strong>通用方法：</strong>在浮动元素的父元素上如下设置样式。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.clearfix:after&#123;</div><div class="line">　　　　　　centent:&quot;&quot;;//设置内容为空</div><div class="line">　　　　　　height:0;//高度为0</div><div class="line">　　　　　　line-height:0;//行高为0</div><div class="line">　　　　　　display:block;//将文本转为块级元素</div><div class="line">　　　　　　visibility:hidden;//将元素隐藏</div><div class="line">　　　　　　clear:both//清除浮动</div><div class="line">　　　　　&#125;</div><div class="line">　　　　.clearfix&#123;</div><div class="line">　　　　　　zoom:1;为了兼容IE</div><div class="line">　　　　&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/float/" data-id="cj6f1janz0001ncv0m4osksix" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/css布局/" class="article-date">
+  <time datetime="2017-08-16T12:23:55.394Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS布局知识复习总结"><a href="#CSS布局知识复习总结" class="headerlink" title="CSS布局知识复习总结"></a>CSS布局知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，盒子模型"><a href="#一，盒子模型" class="headerlink" title="一，盒子模型"></a>一，盒子模型</h2><h3 id="1-w3c盒子模型"><a href="#1-w3c盒子模型" class="headerlink" title="1.w3c盒子模型"></a>1.w3c盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）:</strong></p>
+<p>  Element空间高度 = content height + padding + border + margin</p>
+<p>  Element 空间宽度 = content width + padding + border + margin</p>
+<p><strong>内盒尺寸计算（元素大小）:</strong></p>
+<p>  Element Height = content height + padding + border （Height为内容高度）</p>
+<p>  Element Width = content width + padding + border （Width为内容宽度）</p>
+<h3 id="2-IE盒子模型"><a href="#2-IE盒子模型" class="headerlink" title="2. IE盒子模型"></a>2. IE盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）：</strong></p>
+<p>  Element空间高度 = content Height + margin (Height包含了元素内容宽度，边框宽度，内距宽度)</p>
+<p>  Element空间宽度 = content Width + margin (Width包含了元素内容宽度、边框宽度、内距宽度)</p>
+<p><strong> 内盒尺寸计算（元素大小）：</strong></p>
+<p>  Element Height = content Height(Height包含了元素内容宽度，边框宽度，内距宽度)</p>
+<p>  Element Width = content Width(Width包含了元素内容宽度、边框宽度、内距宽度)</p>
+<h2 id="二，多列布局"><a href="#二，多列布局" class="headerlink" title="二，多列布局"></a>二，多列布局</h2><h3 id="1-传统模式"><a href="#1-传统模式" class="headerlink" title="1. 传统模式"></a>1. 传统模式</h3><p><code>div+css</code>组合使用实现多列布局。但是float写出来的东西代码复杂，宽度调整不灵活，浏览器兼容性有问题。</p>
+<h3 id="2-table-cell布局"><a href="#2-table-cell布局" class="headerlink" title="2. table-cell布局"></a>2. <code>table-cell</code>布局</h3><p>举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&quot;display:table-cell;width:20%&quot;&gt;</div><div class="line">  第一列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;&quot;&gt;</div><div class="line">  第二列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;width:20&quot;&gt;</div><div class="line">  第三列</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-css3多列布局"><a href="#3-css3多列布局" class="headerlink" title="3. css3多列布局"></a>3. css3多列布局</h3><ul>
+<li><code>column-count</code>属性规定元素应该被分隔的列数。</li>
+<li><code>column-gap</code> 属性规定列之间的间隔。</li>
+<li><code>column-rule</code> 属性设置列之间的宽度、样式和颜色规则。</li>
+<li><code>column-span</code>规定元素应该横跨的列数。</li>
+<li><code>column-width</code>规定列的宽度。</li>
+</ul>
+<h2 id="三，一些布局技巧"><a href="#三，一些布局技巧" class="headerlink" title="三，一些布局技巧"></a>三，一些布局技巧</h2><h3 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1. 水平居中"></a>1. 水平居中</h3><p><strong>行内元素居中：</strong><br>给父元素设置 <code>text-align:center</code>来实现的。</p>
+<p><strong>定宽块状元素居中：</strong>设置左右<code>margin</code>值为<code>auto</code>来实现居中的。</p>
+<p><strong>不定宽块状元素居中：</strong> 一共三种方法</p>
+<ol>
+<li>第一步：为需要设置的居中的元素外面加入一个 <code>table</code>标签 ( 包括 <code>&lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt;</code> )。第二步：为这个 <code>table</code>设置左右 <code>margin</code>居中（这个和定宽块状元素的方法一样）。</li>
+<li>改变块级元素的 <code>display</code> 为 <code>inline</code>类型（设置为 行内元素 显示），然后使用 <code>text-align:center</code> 来实现居中效果。</li>
+<li>通过给父元素设置 <code>float</code>，然后给父元素设置 <code>position:relative</code> 和 <code>left:50%</code>，子元素设置 <code>position:relative</code>和 <code>left: -50%</code>来实现水平居中。</li>
+<li>绝对定位<code>left:50%+margin-left:</code>负自身一半。</li>
+</ol>
+<h3 id="2-垂直居中"><a href="#2-垂直居中" class="headerlink" title="2. 垂直居中"></a>2. 垂直居中</h3><p><strong>父元素高度确定的单行文本：</strong>设置父元素的 <code>height</code>和<code>line-height</code> 高度一致来实现的。</p>
+<p><strong>父元素高度确定的多行文本、图片等的竖直居中的方法有两种：</strong></p>
+<ol>
+<li>方法一：使用插入 <code>table</code> (包括<code>tbody、tr、td</code>)标签，同时设置 <code>vertical-align：middle</code>。css 中有一个用于竖直居中的属性 <code>vertical-align</code>，在父元素设置此样式时，会对inline-block类型的子元素都有用。</li>
+<li>在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 <code>display</code> 为<code>table-cell</code>（设置为表格单元显示），激活 <code>vertical-align</code>属性，但注意 IE6、7 并不支持这个样式, 兼容性比较差。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/css布局/" data-id="cj6f1jao50002ncv0tixp3czm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css复习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/css复习/" class="article-date">
+  <time datetime="2017-08-16T12:23:51.505Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS基础知识复习总结"><a href="#CSS基础知识复习总结" class="headerlink" title="CSS基础知识复习总结"></a>CSS基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，CSS的五个来源"><a href="#一，CSS的五个来源" class="headerlink" title="一，CSS的五个来源"></a>一，CSS的五个来源</h2><ol>
+<li>因为浏览器默认样式的存在，我们需要为每个页面写上重置样式，简单重置样式如：<code>* {margin:0; padding:0;}</code>；复杂一点的网上有很多已经成熟的可以很好地处理浏览器兼容问题的重置样式文件可以引用,如：<a href="http://cssreset.com" target="_blank" rel="external">cssreset.com</a>。</li>
+<li>用户样式表，用户设置之后会覆盖浏览器的默认样式。</li>
+<li><code>&lt;link&gt;</code>引用的CSS文件，外部式CSS样式，写在单独的一个文件中。</li>
+<li><code>&lt;style&gt;</code>中编写的样式代码，嵌入式CSS样式，写在HTML文件中。</li>
+<li><code>&lt;a style=’ ’&gt;</code>中编写的样式代码,内联式CSS样式，写在HTML标签中。</li>
+</ol>
+<p><img src="https://i.loli.net/2017/08/12/598eae254679b.png" alt=""></p>
+<h2 id="二，CSS之层叠"><a href="#二，CSS之层叠" class="headerlink" title="二，CSS之层叠"></a>二，CSS之层叠</h2><h3 id="1-层叠的概念"><a href="#1-层叠的概念" class="headerlink" title="1. 层叠的概念"></a>1. 层叠的概念</h3><p>浏览器在解析CSS样式时，会将不同来源的CSS叠加在一起，再最终确定样式的结果。</p>
+<h3 id="2-层叠的规则"><a href="#2-层叠的规则" class="headerlink" title="2. 层叠的规则"></a>2. 层叠的规则</h3><ul>
+<li>后三种样式是有优先级的：内联式 &gt; 嵌入式 &gt; 外部式,遵循就近原则（离被设置元素越近优先级别越高）。</li>
+<li>同一种样式中覆盖的默认规则是后者覆盖前者，即后写的覆盖先写的。</li>
+<li>上面所总结的优先级是在相同权值的情况下。权值指一个选择器的重要程度，标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。</li>
+<li>权值的两个特例：<code>!important</code>优先级最高，高于上面一切。<code>*</code>选择器最低，低于一切。</li>
+<li>还有一个权值比较特殊–继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</li>
+</ul>
+<h2 id="三，CSS之选择器"><a href="#三，CSS之选择器" class="headerlink" title="三，CSS之选择器"></a>三，CSS之选择器</h2><h3 id="1-标签选择器"><a href="#1-标签选择器" class="headerlink" title="1. 标签选择器"></a>1. 标签选择器</h3><ul>
+<li>通用选择 <code>*</code>。</li>
+<li>单标签。</li>
+<li>多标签，主要有以下几种：子选择器（<code>div&gt;p</code>），后代选择器(<code>div p</code>)，兄弟选择器（<code>li+li</code>），同胞选择器(<code>span~a</code>)。<h3 id="2-属性选择器"><a href="#2-属性选择器" class="headerlink" title="2.属性选择器"></a>2.属性选择器</h3></li>
+<li>ID选择器</li>
+<li>类选择器</li>
+<li>只通过属性名选择和通过属性名和属性值选择<h2 id="四，伪类和伪元素"><a href="#四，伪类和伪元素" class="headerlink" title="四，伪类和伪元素"></a>四，伪类和伪元素</h2><h3 id="1-伪类"><a href="#1-伪类" class="headerlink" title="1. 伪类"></a>1. 伪类</h3></li>
+<li>CSS 伪类用于向某些选择器添加特殊的效果。</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/08/12/598ed3bab0438.jpg" alt=""></p>
+<h3 id="2-伪元素"><a href="#2-伪元素" class="headerlink" title="2. 伪元素"></a>2. 伪元素</h3><ul>
+<li>CSS 伪元素用于将特殊的效果添加到某些选择器。</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/08/12/598ed3ba8e403.jpg" alt=""></p>
+<h3 id="3-二者区别"><a href="#3-二者区别" class="headerlink" title="3. 二者区别"></a>3. 二者区别</h3><blockquote>
+<p>伪类的效果可以通过添加一个实际的类来达到，而伪元素的效果则需要通过添加一个实际的元素才能达到，这也是为什么他们一个称为伪类，一个称为伪元素的原因。 <code>css3</code>为了区分两者，已经明确规定了伪类用一个冒号来表示，而伪元素则用两个冒号来表示。</p>
+</blockquote>
+<p><strong>个人理解：</strong> 伪类是为使用伪类的选择器按照一定条件选出来的元素本身添加样式。伪元素是在使用伪元素的选择器选出来的元素基础上创建了一些新元素，进而为这些创建的元素添加样式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/css复习/" data-id="cj6f1jaoa0003ncv0udvbbx4e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html复习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/html复习/" class="article-date">
+  <time datetime="2017-08-16T12:23:21.116Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HTML基础知识复习总结"><a href="#HTML基础知识复习总结" class="headerlink" title="HTML基础知识复习总结"></a>HTML基础知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，HTML元素分类"><a href="#一，HTML元素分类" class="headerlink" title="一，HTML元素分类"></a>一，HTML元素分类</h2><h3 id="1-块状元素"><a href="#1-块状元素" class="headerlink" title="1. 块状元素"></a>1. 块状元素</h3><ul>
+<li>块状元素前后元素转行，自己独占一行。</li>
+<li>可以设置高度，宽度，以及顶部和底部边距。</li>
+<li>宽度默认为父元素宽度的100%。</li>
+<li>常见的块状元素有：<code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</code>。</li>
+</ul>
+<h3 id="2-内联元素"><a href="#2-内联元素" class="headerlink" title="2. 内联元素"></a>2. 内联元素</h3><ul>
+<li>与其它元素在一行</li>
+<li>不可设置高度，宽度，以及顶部和底部边距。</li>
+<li>宽度由包裹的的内容物宽度决定</li>
+<li>常见的内联元素：<code>&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</code>。</li>
+</ul>
+<h3 id="3-内联块元素"><a href="#3-内联块元素" class="headerlink" title="3. 内联块元素"></a>3. 内联块元素</h3><ul>
+<li>与其它元素在一行</li>
+<li>可以设置高度，宽度，以及顶部和底部边距。</li>
+<li>常见的内联块元素：<code>&lt;img&gt;、&lt;input&gt;</code>。</li>
+</ul>
+<h2 id="二，浏览器渲染页面"><a href="#二，浏览器渲染页面" class="headerlink" title="二，浏览器渲染页面"></a>二，浏览器渲染页面</h2><ol>
+<li>浏览器解析HTML构建DOM树，深度遍历，当前节点的子节点都构建完成之后才会去解析下一个兄弟节点。</li>
+<li>解析CSS构造CSS规则树。</li>
+<li>根据DOM Tree 和 CSS Rule Tree构建Rendering Tree 渲染树。</li>
+<li>Js通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree,执行绑定事件等，页面显示完成.</li>
+</ol>
+<p><img src="https://ooo.0o0.ooo/2017/08/12/598ecc01d5e3f.png" alt=""></p>
+<blockquote>
+<p>浏览器将载入的html变为dom树，但是此时没有任何显示样式。所有显示的样式，都是css定义的，浏览器只会通过css来渲染视图样式。<br>不要再说div天生就是block——这句话应该换成：浏览器默认样式天生规定了div是block——所以才导致了div是block！是浏览器的默认样式规定的，不是浏览器的内核规定的。</p>
+</blockquote>
+<h2 id="三，一些容易被忽略的知识点"><a href="#三，一些容易被忽略的知识点" class="headerlink" title="三，一些容易被忽略的知识点"></a>三，一些容易被忽略的知识点</h2><ul>
+<li>HTML 文档 = 网页，HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。</li>
+<li>属性总是在 HTML 元素的开始标签中规定。</li>
+<li>当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。</li>
+<li>div宽度和父容器相同，table宽度根据内容而定——即table具有“包裹性”。</li>
+<li><p><code>&lt;b&gt;&lt;/b&gt;</code>和<code>&lt;i&gt;</code>是物理元素,<code>&lt;strong&gt;&lt;/strong&gt;</code>和<code>&lt;em&gt;</code>是逻辑元素。</p>
+<blockquote>
+<p>物理元素所强调的是一种物理行为，比如说我把一段文字用b标记加粗了，我的意思是告诉浏览器应该给我加粗了显示这段文字，从单词的语义也可以分析得出，b是Bold(加粗)的简写，所以这个B标记所传达的意思只是加粗，没有任何其它的作用。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>而Strong我们从字面理解就可以知道他是强调的意思，所以我们用这个标记向浏览器传达了一个强调某段文字的消息，而这个Strong就是我们所说的逻辑元素，他是强调文档逻辑的，并非是通知浏览器应该如何显示。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>em是什么？——em是一个浏览器识别的长度单位，但是它不是绝对的、固定的，而是相对的。大家都知道px是一个绝对的长度单位制，它永远不会改变。浏览器默认情况下令1em === 16px。现在你知道为何p默认是16px了吧。而且你还知道了h1是p高度的两倍，h2是p高度的1.5倍……</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/html复习/" data-id="cj6f1jaod0004ncv0c9d5377e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/16/js之函数与对象/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js之ajax,json,z正则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js闭包/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js原型链/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/bootstrap/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xuebbnju<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

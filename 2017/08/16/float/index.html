@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xuebbnju的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="float复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，float的概述1. 基本概念float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现文字环绕效果，所以具有了包裹性和破坏性两大特性。 2.float的破坏性 被设置了float的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xuebbnju的个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/float/index.html">
+<meta property="og:site_name" content="xuebbnju的个人博客">
+<meta property="og:description" content="float复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，float的概述1. 基本概念float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现文字环绕效果，所以具有了包裹性和破坏性两大特性。 2.float的破坏性 被设置了float的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png">
+<meta property="og:updated_time" content="2017-08-12T19:46:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xuebbnju的个人博客">
+<meta name="twitter:description" content="float复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，float的概述1. 基本概念float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现文字环绕效果，所以具有了包裹性和破坏性两大特性。 2.float的破坏性 被设置了float的">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png">
+  
+    <link rel="alternate" href="/atom.xml" title="xuebbnju的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xuebbnju的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录自己前端的学习之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-float" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/float/" class="article-date">
+  <time datetime="2017-08-16T12:24:11.750Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="float复习总结"><a href="#float复习总结" class="headerlink" title="float复习总结"></a>float复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h1 id="一，float的概述"><a href="#一，float的概述" class="headerlink" title="一，float的概述"></a>一，float的概述</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><p>float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现<font color="Coral">文字环绕效果</font>，所以具有了<strong>包裹性</strong>和<strong>破坏性</strong>两大特性。</p>
+<h2 id="2-float的破坏性"><a href="#2-float的破坏性" class="headerlink" title="2.float的破坏性"></a>2.float的破坏性</h2><ul>
+<li>被设置了float的元素会脱离文档流。（父元素高度坍塌，宽度不变的，但由于浮动元素仍在凡间DOM tree，父元素宽度没有坍塌）</li>
+<li>因为脱离了文档流，文档的普通流中的其它元素表现得就像浮动框不存在一样地正常排列，而由于float被设计的初衷——实现<font color="Coral">文字环绕效果</font>,所以如果有文字(其实不止局限于文字，内联元素和内联块元素也是如此)是在float元素的覆盖范围内，即只要与float元素相接触时，会以环绕的方式排列在元素周围，甚至会脱离所在容器。</li>
+<li>破坏性会去空格化，并使元素block化，所以适合砌砖头。回车空格如果在标签末尾就不会显示。“清空格”这一特性的根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。</li>
+</ul>
+<h2 id="3-float的包裹性"><a href="#3-float的包裹性" class="headerlink" title="3.float的包裹性"></a>3.float的包裹性</h2><ul>
+<li>div设置了float之后，其宽度会自动调整为包裹住内容宽度，而不是撑满整个父容器。</li>
+<li>因为包裹性，浮动元素所在那一行的行框被缩短，从而给浮动框留出空间，行框围绕浮动。</li>
+<li>有多个浮动元素时，如下图所示，如果包含框太窄，无法容纳水平排列的三个浮动元素，那么其它浮动块向下移动，直到有足够的空间。如果浮动元素的高度不同，那么当它们向下移动时可能被其它浮动元素“卡住”：</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png" alt=""></p>
+<h1 id="二，清除float带来的影响–解决高度塌陷的问题"><a href="#二，清除float带来的影响–解决高度塌陷的问题" class="headerlink" title="二，清除float带来的影响–解决高度塌陷的问题"></a>二，清除float带来的影响–解决高度塌陷的问题</h1><ul>
+<li><strong><code>clear</code>去浮动：</strong>通过在所有浮动元素下方添加一个clear:both的元素，可以消除float的破坏性。可以通过伪元素<code>after</code>实现。clear 属性规定元素的哪一侧不允许其他浮动元素。</li>
+<li><strong>父元素包裹性去浮动：</strong>为父元素添加可以具有包裹性的css设置，如：<code>overflow:hidden ，zoom:1 ，display:inline-block ，position:absolute ，float:left</code>等。</li>
+<li><strong>通用方法：</strong>在浮动元素的父元素上如下设置样式。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.clearfix:after&#123;</div><div class="line">　　　　　　centent:&quot;&quot;;//设置内容为空</div><div class="line">　　　　　　height:0;//高度为0</div><div class="line">　　　　　　line-height:0;//行高为0</div><div class="line">　　　　　　display:block;//将文本转为块级元素</div><div class="line">　　　　　　visibility:hidden;//将元素隐藏</div><div class="line">　　　　　　clear:both//清除浮动</div><div class="line">　　　　　&#125;</div><div class="line">　　　　.clearfix&#123;</div><div class="line">　　　　　　zoom:1;为了兼容IE</div><div class="line">　　　　&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/float/" data-id="cj6f1janz0001ncv0m4osksix" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/position/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/16/css布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/16/js之函数与对象/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js之ajax,json,z正则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js闭包/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js原型链/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/bootstrap/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xuebbnju<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

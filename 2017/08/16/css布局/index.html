@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xuebbnju的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS布局知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，盒子模型1.w3c盒子模型外盒尺寸计算（元素空间尺寸）:   Element空间高度 = content height + padding + border + margin   Element 空间宽度 = content width + padding + border + margin 内盒">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xuebbnju的个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/css布局/index.html">
+<meta property="og:site_name" content="xuebbnju的个人博客">
+<meta property="og:description" content="CSS布局知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，盒子模型1.w3c盒子模型外盒尺寸计算（元素空间尺寸）:   Element空间高度 = content height + padding + border + margin   Element 空间宽度 = content width + padding + border + margin 内盒">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-14T05:35:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xuebbnju的个人博客">
+<meta name="twitter:description" content="CSS布局知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，盒子模型1.w3c盒子模型外盒尺寸计算（元素空间尺寸）:   Element空间高度 = content height + padding + border + margin   Element 空间宽度 = content width + padding + border + margin 内盒">
+  
+    <link rel="alternate" href="/atom.xml" title="xuebbnju的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xuebbnju的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录自己前端的学习之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/css布局/" class="article-date">
+  <time datetime="2017-08-16T12:23:55.394Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS布局知识复习总结"><a href="#CSS布局知识复习总结" class="headerlink" title="CSS布局知识复习总结"></a>CSS布局知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，盒子模型"><a href="#一，盒子模型" class="headerlink" title="一，盒子模型"></a>一，盒子模型</h2><h3 id="1-w3c盒子模型"><a href="#1-w3c盒子模型" class="headerlink" title="1.w3c盒子模型"></a>1.w3c盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）:</strong></p>
+<p>  Element空间高度 = content height + padding + border + margin</p>
+<p>  Element 空间宽度 = content width + padding + border + margin</p>
+<p><strong>内盒尺寸计算（元素大小）:</strong></p>
+<p>  Element Height = content height + padding + border （Height为内容高度）</p>
+<p>  Element Width = content width + padding + border （Width为内容宽度）</p>
+<h3 id="2-IE盒子模型"><a href="#2-IE盒子模型" class="headerlink" title="2. IE盒子模型"></a>2. IE盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）：</strong></p>
+<p>  Element空间高度 = content Height + margin (Height包含了元素内容宽度，边框宽度，内距宽度)</p>
+<p>  Element空间宽度 = content Width + margin (Width包含了元素内容宽度、边框宽度、内距宽度)</p>
+<p><strong> 内盒尺寸计算（元素大小）：</strong></p>
+<p>  Element Height = content Height(Height包含了元素内容宽度，边框宽度，内距宽度)</p>
+<p>  Element Width = content Width(Width包含了元素内容宽度、边框宽度、内距宽度)</p>
+<h2 id="二，多列布局"><a href="#二，多列布局" class="headerlink" title="二，多列布局"></a>二，多列布局</h2><h3 id="1-传统模式"><a href="#1-传统模式" class="headerlink" title="1. 传统模式"></a>1. 传统模式</h3><p><code>div+css</code>组合使用实现多列布局。但是float写出来的东西代码复杂，宽度调整不灵活，浏览器兼容性有问题。</p>
+<h3 id="2-table-cell布局"><a href="#2-table-cell布局" class="headerlink" title="2. table-cell布局"></a>2. <code>table-cell</code>布局</h3><p>举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&quot;display:table-cell;width:20%&quot;&gt;</div><div class="line">  第一列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;&quot;&gt;</div><div class="line">  第二列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;width:20&quot;&gt;</div><div class="line">  第三列</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-css3多列布局"><a href="#3-css3多列布局" class="headerlink" title="3. css3多列布局"></a>3. css3多列布局</h3><ul>
+<li><code>column-count</code>属性规定元素应该被分隔的列数。</li>
+<li><code>column-gap</code> 属性规定列之间的间隔。</li>
+<li><code>column-rule</code> 属性设置列之间的宽度、样式和颜色规则。</li>
+<li><code>column-span</code>规定元素应该横跨的列数。</li>
+<li><code>column-width</code>规定列的宽度。</li>
+</ul>
+<h2 id="三，一些布局技巧"><a href="#三，一些布局技巧" class="headerlink" title="三，一些布局技巧"></a>三，一些布局技巧</h2><h3 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1. 水平居中"></a>1. 水平居中</h3><p><strong>行内元素居中：</strong><br>给父元素设置 <code>text-align:center</code>来实现的。</p>
+<p><strong>定宽块状元素居中：</strong>设置左右<code>margin</code>值为<code>auto</code>来实现居中的。</p>
+<p><strong>不定宽块状元素居中：</strong> 一共三种方法</p>
+<ol>
+<li>第一步：为需要设置的居中的元素外面加入一个 <code>table</code>标签 ( 包括 <code>&lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt;</code> )。第二步：为这个 <code>table</code>设置左右 <code>margin</code>居中（这个和定宽块状元素的方法一样）。</li>
+<li>改变块级元素的 <code>display</code> 为 <code>inline</code>类型（设置为 行内元素 显示），然后使用 <code>text-align:center</code> 来实现居中效果。</li>
+<li>通过给父元素设置 <code>float</code>，然后给父元素设置 <code>position:relative</code> 和 <code>left:50%</code>，子元素设置 <code>position:relative</code>和 <code>left: -50%</code>来实现水平居中。</li>
+<li>绝对定位<code>left:50%+margin-left:</code>负自身一半。</li>
+</ol>
+<h3 id="2-垂直居中"><a href="#2-垂直居中" class="headerlink" title="2. 垂直居中"></a>2. 垂直居中</h3><p><strong>父元素高度确定的单行文本：</strong>设置父元素的 <code>height</code>和<code>line-height</code> 高度一致来实现的。</p>
+<p><strong>父元素高度确定的多行文本、图片等的竖直居中的方法有两种：</strong></p>
+<ol>
+<li>方法一：使用插入 <code>table</code> (包括<code>tbody、tr、td</code>)标签，同时设置 <code>vertical-align：middle</code>。css 中有一个用于竖直居中的属性 <code>vertical-align</code>，在父元素设置此样式时，会对inline-block类型的子元素都有用。</li>
+<li>在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 <code>display</code> 为<code>table-cell</code>（设置为表格单元显示），激活 <code>vertical-align</code>属性，但注意 IE6、7 并不支持这个样式, 兼容性比较差。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/css布局/" data-id="cj6f1jao50002ncv0tixp3czm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/float/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/16/css复习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/16/js之函数与对象/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js之ajax,json,z正则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js闭包/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js原型链/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/bootstrap/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xuebbnju<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

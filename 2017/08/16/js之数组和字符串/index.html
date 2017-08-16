@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xuebbnju的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="js之数组和字符串知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，数组1. 基础概念 数组就像是对象的一个子集 有序，元素可以不同类型，是数组，也可以是对象 ,动态的无需指定大小。 创建：字面量 不建议，长度0——2的23幂-1。new array构造器 new可以省略。 与字符串的数据不可变不同，数组的数据是可变的，并且可以自由地改变。 二维数组：数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xuebbnju的个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/js之数组和字符串/index.html">
+<meta property="og:site_name" content="xuebbnju的个人博客">
+<meta property="og:description" content="js之数组和字符串知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，数组1. 基础概念 数组就像是对象的一个子集 有序，元素可以不同类型，是数组，也可以是对象 ,动态的无需指定大小。 创建：字面量 不建议，长度0——2的23幂-1。new array构造器 new可以省略。 与字符串的数据不可变不同，数组的数据是可变的，并且可以自由地改变。 二维数组：数组">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-13T10:30:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xuebbnju的个人博客">
+<meta name="twitter:description" content="js之数组和字符串知识复习总结声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，数组1. 基础概念 数组就像是对象的一个子集 有序，元素可以不同类型，是数组，也可以是对象 ,动态的无需指定大小。 创建：字面量 不建议，长度0——2的23幂-1。new array构造器 new可以省略。 与字符串的数据不可变不同，数组的数据是可变的，并且可以自由地改变。 二维数组：数组">
+  
+    <link rel="alternate" href="/atom.xml" title="xuebbnju的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xuebbnju的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录自己前端的学习之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js之数组和字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/js之数组和字符串/" class="article-date">
+  <time datetime="2017-08-16T12:25:48.561Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js之数组和字符串知识复习总结"><a href="#js之数组和字符串知识复习总结" class="headerlink" title="js之数组和字符串知识复习总结"></a>js之数组和字符串知识复习总结</h1><h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，数组"><a href="#一，数组" class="headerlink" title="一，数组"></a>一，数组</h2><h3 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h3><ul>
+<li>数组就像是对象的一个子集</li>
+<li>有序，元素可以不同类型，是数组，也可以是对象 ,动态的无需指定大小。</li>
+<li>创建：字面量 不建议，长度0——2的23幂-1。<code>new array</code>构造器 <code>new</code>可以省略。</li>
+<li>与字符串的数据不可变不同，数组的数据是可变的，并且可以自由地改变。</li>
+<li>二维数组：数组的元素是数组。</li>
+<li>稀疏数组：并不含有0的连续索引，<code>length</code>比实际元素个数多 <code>var arr=[,,]</code>(俩元素)，不常用，遍历用<code>for in</code>，<code>for</code>的话需要判断是否为undefined。</li>
+</ul>
+<h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2. 常用操作"></a>2. 常用操作</h3><ul>
+<li>元素删除：<code>delete</code>之后便<code>undefined</code>，长度不变 ,但依旧会占位置，但是用<code>in</code>这           个索引返回<code>false</code>，和<code>arr[这个索引]=undefined</code>是不一样的。</li>
+<li>尾部删除： 将<code>arr.length</code>减一，也会删除元素变成<code>undefined</code> ，<code>arr.pop（）</code>。</li>
+<li>头部删除：<code>arr.shift()</code>。</li>
+<li>尾部添加： <code>arr[arr.Length]=4</code>  等价于<code>arr.push(4)</code>。</li>
+<li>头部添加：<code>arr.unshift()</code>。</li>
+<li>遍历：<code>for</code> ，<code>for in</code>（受原型链影响，最好hasOwnpropotry,还有坑。）.</li>
+<li><code>join</code>方法：数组转为字符串，添加分隔符，实现重复元素的数组<code>[a,a,a]</code>。</li>
+<li><code>reverse</code>:倒序数组，会修改原数组</li>
+<li><code>sort</code>：排序，按字符串顺序排序，修改原数组，传一个函数当参数，实现数字排序</li>
+<li><code>contact</code>：数组合并，不修改原数组，传进去的参数是数组会被拉平，但只拉平第一次。</li>
+<li><code>slice</code>：返回片段，参数是首尾索引，左闭右开，负数表示倒数，只有一个的话就是到最后，不修改原数组</li>
+<li><code>spice</code>：数组拼接，修改原数组，保留剩下的，还可以添加，一个参数的话，删除从这个位置开始的片段，🏠一个参数是个数，后面的参数可以使删除位置补上的元素 </li>
+</ul>
+<h3 id="3-IE9以上操作"><a href="#3-IE9以上操作" class="headerlink" title="3. IE9以上操作"></a>3. IE9以上操作</h3><ul>
+<li><code>for each</code>：函数作为参数，值，索引。</li>
+<li><code>map</code>：映射，参数为函数，不修改原数组。</li>
+<li><code>filter</code>：函数作为参数，过滤删选，不修改原数组。</li>
+<li><code>every</code>：判断，是否每一个元素都符合这个条件，返回布尔值。</li>
+<li><code>some</code>：判断有一个就行，返回布尔值。</li>
+<li><code>reduce</code>：不修改原数组，返回计算结果。</li>
+<li><code>reduceRight</code>:从右到左的reduce。</li>
+<li><code>indexof</code>：返回子串位置，从左往右，第二个参数。</li>
+<li><code>lastindexOf</code>:右往左</li>
+<li><code>Array.isArray([])</code>，别的数组无法调用。</li>
+</ul>
+<h2 id="二，字符串"><a href="#二，字符串" class="headerlink" title="二，字符串"></a>二，字符串</h2><h3 id="1-基础概念-1"><a href="#1-基础概念-1" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h3><ul>
+<li>String 对象用于处理已有的字符块。</li>
+<li>在 JavaScript 中，字符串 的值是 不可变的，这意味着一旦字符串被创建就不能被改变。</li>
+<li>改变字符串的唯一方法是重新给它赋一个值。</li>
+<li>可以通过索引访问某个字符。</li>
+<li>如果把数字与字符串相加，结果将成为字符串。</li>
+</ul>
+<h3 id="2-常用操作-1"><a href="#2-常用操作-1" class="headerlink" title="2. 常用操作"></a>2. 常用操作</h3><ul>
+<li><code>charAt()</code>：返回在指定位置的字符。</li>
+<li><code>charCodeAt()</code>：返回在指定的位置的字符的 Unicode 编码。</li>
+<li><code>concat()</code>：连接字符串，本身并没有被更改。</li>
+<li><code>fromCharCode()</code>：从字符编码创建一个字符串。<code>String.fromCharCode(numX,numX,...,numX)</code>。</li>
+<li><code>indexOf()</code>:检索字符串位置。</li>
+<li><code>lastIndexOf()</code>：从后向前搜索字符串。</li>
+<li><code>match()</code>：可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配，返回值。</li>
+<li><code>replace()</code>：用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串，返回一个新的字符串。</li>
+<li><code>search()</code> ：用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，返回索引。</li>
+<li><code>slice()</code> ：可提取字符串的某个部分，并以新的字符串返回被提取的部分，参数是起始索引。</li>
+<li><code>sub()</code>： 把字符串显示为下标。</li>
+<li><code>substr()</code>：从起始索引号提取字符串中指定数目的字符。</li>
+<li><code>toLowerCase()</code>： 把字符串转换为小写。</li>
+<li><code>toUpperCase()</code> ：  把字符串转换为大写。</li>
+<li><code>toString()</code> ：  返回原始字符串。</li>
+<li><code>valueOf()</code>  ： 返回某个字符串对象的原始值。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/js之数组和字符串/" data-id="cj6f1jaop0006ncv0a8bu1ejv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/切图/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/16/js基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/16/js之函数与对象/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js之ajax,json,z正则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js闭包/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/js原型链/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/16/bootstrap/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xuebbnju<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
