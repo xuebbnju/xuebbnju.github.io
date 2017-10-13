@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了H5和CSS3中的新特性，比较重要的特性有进行详细解释。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5，CSS3新特性总结">
+<meta property="og:url" content="http://yoursite.com/blog/H5，CSS3新特性总结.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了H5和CSS3中的新特性，比较重要的特性有进行详细解释。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2017/10/13/59e077e224421.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/13/59e077e224421.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/13/59e07ac87c46f.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/13/59e07ac8a442b.png">
+<meta property="og:updated_time" content="2017-10-13T10:17:55.640Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5，CSS3新特性总结">
+<meta name="twitter:description" content="摘要：总结了H5和CSS3中的新特性，比较重要的特性有进行详细解释。">
+<meta name="twitter:image" content="https://i.loli.net/2017/10/13/59e077e224421.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/H5，CSS3新特性总结.html"/>
+
+
+
+
+
+  <title>H5，CSS3新特性总结 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/H5，CSS3新特性总结.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">H5，CSS3新特性总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T18:06:59+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了H5和CSS3中的新特性，比较重要的特性有进行详细解释。</blockquote><br> <a id="more"></a></p>
+<h2 id="一，H5"><a href="#一，H5" class="headerlink" title="一，H5"></a>一，H5</h2><h3 id="1-新特性"><a href="#1-新特性" class="headerlink" title="1. 新特性"></a>1. 新特性</h3><ul>
+<li>用于绘画的 canvas 元素。</li>
+<li>用于媒介回放的 video 和 audio 元素。</li>
+<li>对本地离线存储的更好的支持。</li>
+<li>新的特殊内容元素，比如 article、footer、header、nav、section。</li>
+<li>新增的内联元素：figure、figcaption、mark、time。</li>
+<li>新的表单控件，比如 calendar、date、time、email、url、search,range。</li>
+<li>新的表单元素：datalist、keygen、output。</li>
+<li>新的技术webworker, websocket, Geolocation;</li>
+<li>简化的DOCTYPE声明：&lt;!DOCTYPE HTML&gt;。</li>
+</ul>
+<h3 id="2-视频和音频"><a href="#2-视频和音频" class="headerlink" title="2. 视频和音频"></a>2. 视频和音频</h3><ul>
+<li>control 属性供添加播放、暂停和音量控件。</li>
+<li>video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。浏览器将使用第一个可识别的格式。</li>
+</ul>
+<h3 id="3-canvas"><a href="#3-canvas" class="headerlink" title="3. canvas"></a>3. canvas</h3><ul>
+<li>canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。</li>
+<li>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成。</li>
+<li>Canvas 通过 JavaScript 来绘制 2D 图形。</li>
+<li>Canvas 是逐像素进行渲染的。</li>
+<li>在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。</li>
+<li></li>
+</ul>
+<h3 id="4-SVG"><a href="#4-SVG" class="headerlink" title="4.SVG"></a>4.SVG</h3><ul>
+<li>SVG 指可伸缩矢量图形 (Scalable Vector Graphics).</li>
+<li>SVG 用于定义用于网络的基于矢量的图形.</li>
+<li>SVG 使用 XML 格式定义图形.</li>
+<li>SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失.</li>
+<li>SVG 是万维网联盟的标准.</li>
+<li>SVG 图像可通过文本编辑器来创建和修改.</li>
+<li>SVG 图像可被搜索、索引、脚本化或压缩.</li>
+<li>SVG 是可伸缩的.</li>
+<li>SVG 图像可在任何的分辨率下被高质量地打印.</li>
+<li>SVG 可在图像质量不下降的情况下被放大.</li>
+<li>SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。</li>
+<li>在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。</li>
+</ul>
+<h3 id="5-Canvas-与-SVG-的比较"><a href="#5-Canvas-与-SVG-的比较" class="headerlink" title="5. Canvas 与 SVG 的比较"></a>5. Canvas 与 SVG 的比较</h3><p><strong>Canvas:</strong></p>
+<ul>
+<li>依赖分辨率.</li>
+<li>不支持事件处理器.</li>
+<li>弱的文本渲染能力.</li>
+<li>能够以 .png 或 .jpg 格式保存结果图像.</li>
+<li>最适合图像密集型的游戏，其中的许多对象会被频繁重绘.</li>
+</ul>
+<p><strong>SVG:</strong></p>
+<ul>
+<li>不依赖分辨率.</li>
+<li>支持事件处理器.</li>
+<li>最适合带有大型渲染区域的应用程序（比如谷歌地图）.</li>
+<li>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）.</li>
+<li>不适合游戏应用.</li>
+</ul>
+<h3 id="6-地理定位"><a href="#6-地理定位" class="headerlink" title="6. 地理定位"></a>6. 地理定位</h3><ul>
+<li>使用 getCurrentPosition() 方法来获得用户的位置。</li>
+<li>如果getCurrentPosition()运行成功，则向参数showPosition中规定的函数返回一个coordinates对象.</li>
+<li>getCurrentPosition() 方法的第二个参数用于处理错误。它规定当获取用户位置失败时运行的函数.</li>
+</ul>
+<h3 id="7-应用程序缓存"><a href="#7-应用程序缓存" class="headerlink" title="7. 应用程序缓存"></a>7. 应用程序缓存</h3><ul>
+<li>离线浏览 - 用户可在应用离线时使用它们.</li>
+<li>速度 - 已缓存资源加载得更快.</li>
+<li>减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。.</li>
+<li>如需启用应用程序缓存，请在文档的 <html> 标签中包含 manifest 属性：<code>&lt;html manifest=&quot;demo.appcache&quot;&gt;</code>.</html></li>
+<li>每个指定了 manifest 的页面在用户对其访问时都会被缓存。如果未指定 manifest 属性，则页面不会被缓存（除非在 manifest 文件中直接指定了该页面）。</li>
+<li>manifest 文件是简单的文本文件，它告知浏览器被缓存的内容（以及不缓存的内容）。</li>
+<li>manifest 文件可分为三个部分：<ol>
+<li>CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存.</li>
+<li>NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存.</li>
+<li>FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）.</li>
+</ol>
+</li>
+</ul>
+<p><a href="http://www.cnblogs.com/greatluoluo/p/5714221.html" target="_blank" rel="external">来源</a></p>
+<h3 id="8-Web-Workers"><a href="#8-Web-Workers" class="headerlink" title="8. Web Workers"></a>8. Web Workers</h3><ul>
+<li>浏览器端JavaScript是以单线程的方式执行的，也就是说JavaScript和UI渲染占用同一个主线程，那就意味着，如果JavaScript进行高负载的数据处理，UI渲染就很有可能被阻断，从而造成用户体验的大打折扣。</li>
+<li>web worker 是运行在后台的 JavaScript，不会影响页面的性能。</li>
+<li>只需将含有工作线程的代码文件路径作为参数传入到Worker构造函数中，即可创建一个工作线程，使其能够在后台执行。</li>
+<li>由于 web worker 位于外部文件中，它们无法访问下例 JavaScript 对象：window 对象、document 对象、parent 对象。</li>
+</ul>
+<p><a href="http://blog.csdn.net/liuhe688/article/details/50496797" target="_blank" rel="external">详读文章</a></p>
+<h3 id="9-服务器发送事件"><a href="#9-服务器发送事件" class="headerlink" title="9. 服务器发送事件"></a>9. 服务器发送事件</h3><ul>
+<li>创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 “demo_sse.php”）。</li>
+<li>每接收到一次更新，就会发生 onmessage 事件。</li>
+<li>当 onmessage 事件发生时，把已接收的数据推入 id 为 “result” 的元素中。</li>
+<li>把报头 “Content-Type” 设置为 “text/event-stream”。</li>
+</ul>
+<h3 id="10-拖放"><a href="#10-拖放" class="headerlink" title="10. 拖放"></a>10. 拖放</h3><ul>
+<li>DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。。</li>
+<li>draggable 属性：就是标签元素要设置draggable=true，否则不会有效果，例如：。</li>
+<li><div title="拖拽我" draggable="true">列表1</div>。</li>
+<li>ondragstart 事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上。</li>
+<li>ondragenter 事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上。</li>
+<li>ondragover 事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上。</li>
+<li>ondrop 事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上。</li>
+<li>ondragend 事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上。</li>
+<li>Event.preventDefault() 方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。。</li>
+<li>Event.effectAllowed 属性：就是拖拽的效果。。</li>
+</ul>
+<p><a href="http://www.zhangxinxu.com/wordpress/2011/02/html5-drag-drop-拖拽与拖放简介/" target="_blank" rel="external">来源</a><br><a href="https://jingyan.baidu.com/article/6dad5075cf6e62a123e36e11.html" target="_blank" rel="external">详读文章</a></p>
+<h2 id="二，CSS3"><a href="#二，CSS3" class="headerlink" title="二，CSS3"></a>二，CSS3</h2><h3 id="1-扩展了三种类型的选择器"><a href="#1-扩展了三种类型的选择器" class="headerlink" title="1. 扩展了三种类型的选择器"></a>1. 扩展了三种类型的选择器</h3><ul>
+<li>属性选择器。</li>
+<li>伪类选择器。</li>
+<li>伪元素选择器。</li>
+</ul>
+<p><a href="http://www.cnblogs.com/DF-fzh/p/5592248.html" target="_blank" rel="external">来源</a></p>
+<h3 id="2-边框"><a href="#2-边框" class="headerlink" title="2. 边框"></a>2. 边框</h3><ul>
+<li><code>border-radius:1-4 length|% / 1-4 length|%;</code>。按此顺序设置每个 radii 的四个值。如果省略 bottom-left，则与 top-right 相同。如果省略 bottom-right，则与 top-left 相同。如果省略 top-right，则与 top-left 相同。</li>
+<li><code>box-shadow: h-shadow v-shadow blur spread color inset;</code> 边框阴影；可以设置边框的阴影，外阴影，内阴影.<ol>
+<li>h-shadow    必需。水平阴影的位置。允许负值。    </li>
+<li>v-shadow    必需。垂直阴影的位置。允许负值。    </li>
+<li>blur    可选。模糊距离。    </li>
+<li>spread  可选。阴影的尺寸。   </li>
+<li>color   可选。阴影的颜色。请参阅 CSS 颜色值。   </li>
+<li>inset   可选。将外部阴影 (outset) 改为内部阴。</li>
+</ol>
+</li>
+<li><code>border-image</code>:可以为四个边设置边框图片。只需要一张图，浏览器会自动裁剪。然后还可以指定宽度<br>指定边框图片的平铺方式.<ol>
+<li>border-image-source 边框图片的路径。</li>
+<li>border-image-slice 裁剪的方式。</li>
+<li>border-image-width 边框的宽度。</li>
+<li>border-image-repeat:round,stretch,repeat。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-背景"><a href="#3-背景" class="headerlink" title="3. 背景"></a>3. 背景</h3><ul>
+<li>background-size:contain  cover<ul>
+<li>contain: 背景图片始终完全显示，等比例缩放.</li>
+<li>cover:  也会缩放，背景始终填充整个区域。</li>
+</ul>
+</li>
+<li>background-origin:  可以设置背景图片的位置.<ul>
+<li>background-origin:border-box,padding-box,content-box;</li>
+<li>border-box   背景的原点在border 上面</li>
+<li>padding-box  背景的原点在内边距上面</li>
+<li>content-box   背景的远在content 内容区域</li>
+<li>如果背景图像的 background-attachment 属性为 “fixed”，则该属性没有效果</li>
+</ul>
+</li>
+<li>background-clip:   border-box,padding-box,content-box;</li>
+</ul>
+<h3 id="4-文本效果"><a href="#4-文本效果" class="headerlink" title="4. 文本效果"></a>4. 文本效果</h3><p><img src="https://i.loli.net/2017/10/13/59e077e224421.png" alt=""><br><a href="http://www.w3school.com.cn/css3/css3_text_effect.asp" target="_blank" rel="external">来源</a></p>
+<h3 id="5-字体"><a href="#5-字体" class="headerlink" title="5. 字体"></a>5. 字体</h3><p><img src="https://i.loli.net/2017/10/13/59e077e224421.png" alt=""><br><a href="http://www.w3school.com.cn/css3/css3_font.asp" target="_blank" rel="external">来源</a></p>
+<h3 id="6-2D转换"><a href="#6-2D转换" class="headerlink" title="6. 2D转换"></a>6. 2D转换</h3><ul>
+<li>scale(1.5,2)   放大 大于1；缩小 小于1。</li>
+<li>translate(200px,200px)  向水平方向移动，垂直方向移动，可以接受负值（负值是反方向，百分比）。</li>
+<li>rotate() 正值顺时针方向，负值是逆时针方向。transform-origin 旋转的中心点的位置；默认的中心点在中间。</li>
+<li>skew() 定义 2D 倾斜转换，沿着 X 和 Y 轴。</li>
+<li>matrix() 方法把所有 2D 转换方法组合在一起。</li>
+</ul>
+<h3 id="7-3D转换"><a href="#7-3D转换" class="headerlink" title="7. 3D转换"></a>7. 3D转换</h3><ul>
+<li>转换属性</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/13/59e07ac87c46f.png" alt=""></p>
+<ul>
+<li>3D Transform 方法</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/13/59e07ac8a442b.png" alt=""><br><a href="http://www.w3school.com.cn/css3/css3_3dtransform.asp" target="_blank" rel="external">来源</a></p>
+<h3 id="8-过渡"><a href="#8-过渡" class="headerlink" title="8. 过渡"></a>8. 过渡</h3><p><code>transtion:all 2s linear 3s;</code></p>
+<ul>
+<li>all 需要过渡的属性。</li>
+<li>2s 过渡这些属性需要执行的时间。</li>
+<li>linear 过渡的速度。</li>
+<li>4s 延迟多少秒。<br><strong>触发条件：</strong></li>
+<li>伪类触发 比如 :hover : focus  :checked  :active。</li>
+<li>js触发就是toggleClass。</li>
+<li>同一个元素（元素获取，或者类，ID获取都可以，针对同一个元素就行），有两个不同样式（两个途径获取的）。如果一开始这两个途径就可以获取该元素（第二个直接覆盖第一个），就没有过度。</li>
+<li>如果第二途径的实现依赖于某种改变才会获取该元素，就会有过度。<br><a href="http://www.cnblogs.com/hellolm/p/4515963.html" target="_blank" rel="external">来源</a></li>
+</ul>
+<h3 id="9-动画"><a href="#9-动画" class="headerlink" title="9. 动画"></a>9. 动画</h3><ul>
+<li><p><code>@keyframes</code> 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 定义动画</div><div class="line">@keyfreames move&#123;</div><div class="line">      from&#123;</div><div class="line">      &#125;</div><div class="line">      to&#123;</div><div class="line">      &#125;</div><div class="line">&#125;</div><div class="line">//  定义一组动画</div><div class="line"> @keyfreames move&#123;</div><div class="line">           0%&#123;</div><div class="line">                 &#125;</div><div class="line">           20%&#123;</div><div class="line">                 &#125;</div><div class="line">           40%&#123;</div><div class="line">                 &#125;</div><div class="line">           80%&#123;</div><div class="line">                 &#125;</div><div class="line">           100%&#123;</div><div class="line">                 &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>animation-name 动画名称（关键帧名称）必需。</p>
+</li>
+<li>animation-duration 动画持续时间 必需。</li>
+<li>nimation-play-state 播放状态（ running 播放 和paused 暂停 ），可以用来控制动画暂停。。</li>
+<li>animation-timing-function 动画运动形式。</li>
+<li>animation-delay 动画延迟。</li>
+<li>animation-iteration-count 重复次数。</li>
+<li>animation-direction 播放前重置(alternate 动画直接从上一次停止的位置开始执行)。</li>
+<li>animation-delay 属性值允许负值，使动画跳过指定秒数马上开始 。</li>
+<li>可以通过监听动画结束事件来对动画结束的操作进行控制：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj.addEventListener(&apos;webkitAnimationEnd&apos;,fn,false);</div><div class="line">obj.addEventListener(&apos;animationend&apos;,fn,false);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="10-Flex"><a href="#10-Flex" class="headerlink" title="10. Flex"></a>10. Flex</h3><ul>
+<li>水平的主轴（main axis）和垂直的交叉轴（cross axis）。</li>
+<li>主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end。</li>
+<li>交叉轴的开始位置叫做cross start，结束位置叫做cross end。</li>
+<li>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</li>
+<li>属性设置<ul>
+<li>flex-direction调整主轴方向（默认为水平方向）。</li>
+<li>justify-content调整主轴对齐。</li>
+<li>align-items调整侧轴对齐。</li>
+<li>flex-wrap控制是否换行。</li>
+<li>align-content堆栈（由flex-wrap产生的独立行）对齐。</li>
+<li>flex-flow是flex-direction、flex-wrap的简写形式 flex-flow: cloumn wrap。</li>
+<li>flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配。</li>
+<li>order控制子项目的排列顺序，正序方式排序，从小到大。<br><a href="http://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="external">详读文章</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="11-其它"><a href="#11-其它" class="headerlink" title="11. 其它"></a>11. 其它</h3><ul>
+<li>两种新增方式可以表示颜色:rgba （ red，green，blue，Alpha 透明通道)、hsla（Hue 色调，Saturation 饱和度，Lightness 亮度，Alpha 透明度。</li>
+<li><code>box-sizing:content-box/border-box</code>:<ul>
+<li>content-box :默认值，其让元素维持W3C的标准盒模型，也就是说元素的宽度和高度（width/height）等于元素边框宽度（border）加上元素内距（padding）加上元素内容宽度或高度（content width/ height），也就是element width/height = border + padding + content width / height。</li>
+<li>border-box :重新定义CSS2.1中盒模型组成的模式，让元素维持IE传统的盒模型（IE6以下版本和IE6-7怪异模式），也就是说元素的宽度或高度等于元素内容的宽度或高度。从上面盒模型介绍可知，这里的内容宽度或高度包含了元素的border、padding、内容的宽度或高度（此处的内容宽度或高度＝盒子的宽度或高度—边框—内距）。<br><a href="http://blog.csdn.net/liujie19901217/article/details/51394046" target="_blank" rel="external">来源</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/模块化，MVC相关知识点.html" rel="next" title="模块化，MVC相关知识点">
+                <i class="fa fa-chevron-left"></i> 模块化，MVC相关知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，H5"><span class="nav-number">1.</span> <span class="nav-text">一，H5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-新特性"><span class="nav-number">1.1.</span> <span class="nav-text">1. 新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-视频和音频"><span class="nav-number">1.2.</span> <span class="nav-text">2. 视频和音频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-canvas"><span class="nav-number">1.3.</span> <span class="nav-text">3. canvas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SVG"><span class="nav-number">1.4.</span> <span class="nav-text">4.SVG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Canvas-与-SVG-的比较"><span class="nav-number">1.5.</span> <span class="nav-text">5. Canvas 与 SVG 的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-地理定位"><span class="nav-number">1.6.</span> <span class="nav-text">6. 地理定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-应用程序缓存"><span class="nav-number">1.7.</span> <span class="nav-text">7. 应用程序缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Web-Workers"><span class="nav-number">1.8.</span> <span class="nav-text">8. Web Workers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-服务器发送事件"><span class="nav-number">1.9.</span> <span class="nav-text">9. 服务器发送事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-拖放"><span class="nav-number">1.10.</span> <span class="nav-text">10. 拖放</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，CSS3"><span class="nav-number">2.</span> <span class="nav-text">二，CSS3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-扩展了三种类型的选择器"><span class="nav-number">2.1.</span> <span class="nav-text">1. 扩展了三种类型的选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-边框"><span class="nav-number">2.2.</span> <span class="nav-text">2. 边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-背景"><span class="nav-number">2.3.</span> <span class="nav-text">3. 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-文本效果"><span class="nav-number">2.4.</span> <span class="nav-text">4. 文本效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字体"><span class="nav-number">2.5.</span> <span class="nav-text">5. 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2D转换"><span class="nav-number">2.6.</span> <span class="nav-text">6. 2D转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3D转换"><span class="nav-number">2.7.</span> <span class="nav-text">7. 3D转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-过渡"><span class="nav-number">2.8.</span> <span class="nav-text">8. 过渡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-动画"><span class="nav-number">2.9.</span> <span class="nav-text">9. 动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Flex"><span class="nav-number">2.10.</span> <span class="nav-text">10. Flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-其它"><span class="nav-number">2.11.</span> <span class="nav-text">11. 其它</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了js原生的DOM操作，主要是创建，插入，移动，查询相关操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js原生DOM操作总结">
+<meta property="og:url" content="http://yoursite.com/blog/js原生DOM操作总结.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了js原生的DOM操作，主要是创建，插入，移动，查询相关操作。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2017/10/11/59ddc7c78380b.png">
+<meta property="og:updated_time" content="2017-10-13T10:10:52.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js原生DOM操作总结">
+<meta name="twitter:description" content="摘要：总结了js原生的DOM操作，主要是创建，插入，移动，查询相关操作。">
+<meta name="twitter:image" content="https://i.loli.net/2017/10/11/59ddc7c78380b.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/js原生DOM操作总结.html"/>
+
+
+
+
+
+  <title>js原生DOM操作总结 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/js原生DOM操作总结.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js原生DOM操作总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T17:39:15+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了js原生的DOM操作，主要是创建，插入，移动，查询相关操作。</blockquote><br> <a id="more"></a></p>
+<h2 id="一，DOM基本概念"><a href="#一，DOM基本概念" class="headerlink" title="一，DOM基本概念"></a>一，DOM基本概念</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><ul>
+<li>DOM就是一组API（接口）。它将一份结构化文档看做一棵树，这棵树由各种各样的节点构成，也即节点树。</li>
+<li>Node是一个接口，中文叫节点，很多类型的DOM元素都是继承于它，都共享着相同的基本属性和方法。常见的Node有 element，text，attribute，comment，document 等（所以要注意 节点 和 元素 的区别，元素属于节点的一种）。</li>
+<li>DOM1级定义了一个Node接口，该接口由DOM中所有节点类型实现。这个Node接口在JS中是作为Node类型实现的。在IE9以下版本无法访问到这个类型，JS中所有节点都继承自Node类型，都共享着相同的基本属性和方法。<h3 id="2-节点类型"><a href="#2-节点类型" class="headerlink" title="2. 节点类型"></a>2. 节点类型</h3></li>
+<li>Node有一个属性nodeType表示Node的类型，它是一个整数，其数值分别表示相应的Node类型。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/11/59ddc7c78380b.png" alt=""></p>
+<p><a href="http://www.imooc.com/article/2562" target="_blank" rel="external">来源</a></p>
+<h2 id="二，创建-克隆，删除节点"><a href="#二，创建-克隆，删除节点" class="headerlink" title="二，创建,克隆，删除节点"></a>二，创建,克隆，删除节点</h2><ul>
+<li><code>var div = document.createElement(&quot;div&quot;);</code></li>
+<li><code>var textNode = document.createTextNode(&quot;一个TextNode&quot;);</code></li>
+<li><p>克隆节点:其中cloneNode的参数为true，表示parent的子节点也被复制，如果传入false，则表示只复制了parent节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var parent = document.getElementById(&quot;parentElement&quot;); var parent2 = parent.cloneNode(true);// 传入true</div><div class="line">parent2.id = &quot;parent2&quot;;</div><div class="line">//如果是通过addEventListener或者比如onclick进行绑定事件，则副本节点不会绑定该事件,内联式的才会绑定</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>var fragment = document.createDocumentFragment();</code>：它的作用主要是存储临时的节点用来准备添加到文档中，避免多次添加回流次数过多降低性能的问题。。</p>
+</li>
+<li><code>var deletedChild = parent.removeChild(node);</code>：删除指定的子节点并返回。</li>
+<li><code>parent.replaceChild(newChild,oldChild);</code>：newChild是替换的节点，可以是新的节点，也可以是页面上的节点，如果是页面上的节点，则其将被转移到新的位置。</li>
+</ul>
+<h2 id="三，-插入"><a href="#三，-插入" class="headerlink" title="三， 插入"></a>三， 插入</h2><ul>
+<li><code>parent.appendChild(child)</code>： child节点将会作为parent节点的最后一个子节点，如果被添加的节点是一个页面中存在的节点，则执行后这个节点将会添加到指定位置，其原本所在的位置将移除该节点，也就是说不会同时存在两个该节点在页面上，相当于把这个节点移动到另一个地方。</li>
+<li><code>parentNode.insertBefore(newNode,refNode);</code>：用来添加一个节点到一个参照节点之前。<ol>
+<li>refNode是必传的，如果不传该参数会报错。</li>
+<li>如果refNode是undefined或null，则insertBefore会将节点添加到子元素的末尾。</li>
+</ol>
+</li>
+</ul>
+<h2 id="四，查询"><a href="#四，查询" class="headerlink" title="四，查询"></a>四，查询</h2><ul>
+<li>HTMLCollection是元素集合而NodeList是节点集合(即可以包含元素,也可以包含文本节点)，二者都是动态实时的，通常返回静态副本之后才操作：<code>Array.prototype.slice.call(nodeList, 2)</code>。</li>
+<li><code>document.getElementById</code>：根据ID查找元素，大小写敏感，如果有多个结果，只返回第一个。</li>
+<li><code>document.getElementsByClassName</code> ：根据类名查找元素，多个类名用空格分隔，返回一个 HTMLCollection 。注意兼容性为IE9+（含）。另外，不仅仅是document，其它元素也支持 <code>getElementsByClassName</code>方法。</li>
+<li><code>document.getElementsByTagName</code> ：根据标签查找元素， * 表示查询所有标签，返回一个 HTMLCollection 。</li>
+<li><code>document.getElementsByName</code> ：根据元素的name属性查找，返回一个 NodeList。</li>
+<li><code>document.querySelector</code>：通过css选择器来查找元素,返回单个Node，IE8+(含），如果匹配到多个结果，只返回第一个，深度搜索。</li>
+<li><code>document.querySelectorAll</code> ：返回一个固定的 NodeList ，IE8+(含）。</li>
+<li><p><code>document.forms</code> ：获取当前页面所有form，返回一个 HTMLCollection 。</p>
+<p><a href="http://blog.csdn.net/hj7jay/article/details/53389522" target="_blank" rel="external">来源</a></p>
+</li>
+</ul>
+<h2 id="五，节点关系API"><a href="#五，节点关系API" class="headerlink" title="五，节点关系API"></a>五，节点关系API</h2><h3 id="1-父关系API"><a href="#1-父关系API" class="headerlink" title="1. 父关系API"></a>1. 父关系API</h3><ul>
+<li><code>parentNode</code> ：每个节点都有一个parentNode属性，它表示元素的父节点。Element的父节点可能是Element，Document或DocumentFragment.</li>
+<li><code>parentElement</code> ：返回元素的父元素节点，与parentNode的区别在于，其父节点必须是一个Element元素，如果不是，则返回null。</li>
+</ul>
+<h3 id="2-子关系API"><a href="#2-子关系API" class="headerlink" title="2. 子关系API"></a>2. 子关系API</h3><ul>
+<li><code>children</code> ：返回一个实时的 HTMLCollection ，子节点都是Element，IE9以下浏览器不支持；</li>
+<li><code>childNodes</code> ：返回一个实时的 NodeList，表示元素的子节点列表，注意子节点可能包含文本节点、注释节点等；</li>
+<li><code>firstChild</code> ：返回第一个子节点，不存在返回null，与之相对应的还有一个<code>firstElementChild</code> ；</li>
+<li><code>lastChild</code> ：返回最后一个子节点，不存在返回null，与之相对应的还有一个<code>lastElementChild</code> ；</li>
+</ul>
+<h3 id="3-兄弟关系型API"><a href="#3-兄弟关系型API" class="headerlink" title="3. 兄弟关系型API"></a>3. 兄弟关系型API</h3><ul>
+<li><code>previousSibling</code> ：节点的前一个节点，如果不存在则返回null。注意有可能拿到的节点是文本节点或注释节点，与预期的不符，要进行处理一下。</li>
+<li><code>nextSibling</code> ：节点的后一个节点，如果不存在则返回null。注意有可能拿到的节点是文本节点，与预期的不符，要进行处理一下。</li>
+<li><code>previousElementSibling</code>：返回前一个元素节点，前一个节点必须是Element，注意IE9以下浏览器不支持。</li>
+<li><code>nextElementSibling</code>：返回后一个元素节点，后一个节点必须是Element，注意IE9以下浏览器不支持。</li>
+</ul>
+<h2 id="六，元素属性型API"><a href="#六，元素属性型API" class="headerlink" title="六，元素属性型API"></a>六，元素属性型API</h2><ul>
+<li><code>element.setAttribute(name, value);</code>：给元素设置属性。</li>
+<li><code>var value = element.getAttribute(&quot;id&quot;);</code> ：getAttribute返回指定的特性名相应的特性值，如果不存在，则返回null。</li>
+</ul>
+<h2 id="七，样式相关API"><a href="#七，样式相关API" class="headerlink" title="七，样式相关API"></a>七，样式相关API</h2><ul>
+<li><p>直接修改元素的样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">elem.style.color = &apos;red&apos;;  </div><div class="line">elem.style.setProperty(&apos;font-size&apos;, &apos;16px&apos;);  </div><div class="line">elem.style.removeProperty(&apos;color&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>动态添加样式规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var style = document.createElement(&apos;style&apos;);  </div><div class="line">style.innerHTML = &apos;body&#123;color:red&#125; #top:hover&#123;background-color: red;color: white;&#125;&apos;;  </div><div class="line">document.head.appendChild(style);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="八，其它API"><a href="#八，其它API" class="headerlink" title="八，其它API"></a>八，其它API</h2><ul>
+<li><code>var style = window.getComputedStyle(element[, pseudoElt]);</code>：通过 <code>element.sytle.xxx</code> 只能获取到内联样式，借助 <code>window.getComputedStyle</code>可以获取应用到元素上的所有样式，IE8或更低版本不支持此方法。</li>
+<li><code>var clientRect = element.getBoundingClientRect();</code><br>：用来返回元素的大小以及相对于浏览器可视窗口的位置，返回的是一个 DOMRect 对象，包含width、height、left、top、right、bottom，它是相对于窗口顶部而不是文档顶部，滚动页面时它们的值是会发生变化的。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/HTTP前端知识点.html" rel="next" title="HTTP前端知识点">
+                <i class="fa fa-chevron-left"></i> HTTP前端知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/网络连接相关知识点.html" rel="prev" title="网络连接相关知识点">
+                网络连接相关知识点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，DOM基本概念"><span class="nav-number">1.</span> <span class="nav-text">一，DOM基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-number">1.1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-节点类型"><span class="nav-number">1.2.</span> <span class="nav-text">2. 节点类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，创建-克隆，删除节点"><span class="nav-number">2.</span> <span class="nav-text">二，创建,克隆，删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，-插入"><span class="nav-number">3.</span> <span class="nav-text">三， 插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，查询"><span class="nav-number">4.</span> <span class="nav-text">四，查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，节点关系API"><span class="nav-number">5.</span> <span class="nav-text">五，节点关系API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-父关系API"><span class="nav-number">5.1.</span> <span class="nav-text">1. 父关系API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子关系API"><span class="nav-number">5.2.</span> <span class="nav-text">2. 子关系API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-兄弟关系型API"><span class="nav-number">5.3.</span> <span class="nav-text">3. 兄弟关系型API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六，元素属性型API"><span class="nav-number">6.</span> <span class="nav-text">六，元素属性型API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七，样式相关API"><span class="nav-number">7.</span> <span class="nav-text">七，样式相关API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八，其它API"><span class="nav-number">8.</span> <span class="nav-text">八，其它API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

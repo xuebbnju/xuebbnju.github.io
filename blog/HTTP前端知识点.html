@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了前端中使用到的HTTP协议的相关知识点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP前端知识点">
+<meta property="og:url" content="http://yoursite.com/blog/HTTP前端知识点.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了前端中使用到的HTTP协议的相关知识点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2017/10/11/59de1616c478c.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/11/59de199d6d479.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/11/59de199d6f3b8.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df321cba2c1.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/11/59de24bb4845e.png">
+<meta property="og:updated_time" content="2017-10-13T10:12:37.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP前端知识点">
+<meta name="twitter:description" content="摘要：总结了前端中使用到的HTTP协议的相关知识点。">
+<meta name="twitter:image" content="https://i.loli.net/2017/10/11/59de1616c478c.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/HTTP前端知识点.html"/>
+
+
+
+
+
+  <title>HTTP前端知识点 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/HTTP前端知识点.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTP前端知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T17:38:07+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了前端中使用到的HTTP协议的相关知识点。</blockquote><br> <a id="more"></a></p>
+<h2 id="一，基础知识"><a href="#一，基础知识" class="headerlink" title="一，基础知识"></a>一，基础知识</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
+<li>HTTP协议（Hyper Text Transfer Protocol，超文本传输协议）,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</li>
+<li>HTTP基于TCP/IP通信协议来传递数据。</li>
+<li>HTTP基于客户端/服务端（C/S）架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。</li>
+<li><p>http是客户端和服务器两者通信共同遵循的一些原则，主要内容是定义了客户端如何我向服务器请求资源，服务器如何响应客户端。</p>
+<p><a href="https://www.nowcoder.com/questionTerminal/2c759e7625544f5d9433296944a49094" target="_blank" rel="external">来源</a></p>
+</li>
+</ul>
+<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><ul>
+<li>HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>HTTP是媒体独立的：只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
+<li>HTTP是无状态：无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+<li>最初的版本只能用来传输html文件，现在则可以传输包括文字、图像、视频和二进制文件的所有内容。</li>
+<li>HTTP客户端（这里就是我们的浏览器）发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如”HTTP/1.1 200 OK”，以及返回的内容，如请求的文件、错误消息、或者其它信息。</li>
+</ul>
+<p><a href="https://www.nowcoder.com/profile/6582891/myFollowings/detail/4003105" target="_blank" rel="external">来源</a></p>
+<h2 id="二，相关知识点"><a href="#二，相关知识点" class="headerlink" title="二，相关知识点"></a>二，相关知识点</h2><h3 id="1-显示网页过程"><a href="#1-显示网页过程" class="headerlink" title="1. 显示网页过程"></a>1. 显示网页过程</h3><ul>
+<li>应用层DNS解析域名：客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。</li>
+<li>浏览器与服务器建立TCP连接（默认端口80）(详细点可以说下三次握手的过程)。</li>
+<li>应用层客户端发送HTTP请求。</li>
+<li>服务器响应请求：查找客户端请求的资源，并返回响应报文，响应报文中包括一个重要的信息——状态码（200-300，成功；304使用缓存）。</li>
+<li>服务器返回相应文件给浏览器。</li>
+<li>Tcp连接释放(可以说下四次挥手的过程)。</li>
+<li>浏览器对HTML文件进行解析构建DOM树 ，构建渲染树 ，js根据DomAPI操作执行绑定事件等，页面显示完成。（具体看html知识点复习）</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/11/59de1616c478c.png" alt=""></p>
+<p><a href="http://www.cnblogs.com/chaoran/p/4783633.html" target="_blank" rel="external">来源</a></p>
+<h3 id="2-Tcp三次握手"><a href="#2-Tcp三次握手" class="headerlink" title="2. Tcp三次握手"></a>2. Tcp三次握手</h3><ul>
+<li>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息。</li>
+</ul>
+<ol>
+<li>第一次握手：建立连接。客户端发送连接请求报文段，将SYN（Synchronize Sequence Numbers同步序列编号）位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</li>
+<li>第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number（确认编号）为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</li>
+<li>第三次握手：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</li>
+</ol>
+<h3 id="3-Tcp四次挥手"><a href="#3-Tcp四次挥手" class="headerlink" title="3. Tcp四次挥手"></a>3. Tcp四次挥手</h3><ol>
+<li>第一次分手：主机1（可以使客户端，也可以是服务器端），设置Sequence Number和Acknowledgment Number，向主机2发送一个FIN报文段；此时，主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；</li>
+<li>第二次分手：主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；</li>
+<li>第三次分手：主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；</li>
+<li>第四次分手：主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</li>
+</ol>
+<h2 id="三，消息结构"><a href="#三，消息结构" class="headerlink" title="三，消息结构"></a>三，消息结构</h2><h3 id="1-request消息的结构"><a href="#1-request消息的结构" class="headerlink" title="1. request消息的结构"></a>1. request消息的结构</h3><p>客户端请求消息：请求行、请求头部、空行和请求数据。</p>
+<ul>
+<li>第一部分是request line，包括请求的方法Method（GET/POST）、请求资源的路径path to resource（对应后端路由部分定义的路径）和http协议的版本号。</li>
+<li>第二部分是request header请求头。</li>
+<li>第三部分是request body请求体，当使用GET方法发送请求的时候，请求体是空的。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/11/59de199d6d479.png" alt=""></p>
+<h3 id="2-response消息的结构"><a href="#2-response消息的结构" class="headerlink" title="2. response消息的结构"></a>2. response消息的结构</h3><p>服务端响应消息：状态行、消息报头、空行和响应正文。</p>
+<ul>
+<li>第一部分是response line，包括http协议版本号，响应状态码和响应状态消息</li>
+<li>第二部分是response header响应头</li>
+<li>第三部分是响应体</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/11/59de199d6f3b8.png" alt=""></p>
+<h3 id="3-请求头内容"><a href="#3-请求头内容" class="headerlink" title="3. 请求头内容"></a>3. 请求头内容</h3><ul>
+<li>GET(请求的方式) /newcoder/hello.html(请求的目标资源) HTTP/1.1(请求采用的协议和版本号) </li>
+<li>Accept: <em>/</em>(客户端能接收的资源类型) </li>
+<li>Accept-Language: en-us(客户端接收的语言类型) </li>
+<li>Connection: Keep-Alive(维护客户端和服务端的连接关系) </li>
+<li>Host: localhost:8080(连接的目标主机和端口号) </li>
+<li>Referer: <a href="http://localhost/links.asp(告诉服务器我来自于哪里" target="_blank" rel="external">http://localhost/links.asp(告诉服务器我来自于哪里</a>) </li>
+<li>User-Agent: Mozilla/4.0(客户端版本号的名字) </li>
+<li>Accept-Encoding: gzip, deflate(客户端能接收的压缩数据的类型) </li>
+<li>If-Modified-Since: Tue, 11 Jul 2000 18:23:51 GMT(缓存时间)  </li>
+<li>Cookie(客户端暂存服务端的信息) </li>
+<li>Date: Tue, 11 Jul 2000 18:23:51 GMT(客户端请求服务端的时间)</li>
+</ul>
+<h3 id="4-响应头内容"><a href="#4-响应头内容" class="headerlink" title="4. 响应头内容"></a>4. 响应头内容</h3><ul>
+<li>HTTP/1.1(响应采用的协议和版本号) 200(状态码) OK(描述信息)</li>
+<li>Location: <a href="http://www.baidu.com(服务端需要客户端访问的页面路径" target="_blank" rel="external">http://www.baidu.com(服务端需要客户端访问的页面路径</a>) </li>
+<li>Server:apache tomcat(服务端的Web服务端名)</li>
+<li>Content-Encoding: gzip(服务端能够发送压缩编码类型) </li>
+<li>Content-Length: 80(服务端发送的压缩数据的长度) </li>
+<li>Content-Language: zh-cn(服务端发送的语言类型) </li>
+<li>Content-Type: text/html; charset=GB2312(服务端发送的类型及采用的编码方式)</li>
+<li>Last-Modified: Tue, 11 Jul 2000 18:23:51 GMT(服务端对该资源最后修改的时间)</li>
+<li>Refresh: 1;url=<a href="http://www.it315.org(服务端要求客户端1秒钟后，刷新，然后访问指定的页面路径" target="_blank" rel="external">http://www.it315.org(服务端要求客户端1秒钟后，刷新，然后访问指定的页面路径</a>)</li>
+<li>Content-Disposition: attachment; filename=aaa.zip(服务端要求客户端以下载文件的方式打开该文件)</li>
+<li>Transfer-Encoding: chunked(分块传递数据到客户端）  </li>
+<li>Set-Cookie:SS=Q0=5Lb_nQ; path=/search(服务端发送到客户端的暂存数据)</li>
+<li>Expires: -1//3种(服务端禁止客户端缓存页面数据)</li>
+<li>Cache-Control: no-cache(服务端禁止客户端缓存页面数据)  </li>
+<li>Pragma: no-cache(服务端禁止客户端缓存页面数据)   </li>
+<li>Connection: close(1.0)/(1.1)Keep-Alive(维护客户端和服务端的连接关系)  </li>
+<li>Date: Tue, 11 Jul 2000 18:23:51 GMT(服务端响应客户端的时间)</li>
+</ul>
+<p>在服务器响应客户端的时候，带上Access-Control-Allow-Origin头信息，解决跨域的一种方法。<br><a href="https://www.nowcoder.com/profile/6582891/myFollowings/detail/4008553" target="_blank" rel="external">来源</a></p>
+<h2 id="四，请求方法"><a href="#四，请求方法" class="headerlink" title="四，请求方法"></a>四，请求方法</h2><h3 id="1-方法介绍"><a href="#1-方法介绍" class="headerlink" title="1. 方法介绍"></a>1. 方法介绍</h3><ul>
+<li>Http协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE. 一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作。 我们最常见的就是GET和POST了。GET一般用于获取/查询资源信息，而POST一般用于更新资源信息.</li>
+</ul>
+<h3 id="2-Get和Post方法的区别"><a href="#2-Get和Post方法的区别" class="headerlink" title="2. Get和Post方法的区别"></a>2. Get和Post方法的区别</h3><ul>
+<li>GET请求是为了从服务器获取内容，在需要提交数据的情况下，提交的数据会作为querystring放在URL之后，以?分割URL和querystring，querystring也只是为了获取内容所发送的参数；</li>
+<li>POST请求是为了向服务器发送内容（比如表单），会把提交的数据放在HTTP包的request body中。</li>
+<li>GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制.</li>
+<li>GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码.</li>
+</ul>
+<h3 id="3-其它方法补充"><a href="#3-其它方法补充" class="headerlink" title="3. 其它方法补充"></a>3. 其它方法补充</h3><p><img src="https://i.loli.net/2017/10/12/59df321cba2c1.png" alt=""></p>
+<h2 id="五，状态码"><a href="#五，状态码" class="headerlink" title="五，状态码"></a>五，状态码</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h3><ul>
+<li>1** 信息，服务器收到请求，需要请求者继续执行操作</li>
+<li>2** 成功，操作被成功接收并处理</li>
+<li>3** 重定向，需要进一步的操作以完成请求</li>
+<li>4** 客户端错误，请求包含语法错误或无法完成请求</li>
+<li>5** 服务器错误，服务器在处理请求的过程中发生了错</li>
+</ul>
+<h3 id="2-列表"><a href="#2-列表" class="headerlink" title="2. 列表"></a>2. 列表</h3><p><img src="https://i.loli.net/2017/10/11/59de24bb4845e.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/弹幕墙实例练习知识总结.html" rel="next" title="弹幕墙实例练习知识总结">
+                <i class="fa fa-chevron-left"></i> 弹幕墙实例练习知识总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/js原生DOM操作总结.html" rel="prev" title="js原生DOM操作总结">
+                js原生DOM操作总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，基础知识"><span class="nav-number">1.</span> <span class="nav-text">一，基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-特点"><span class="nav-number">1.2.</span> <span class="nav-text">2. 特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，相关知识点"><span class="nav-number">2.</span> <span class="nav-text">二，相关知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-显示网页过程"><span class="nav-number">2.1.</span> <span class="nav-text">1. 显示网页过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Tcp三次握手"><span class="nav-number">2.2.</span> <span class="nav-text">2. Tcp三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Tcp四次挥手"><span class="nav-number">2.3.</span> <span class="nav-text">3. Tcp四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，消息结构"><span class="nav-number">3.</span> <span class="nav-text">三，消息结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-request消息的结构"><span class="nav-number">3.1.</span> <span class="nav-text">1. request消息的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-response消息的结构"><span class="nav-number">3.2.</span> <span class="nav-text">2. response消息的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-请求头内容"><span class="nav-number">3.3.</span> <span class="nav-text">3. 请求头内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-响应头内容"><span class="nav-number">3.4.</span> <span class="nav-text">4. 响应头内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，请求方法"><span class="nav-number">4.</span> <span class="nav-text">四，请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-方法介绍"><span class="nav-number">4.1.</span> <span class="nav-text">1. 方法介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Get和Post方法的区别"><span class="nav-number">4.2.</span> <span class="nav-text">2. Get和Post方法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-其它方法补充"><span class="nav-number">4.3.</span> <span class="nav-text">3. 其它方法补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，状态码"><span class="nav-number">5.</span> <span class="nav-text">五，状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-分类"><span class="nav-number">5.1.</span> <span class="nav-text">1. 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-列表"><span class="nav-number">5.2.</span> <span class="nav-text">2. 列表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

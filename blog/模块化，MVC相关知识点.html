@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了模块化的相关知识和主流的模块化思想，以及MVC等模式的介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块化，MVC相关知识点">
+<meta property="og:url" content="http://yoursite.com/blog/模块化，MVC相关知识点.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了模块化的相关知识和主流的模块化思想，以及MVC等模式的介绍。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.imooc.com/article/6911">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df58c2940a8.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df646b5f8ad.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df76909d2ec.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df76926bffc.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/12/59df76911714b.png">
+<meta property="og:updated_time" content="2017-10-13T10:16:21.578Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模块化，MVC相关知识点">
+<meta name="twitter:description" content="摘要：总结了模块化的相关知识和主流的模块化思想，以及MVC等模式的介绍。">
+<meta name="twitter:image" content="http://www.imooc.com/article/6911">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/模块化，MVC相关知识点.html"/>
+
+
+
+
+
+  <title>模块化，MVC相关知识点 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/模块化，MVC相关知识点.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">模块化，MVC相关知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T18:06:50+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了模块化的相关知识和主流的模块化思想，以及MVC等模式的介绍。</blockquote><br> <a id="more"></a></p>
+<h2 id="一，模块化"><a href="#一，模块化" class="headerlink" title="一，模块化"></a>一，模块化</h2><h3 id="1-概念简介"><a href="#1-概念简介" class="headerlink" title="1. 概念简介"></a>1. 概念简介</h3><ul>
+<li>嵌入网页的Javascript代码越来越庞大，越来越复杂，JavaScript不能handle如此大规模的代码，我们可以借鉴一下其它语言是怎么处理大规模程序设计的，在Java中有一个重要带概念——package，逻辑上相关的代码组织到同一个包内，包内是一个相对独立的王国，不用担心命名冲突什么的，那么外部如果使用呢？直接import对应的package即可。</li>
+<li>开发者需要模拟出类似的功能，来隔离、组织复杂的JavaScript代码，我们称为模块化。</li>
+<li>一个模块就是实现特定功能的文件。</li>
+<li>理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。</li>
+</ul>
+<p><a href="http://www.qdfuns.com/notes/20963/fc5ee24d4c0cff32334846bdd0c74c42.html" target="_blank" rel="external">来源</a></p>
+<h3 id="2-早期的模块化方法"><a href="#2-早期的模块化方法" class="headerlink" title="2. 早期的模块化方法"></a>2. 早期的模块化方法</h3><ol>
+<li><p><strong>函数封装：</strong></p>
+<ul>
+<li>JavaScript的作用域就是基于函数的，所以把函数作为模块化的第一步是很自然的事情，在一个文件里面编写几个相关函数就是最开始的模块了。</li>
+<li>“污染”了全局变量，无法保证不与其他模块发生变量名冲突，而且模块成员之间看不出直接关系。</li>
+</ul>
+</li>
+<li><p><strong>对象写法：</strong></p>
+<ul>
+<li>为了解决上面的缺点，可以把模块写成一个对象，所有的模块成员都放到这个对象里面。</li>
+<li>这样的写法会暴露所有模块成员，内部状态可以被外部改写。</li>
+</ul>
+</li>
+<li><strong>自执行函数：</strong><ul>
+<li>function内部的变量就对全局隐藏了，达到是封装的目的。</li>
+<li>这样还是有缺陷的，modA这个变量还是暴漏到全局了，随着模块的增多，全局变量还是会越来越多。</li>
+<li>上述做法就是我们模块化的基础，目前，通行的JavaScript模块规范主要有：CommonJS，CMD和AMD。</li>
+</ul>
+</li>
+</ol>
+<p><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="external">来源</a></p>
+<h3 id="3-主流的模块化规范"><a href="#3-主流的模块化规范" class="headerlink" title="3. 主流的模块化规范"></a>3. 主流的模块化规范</h3><ol>
+<li><p><strong>CommonJS：</strong></p>
+<ul>
+<li>第一个流行的模块化规范却由服务器端的JavaScript应用带来，CommonJS规范是由NodeJS发扬光大，这标志着JavaScript模块化编程正式登上舞台。</li>
+<li>根据CommonJS规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为global对象的属性。</li>
+<li>模块只有一个出口，module.exports对象，我们需要把模块希望输出的内容放入该对象。</li>
+<li>加载模块使用require方法，该方法读取一个文件并执行，返回文件内部的module.exports对象。</li>
+<li><p>浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous），传统CommonJS模块在浏览器环境中无法正常加载。</p>
+<p><img src="http://www.imooc.com/article/6911" alt=""></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="external">来源</a></p>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p><strong>AMD/RequireJs：</strong></p>
+<ul>
+<li>AMD是”Asynchronous Module Definition”的缩写，意思就是”异步模块定义”。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。</li>
+<li>所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</li>
+<li>它是一个在浏览器端模块化开发的规范，由于不是JavaScript原生支持，使用AMD规范进行页面开发需要用到对应的库函数，也就是大名鼎鼎RequireJS，实际上AMD 是 RequireJS 在推广过程中对模块定义的规范化的产出。</li>
+<li>requireJS主要解决两个问题：<ol>
+<li>多个js文件可能有依赖关系，被依赖的文件需要早于依赖它的文件加载到浏览器；</li>
+<li>js加载的时候浏览器会停止页面渲染，加载文件越多，页面失去响应时间越长。</li>
+</ol>
+</li>
+<li><p>缺陷</p>
+<ol>
+<li>下载的文件会预先执行。</li>
+<li>在定义模块的时候，要把所有依赖模块都罗列一遍，而且还要在factory中作为形参传进去，要写两遍很大一串模块名称。</li>
+</ol>
+<p><img src="https://i.loli.net/2017/10/12/59df58c2940a8.png" alt=""></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="external">详读文章</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>CMD/seajs:</strong></p>
+<ul>
+<li>seajs全面拥抱Modules/Wrappings规范，不用requirejs那样回调的方式来编写模块。</li>
+<li>而它也不是完全按照Modules/Wrappings规范，seajs并没有使用declare来定义模块，而是使用和requirejs一样的define.</li>
+<li><p>Sea.js 推崇一个模块一个文件，遵循统一的写法.</p>
+<p><img src="https://i.loli.net/2017/10/12/59df646b5f8ad.png" alt=""></p>
+<p><a href="http://web.jobbole.com/83761/" target="_blank" rel="external">来源</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>AMD与CMD区别:</strong></p>
+<ol>
+<li>最明显的区别就是在模块定义时对依赖的处理不同:<ul>
+<li>AMD推崇依赖前置，在定义模块的时候就要声明其依赖的模块.</li>
+<li>CMD推崇就近依赖，只有在用到某个模块的时候再去require.</li>
+<li>这种区别各有优劣，只是语法上的差距，而且requireJS和SeaJS都支持对方的写法。</li>
+</ul>
+</li>
+<li>最大的区别是对依赖模块的执行时机处理不同，注意不是加载的时机或者方式不同。<ul>
+<li>加载模块都是异步的，只不过AMD依赖前置，js可以方便知道依赖模块是谁，立即加载，而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块</li>
+<li>AMD在加载模块完成后就会执行改模块，所有模块都加载执行完后会进入require的回调函数，执行主逻辑，这样的效果就是依赖模块的执行顺序和书写顺序不一定一致，看网络速度，哪个先下载下来，哪个先执行，但是主逻辑一定在所有依赖加载完成后才执行。</li>
+<li>CMD加载完某个依赖模块后并不执行，只是下载而已，在所有依赖模块加载完成后进入主逻辑，遇到require语句的时候才执行对应的模块，这样模块的执行顺序和书写顺序是完全一致的。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="二，MVC相关"><a href="#二，MVC相关" class="headerlink" title="二，MVC相关"></a>二，MVC相关</h2><h3 id="1-MVC"><a href="#1-MVC" class="headerlink" title="1. MVC"></a>1. MVC</h3><ul>
+<li>MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写，一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。</li>
+<li>Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。通常模型对象负责在数据库中存取数据。</li>
+<li>View（视图）是应用程序中处理数据显示的部分。通常视图是依据模型数据创建的。</li>
+<li>Controller（控制器）是应用程序中处理用户交互的部分。通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。</li>
+<li>各部分之间的通信方式：<ol>
+<li>View 传送指令到 Controller.</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态.</li>
+<li>Model 将新的数据发送到 View，用户得到反馈.</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/12/59df76909d2ec.png" alt=""></p>
+<h3 id="2-MVP"><a href="#2-MVP" class="headerlink" title="2. MVP"></a>2. MVP</h3><ul>
+<li>MVP 模式将 Controller 改名为 Presenter，同时改变了通信方向。</li>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/12/59df76926bffc.png" alt=""><br><a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html" target="_blank" rel="external">来源</a></p>
+<h3 id="3-MVVM"><a href="#3-MVVM" class="headerlink" title="3. MVVM"></a>3. MVVM</h3><ul>
+<li>将“数据模型数据双向绑定”的思想作为核心.</li>
+<li>Model表示网页动态显示需要的数据，mvvm的设计思想主要实现页面和数据模型的同步.</li>
+<li>当view改变的时候会自动将数据同步到model,model改变的时候也会自动将数据同步到view,更新view的动态显示，Model可以简单理解为与网页关联的本地数据引擎。</li>
+</ul>
+<p><img src="https://i.loli.net/2017/10/12/59df76911714b.png" alt=""></p>
+<h3 id="4-为何选择MVVM而非MVC"><a href="#4-为何选择MVVM而非MVC" class="headerlink" title="4. 为何选择MVVM而非MVC"></a>4. 为何选择MVVM而非MVC</h3><ul>
+<li>MVC原始报告中指出：view永远不会知道用户输入，比如鼠标操作和按键。在Web前端，你无法做到这一点，因为Web的程序中，用户的输入必须通过监听窗口、文档和元素上的事件来获得。</li>
+<li>Model/View/ViewModel中的View表示可见元素，按钮，窗体，图形或者GUI中更复杂的控件，它会对快捷键进行编码，并且控件自身会管理跟输入设备的交互——这在MVC中本该是Controller负责的。</li>
+</ul>
+<p><a href="http://www.cnblogs.com/emeraldjfc/p/5527662.html" target="_blank" rel="external">来源</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/网络连接相关知识点.html" rel="next" title="网络连接相关知识点">
+                <i class="fa fa-chevron-left"></i> 网络连接相关知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/H5，CSS3新特性总结.html" rel="prev" title="H5，CSS3新特性总结">
+                H5，CSS3新特性总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，模块化"><span class="nav-number">1.</span> <span class="nav-text">一，模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. 概念简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-早期的模块化方法"><span class="nav-number">1.2.</span> <span class="nav-text">2. 早期的模块化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主流的模块化规范"><span class="nav-number">1.3.</span> <span class="nav-text">3. 主流的模块化规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，MVC相关"><span class="nav-number">2.</span> <span class="nav-text">二，MVC相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MVC"><span class="nav-number">2.1.</span> <span class="nav-text">1. MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MVP"><span class="nav-number">2.2.</span> <span class="nav-text">2. MVP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-MVVM"><span class="nav-number">2.3.</span> <span class="nav-text">3. MVVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-为何选择MVVM而非MVC"><span class="nav-number">2.4.</span> <span class="nav-text">4. 为何选择MVVM而非MVC</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

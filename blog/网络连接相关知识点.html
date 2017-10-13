@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了前端数据储存方法，跨域相关知识点及解决方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络连接相关知识点">
+<meta property="og:url" content="http://yoursite.com/blog/网络连接相关知识点.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了前端数据储存方法，跨域相关知识点及解决方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-13T10:13:58.882Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络连接相关知识点">
+<meta name="twitter:description" content="摘要：总结了前端数据储存方法，跨域相关知识点及解决方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/网络连接相关知识点.html"/>
+
+
+
+
+
+  <title>网络连接相关知识点 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/网络连接相关知识点.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络连接相关知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T18:06:29+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了前端数据储存方法，跨域相关知识点及解决方法。</blockquote><br> <a id="more"></a></p>
+<h2 id="一，数据储存"><a href="#一，数据储存" class="headerlink" title="一，数据储存"></a>一，数据储存</h2><h3 id="1-传统储存方法简介"><a href="#1-传统储存方法简介" class="headerlink" title="1. 传统储存方法简介"></a>1. 传统储存方法简介</h3><ol>
+<li><strong>cookie：</strong>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，无形中增加了网络流量。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。另外，cookie能存储的数据容量有限，根据浏览器类型不同而不同，cookie数据不能超过4k，IE6大约只能存储2K。</li>
+<li><strong>Flash ShareObject：</strong>这种方式能能解决上面提到的cookie存储的两个弊端，而且能够跨浏览器，应该说是目前最好的本地存储方案。不过，需要在页面中插入一个Flash，当浏览器没有安装Flash控件时就不能用了。所幸的是，没有安装Flash的用户极少。</li>
+<li><strong>UserData：</strong>userData是IE浏览器专属，它的容量可以达到640K，这种方案可靠，不需要安装额外插件，只不过它仅在IE下有效。</li>
+<li><strong>google gear：</strong>是谷歌开发出的一种本地存储技术，需要安装Gear组件。</li>
+<li><strong>globalStorage：</strong>适用于Firefox 2+的浏览器，类似于IE的userData。</li>
+</ol>
+<h3 id="2-HTML5的新储存方法"><a href="#2-HTML5的新储存方法" class="headerlink" title="2. HTML5的新储存方法"></a>2. HTML5的新储存方法</h3><p>sessionStorage 和 localStorage 是HTML5 Web Storage API 提供的，可以方便的在web请求之间保存数据。有了本地数据，就可以避免数据在浏览器和服务器间不必要地来回传递。</p>
+<ol>
+<li><strong>sessionStorage：</strong>sessionStorage的概念很特别，引入了一个“浏览器窗口”的概念。sessionStorage是在同源的同窗口（或tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁。同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的。</li>
+<li><strong>localStorage：</strong>用来作为本地存储来使用的，解决了cookie存储空间不足的问题，localStorage中一般浏览器支持的是5M大小，这个在不同的浏览器中localStorage会有所不同。以键值对(Key-Value)的方式存储数据，永久存储，永不失效，除非手动删除。</li>
+</ol>
+<p><strong>二者区别：</strong> sessionStorage与localStorage的唯一一点区别就是localStorage属于永久性存储，而sessionStorage属于当会话结束的时候，sessionStorage中的键值对就会被清空。</p>
+<h3 id="3-Web-Storage优点"><a href="#3-Web-Storage优点" class="headerlink" title="3. Web Storage优点"></a>3. Web Storage优点</h3><ol>
+<li>减少网络流量：一旦数据保存在本地后，就可以避免再向服务器请求数据，因此减少不必要的数据请求，减少数据在浏览器和服务器间不必要地来回传递。</li>
+<li>快速显示数据：性能好，从本地读数据比通过网络从服务器获得数据快得多，本地数据可以即时获得。再加上网页本身也可以有缓存，因此整个页面和数据都在本地的话，可以立即显示。</li>
+<li>临时存储：很多时候数据只需要在用户浏览一组页面期间使用，关闭窗口后数据就可以丢弃了，这种情况使用sessionStorage非常方便。</li>
+<li>拓展了cookie的4K限制。</li>
+<li>localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。</li>
+</ol>
+<h3 id="4-Web-Storage一些缺点"><a href="#4-Web-Storage一些缺点" class="headerlink" title="4.  Web Storage一些缺点"></a>4.  Web Storage一些缺点</h3><ol>
+<li>浏览器的大小不统一，并且在IE8以上的IE版本才支持localStorage这个属性；</li>
+<li>目前所有的浏览器中都会把localStorage的值类型限定为string类型，这个在对我们日常比较常见的JSON对象类型需要一些转换；</li>
+<li>localStorage在浏览器的隐私模式下面是不可读取的；</li>
+<li>localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡；</li>
+<li>localStorage不能被爬虫抓取到；</li>
+<li>sessionStorage同上。</li>
+</ol>
+<h3 id="5-sessionStorage-、localStorage-和-cookie-之间的区别"><a href="#5-sessionStorage-、localStorage-和-cookie-之间的区别" class="headerlink" title="5. sessionStorage 、localStorage 和 cookie 之间的区别"></a>5. sessionStorage 、localStorage 和 cookie 之间的区别</h3><p><strong>共同点：</strong>共同点：都是保存在浏览器端，且同源的。</p>
+<p><strong>区别：</strong></p>
+<ol>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递；而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存；</li>
+<li>cookie数据有路径（path）的概念，可以限制cookie只属于某个路径下；</li>
+<li>存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识；sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大；</li>
+<li>数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭；</li>
+<li>作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的；</li>
+<li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者；Web Storage 的 api 接口使用更方便。</li>
+</ol>
+<p><a href="http://blog.csdn.net/summer_15/article/details/72579533" target="_blank" rel="external">来源</a>  </p>
+<h2 id="二，跨域"><a href="#二，跨域" class="headerlink" title="二，跨域"></a>二，跨域</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><ul>
+<li>受浏览器同源策略的限制，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。本域的js不能操作其他域的页面对象（比如DOM）。</li>
+<li>一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。</li>
+<li>所谓的域跟js的存放服务器没有关系，比如baidu.com的页面加载了google.com的js，那么此js的所在域是baidu.com而不是google.com。也就是说，此时该js能操作baidu.com的页面对象，而不能操作google.com的页面对象。</li>
+<li>跨域请求并非是浏览器限制了发起跨站请求，而是请求可以正常发起，到达服务器端，但是服务器返回的结果会被浏览器拦截。</li>
+</ul>
+<p><a href="http://web.jobbole.com/87885/" target="_blank" rel="external">来源</a></p>
+<h3 id="2-实现跨域调用方法"><a href="#2-实现跨域调用方法" class="headerlink" title="2. 实现跨域调用方法"></a>2. 实现跨域调用方法</h3><ol>
+<li><p><strong>JSONP：</strong></p>
+<ul>
+<li>根据 XmlHttpRequest 对象受到同源策略的影响，而 <code>&lt;script&gt;</code>标签元素却不受同源策略影响，可以加载跨域服务器上的脚本，网页可以从其他来源动态产生 JSON 资料。</li>
+<li>用 JSONP 获取的不是 JSON 数据，而是返回的值一段要立即执行的 JavaScript 代码，所以不会像 ajax 的 XmlHttpRequest 那样可以监听不同事件对数据进行不同处理。</li>
+<li>只能使用 GET 方法发起请求，这是由于 script 标签自身的限制决定的。</li>
+<li>不能很好的发现错误，并进行处理。与 Ajax 对比，由于不是通过 XmlHttpRequest 进行传输，所以不能注册 success、 error 等事件监听函数。</li>
+<li>JSONP易于实现，但是也会存在一些安全隐患，如果第三方的脚本随意地执行，那么它就可以篡改页面内容，截获敏感数据。但是在受信任的双方传递数据，JSONP是非常合适的选择。可以看出来JSONP跨域一般用于获取其他域的数据。</li>
+</ul>
+</li>
+<li><p><strong>window.name:</strong></p>
+<ul>
+<li>window对象有个name属性，该属性有个特征：即在一个窗口 (window) 的生命周期内，窗口载入的所有的页面都是共享一个 window.name 的，每个页面对 window.name 都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。</li>
+<li>我们可以在页面 A中用iframe加载其他域的页面B，而页面B中用JavaScript把需要传递的数据赋值给window.name，iframe加载完成之后（iframe.onload），页面A修改iframe的地址，将其变成同域的一个地址，然后就可以读出iframe的window.name的值了（因为A中的window.name和iframe中的window.name互相独立的，所以不能直接在A中获取window.name，而要通过iframe获取其window.name）。这个方式非常适合单向的数据请求，而且协议简单、安全。不会像JSONP那样不做限制地执行外部脚本。</li>
+<li><p>总的来说，iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。</p>
+<p><a href="http://blog.csdn.net/kongjiea/article/details/44201021" target="_blank" rel="external">来源</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>document.domain：</strong></p>
+<ul>
+<li>对于主域相同而子域不同的例子，可以通过设置document.domain的办法来解决。</li>
+<li>baidu.com和 youxi.baidu.com是不同的域，这时，我们无法在baidu.com下的页面中调用youxi.baidu.com中定义的JavaScript方法。但是当我们把它们document的domain属性都修改为baidu.com，浏览器就会认为它们处于同一个域下，那么我们就可以互相获取对方数据或者操作对方DOM了。</li>
+</ul>
+</li>
+<li><p><strong>window.postMessage：</strong></p>
+<ul>
+<li>html5最常用的API之一，实现两个不同域窗口对象之间的数据通信。</li>
+<li>需要注意的是我们必须要保证所有的脚本执行完才发送 MessageEvent，如果在函数执行的过程中调用了他，就会让后面的函数超时无法执行。</li>
+</ul>
+</li>
+<li><p><strong>CORS:</strong></p>
+<ul>
+<li>基本思想是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应的成功或失败。</li>
+<li>在服务器中对返回信息的请求头进行了设置,给请求附加一个额外的Origin头部，其中包含请求页面的源信息（协议、域名和端口），以便服务器根据这个头部决定是否给予响应。</li>
+<li>CORS 除了 GET 方法外，也支持其它的 HTTP 请求方法如 POST、 PUT 等。</li>
+<li>CORS 可以使用 XmlHttpRequest 进行传输，所以它的错误处理方式比 JSONP 好。</li>
+<li>JSONP 可以在不支持 CORS 的老旧浏览器上运作。<br><a href="https://www.nowcoder.com/profile/6582891/myFollowings/detail/3997809" target="_blank" rel="external">来源</a></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/js原生DOM操作总结.html" rel="next" title="js原生DOM操作总结">
+                <i class="fa fa-chevron-left"></i> js原生DOM操作总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/模块化，MVC相关知识点.html" rel="prev" title="模块化，MVC相关知识点">
+                模块化，MVC相关知识点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，数据储存"><span class="nav-number">1.</span> <span class="nav-text">一，数据储存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-传统储存方法简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. 传统储存方法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-HTML5的新储存方法"><span class="nav-number">1.2.</span> <span class="nav-text">2. HTML5的新储存方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Web-Storage优点"><span class="nav-number">1.3.</span> <span class="nav-text">3. Web Storage优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Web-Storage一些缺点"><span class="nav-number">1.4.</span> <span class="nav-text">4.  Web Storage一些缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-sessionStorage-、localStorage-和-cookie-之间的区别"><span class="nav-number">1.5.</span> <span class="nav-text">5. sessionStorage 、localStorage 和 cookie 之间的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，跨域"><span class="nav-number">2.</span> <span class="nav-text">二，跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-实现跨域调用方法"><span class="nav-number">2.2.</span> <span class="nav-text">2. 实现跨域调用方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
