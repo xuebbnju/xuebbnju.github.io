@@ -94,17 +94,16 @@
 
 
 
-<meta name="description" content="摘要：总结了同宽不同高的图片瀑布流布局和下拉页面不断加载图片的实现原理。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="瀑布流实例练习总结">
-<meta property="og:url" content="http://yoursite.com/blog/瀑布流实例练习总结.html">
+<meta name="description" content="个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xuebb的个人博客">
+<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
 <meta property="og:site_name" content="xuebb的个人博客">
-<meta property="og:description" content="摘要：总结了同宽不同高的图片瀑布流布局和下拉页面不断加载图片的实现原理。">
+<meta property="og:description" content="个人博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-20T14:48:53.811Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="瀑布流实例练习总结">
-<meta name="twitter:description" content="摘要：总结了同宽不同高的图片瀑布流布局和下拉页面不断加载图片的实现原理。">
+<meta name="twitter:title" content="xuebb的个人博客">
+<meta name="twitter:description" content="个人博客">
 
 
 
@@ -133,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/瀑布流实例练习总结.html"/>
+  <link rel="canonical" href="http://yoursite.com/archives/page/4/"/>
 
 
 
 
 
-  <title>瀑布流实例练习总结 | xuebb的个人博客</title>
+  <title>归档 | xuebb的个人博客</title>
   
 
 
@@ -158,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,169 +251,77 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+         
+        
+        OK! 目前共计 31 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/瀑布流实例练习总结.html">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuebb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/头像.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xuebb的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">瀑布流实例练习总结</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/blog/HTML基础知识复习总结.html" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">HTML基础知识复习总结</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T20:53:37+08:00">
-                2017-08-20
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-08-20T20:39:23+08:00"
+              content="2017-08-20" >
+          08-20
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><blockquote class="blockquote-center">摘要：总结了同宽不同高的图片瀑布流布局和下拉页面不断加载图片的实现原理。</blockquote><br> <a id="more"></a></p>
-<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
-<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
-</blockquote>
-<h2 id="一，样式设置"><a href="#一，样式设置" class="headerlink" title="一，样式设置"></a>一，样式设置</h2><ol>
-<li>所有装照片的<code>div</code>宽度一致，高度<code>auto</code>。</li>
-<li>所有装照片的<code>div</code>会设置为<code>absolute</code>,所以父元素需要<code>relative</code>。</li>
-<li>计算出可以放置的列数，然后设置最外层盒子的宽度。</li>
-</ol>
-<h2 id="二，实现思路"><a href="#二，实现思路" class="headerlink" title="二，实现思路"></a>二，实现思路</h2><ol>
-<li>遍历所有的照片<code>div</code>，对它们进行定位设置。</li>
-<li>建立一个数组，储存第一排元素的<code>outerHeight</code>,作为每一列的高度初始值.</li>
-<li>从第二排的第一个照片<code>div</code>开始，找出现在高度最小的那一列，便通过设置样式将元素放在这一列。</li>
-<li>更新这一列的高度值。</li>
-<li>储存每列高度值的数组需要在循环函数之外定义，否则会成为循环函数的内部变量，每次都会重新定义赋值。</li>
-<li>当滑动到最后一个照片一半的时候，创建一排新的照片<code>div</code>，然后循环以上步骤。</li>
-</ol>
-<h2 id="三，各种高宽值区别"><a href="#三，各种高宽值区别" class="headerlink" title="三，各种高宽值区别"></a>三，各种高宽值区别</h2><ol>
-<li>通过style.width(style.height)或者jQuery的$(divObj).width()/$(divObj).height()获取/设置元素的宽高</li>
-<li>若要获取元素包含边框的宽度，则可通过divObj.offsetWidth/divObj.offsetHeight或jQuery的$(divObj).outerWidth(false)/$(divObj).outerHeight(false)获取</li>
-<li>通过$(divObj).outerWidth(true)/$(divObj).outerHeight(true)获取带外边距的宽度</li>
-<li><p>通过$(divObj).innerWidth()/$(divObj).innerHeight()获取不包含边框、不包含外边距的宽度</p>
-<p>  <a href="http://blog.csdn.net/javaloveiphone/article/details/50855436" target="_blank" rel="external">学习文章</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/blog/导航实例练习总结.html" rel="next" title="导航实例练习总结">
-                <i class="fa fa-chevron-left"></i> 导航实例练习总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/致敬页面和个人主页实例练习总结.html" rel="prev" title="致敬页面和个人主页实例练习总结">
-                致敬页面和个人主页实例练习总结 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+
 
 
           </div>
@@ -422,10 +329,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -446,17 +349,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/头像.jpg"
@@ -500,22 +394,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，样式设置"><span class="nav-number"></span> <span class="nav-text">一，样式设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，实现思路"><span class="nav-number"></span> <span class="nav-text">二，实现思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，各种高宽值区别"><span class="nav-number"></span> <span class="nav-text">三，各种高宽值区别</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -646,9 +524,11 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

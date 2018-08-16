@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结五层因特网协议栈每次的基本概念，以此描述从输入网址到页面展示在网络通信阶段所做的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从输入网址到页面展示之网络通信">
+<meta property="og:url" content="http://yoursite.com/blog/从输入网址到页面展示之网络通信.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结五层因特网协议栈每次的基本概念，以此描述从输入网址到页面展示在网络通信阶段所做的事情。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/882926/201711/882926-20171127181032128-471806615.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20140507121231406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlwaWFua29uZ2JhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20140507121935890?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlwaWFua29uZ2JhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20161013175340580">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66e2dc3a92c.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66e32eb0dd1.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66e2dc36ff8.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66e27be3dd2.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66e9c12e186.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66ede069b49.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66efaa8181c.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b66efaa7fe9a.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b6704483de85.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b6710fb16e73.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/05/5b6710fb0f35c.png">
+<meta property="og:updated_time" content="2018-08-16T14:25:15.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从输入网址到页面展示之网络通信">
+<meta name="twitter:description" content="摘要：总结五层因特网协议栈每次的基本概念，以此描述从输入网址到页面展示在网络通信阶段所做的事情。">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/882926/201711/882926-20171127181032128-471806615.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/从输入网址到页面展示之网络通信.html"/>
+
+
+
+
+
+  <title>从输入网址到页面展示之网络通信 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/从输入网址到页面展示之网络通信.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从输入网址到页面展示之网络通信</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T22:22:30+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结五层因特网协议栈每次的基本概念，以此描述从输入网址到页面展示在网络通信阶段所做的事情。</blockquote><br> <a id="more"></a></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<hr>
+<h4 id="提要："><a href="#提要：" class="headerlink" title="提要："></a>提要：</h4><ul>
+<li>从输入网址到页面展现这个过程可以大致分为网络通信和页面渲染两个步骤。</li>
+<li>网络通信走的五层因特网协议栈（OSI标准是七层模型，但实际实现通常是五层。<a href="https://www.cnblogs.com/iovec/p/7904416.html" target="_blank" rel="external">来源</a><br><img src="https://images2018.cnblogs.com/blog/882926/201711/882926-20171127181032128-471806615.png" alt=""></li>
+</ul>
+<h2 id="一，DNS解析IP"><a href="#一，DNS解析IP" class="headerlink" title="一，DNS解析IP"></a>一，DNS解析IP</h2><p><strong> DNS（Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。</strong></p>
+<h3 id="1-域名"><a href="#1-域名" class="headerlink" title="1. 域名"></a>1. 域名</h3><ul>
+<li>任何一个连接在因特网上的主机或路由器，都有一个唯一的层次结构的名字，即域名(domain name)。</li>
+<li>“域”(domain)是名字空间中一个可被管理的划分。</li>
+<li>mail.cctv.com：标号com是顶级域名，标号cctv是二级（次级）域名，标号mail是三级域名（主机名，用户在自己的域里面为服务器分配的名称，是用户可以任意分配的）。</li>
+<li>级别最低的域名写在最左边，而级别最高的字符写在最右边。</li>
+<li>各级域名由其上一级的域名管理机构管理，而最高的顶级域名则由ICANN进行管理。</li>
+</ul>
+<h3 id="2-DNS服务器"><a href="#2-DNS服务器" class="headerlink" title="2. DNS服务器"></a>2. DNS服务器</h3><ul>
+<li>DNS服务器的管辖范围不是以“域”为单位，而是以“区”为单位。</li>
+<li>在一个区中的所有节点必须是能够连通的。</li>
+<li>每一个区设置相应的权限域名服务器，用来保存该区中的所有主机到域名IP地址的映射。</li>
+<li>区 &lt;= 域。示例如图b。</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20140507121231406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlwaWFua29uZ2JhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<ul>
+<li>根域名服务器：最高层次的域名服务器，也是最重要的域名服务器。所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。不管是哪一个本地域名服务器，若要对因特网上任何一个域名进行解析，只要自己无法解析，就首先求助根域名服务器。</li>
+<li>顶级域名服务器：负责管理在该顶级域名服务器注册的二级域名。</li>
+<li>权限域名服务器：负责一个“区”的域名服务器。</li>
+<li>本地域名服务器：本地服务器不属于下图的域名服务器的层次结构，但是它对域名系统非常重要。当一个主机发出DNS查询请求时，这个查询请求报文就发送给本地域名服务器。</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20140507121935890?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlwaWFua29uZ2JhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h3 id="3-查询过程"><a href="#3-查询过程" class="headerlink" title="3. 查询过程"></a>3. 查询过程</h3><ul>
+<li>DNS服务器根据域名的层级，进行分级查询，从根域名开始，依次查询每一级域名的NS记录（指向该级域名的域名服务器，这些服务器知道下一级域名的各种记录），直到查到最终的IP地址。</li>
+<li>本机一定要知道本地域名服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。</li>
+<li>“根域名服务器”的NS记录和IP地址一般是不会变化的，所以内置在DNS服务器里面。</li>
+<li>详细过程：<ol>
+<li>从”根域名服务器”查到”顶级域名服务器”的NS记录和A记录（IP地址）（向所有根域名服务器发出请求，最先回复的根域名服务器将被缓存，以后只向这台服务器发请求。）</li>
+<li>从”顶级域名服务器”查到”次级域名服务器”的NS记录和A记录（IP地址）</li>
+<li>从”次级域名服务器”查出”主机名”的IP地址</li>
+</ol>
+</li>
+</ul>
+<p><a href="http://www.ruanyifeng.com/blog/2016/06/dns.html" target="_blank" rel="external">来源</a></p>
+<h3 id="4-DNS的记录类型"><a href="#4-DNS的记录类型" class="headerlink" title="4. DNS的记录类型"></a>4. DNS的记录类型</h3><ol>
+<li>A：地址记录（Address），返回域名指向的IP地址。</li>
+<li>NS：域名服务器记录（Name Server），返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</li>
+<li>MX：邮件记录（Mail eXchange），返回接收电子邮件的服务器地址。</li>
+<li>CNAME：规范名称记录（Canonical Name），返回另一个域名，即当前查询的域名是另一个域名的跳转。</li>
+<li>PTR：逆向查询记录（Pointer Record），只用于从IP地址查询域名。</li>
+</ol>
+<p><strong>为了服务的安全可靠，至少应该有两条NS记录，而A记录和MX记录也可以有多条。</strong><br><strong>CNAME记录主要用于域名的内部跳转，为服务器配置提供灵活性，可用于CDN</strong></p>
+<h3 id="5-查询方式"><a href="#5-查询方式" class="headerlink" title="5. 查询方式"></a>5. 查询方式</h3><ul>
+<li>主机向本地域名服务器的查询一般都是采用递归查询。</li>
+<li>所谓递归查询就是：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。</li>
+<li>本地域名服务器向根域名服务器的查询的迭代查询。</li>
+<li>迭代查询的特点：当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地服务器进行后续的查询。</li>
+</ul>
+<h3 id="6-性能优化"><a href="#6-性能优化" class="headerlink" title="6. 性能优化"></a>6. 性能优化</h3><ul>
+<li>为了提高DNS查询效率，并减轻服务器的负荷和减少因特网上的DNS查询报文数量，在域名服务器中广泛使用了高速缓存，用来存放最近查询过的域名以及从何处获得域名映射信息的记录（TTL值：缓存时间）。</li>
+<li>许多主机在启动时从本地服务器下载名字和地址的全部数据库，维护存放自己最近使用的域名的高速缓存，并且只在从缓存中找不到名字时才使用域名服务器。</li>
+<li>DNS Prefetch：浏览网页时，浏览器会在加载网页时对网页中的域名进行解析缓存。<a href="https://blog.csdn.net/u012038147/article/details/78086231" target="_blank" rel="external">来源</a></li>
+<li>建议将组件放到至少两个但不多于4个主机名下，减少DNS查找的同时也允许高度并行下载。</li>
+</ul>
+<h3 id="7-加入CDN的DNS"><a href="#7-加入CDN的DNS" class="headerlink" title="7. 加入CDN的DNS"></a>7. 加入CDN的DNS</h3><p><strong>概念</strong></p>
+<ul>
+<li>CDN（contentdistribute network，内容分发网络）的本质仍然是一个缓存，而且将数据缓存在离用户最近的地方，使用户以最快速度获取数据。</li>
+<li>由于CDN部署在网络运营商的机房，这些运营商又是终端用户的网络服务提供商，因此用户请求路由的第一跳就到达了CDN服务器。</li>
+<li>CDN中存在浏览器请求的资源时，从CDN直接返回给浏览器，最短路径返回响应，加快用户访问速度，减少数据中心负载压力。</li>
+<li>动态页面是不适合做cdn加速的。</li>
+</ul>
+<p><strong>过程</strong></p>
+<ol>
+<li>用户在浏览器中输入要访问的域名。 </li>
+<li>浏览器向DNS服务器请求对域名进行解析。由于CDN对域名解析进行了调整，DNS服务器会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。 </li>
+<li>CDN的DNS服务器将CDN的负载均衡设备IP地址返回给用户。 </li>
+<li>用户向CDN的负载均衡设备发起内容URL访问请求。 </li>
+<li>CDN负载均衡设备会为用户选择一台合适的缓存服务器提供服务。<br>选择的依据包括：根据用户IP地址，判断哪一台服务器距离用户最近；根据用户所请求的URL中携带的内容名称，判断哪一台服务器上有用户所需内容；查询各个服务器的负载情况，判断哪一台服务器的负载较小。<br>基于以上这些依据的综合分析之后，负载均衡设置会把缓存服务器的IP地址返回给用户。 </li>
+<li>用户向缓存服务器发出请求。 </li>
+<li>缓存服务器响应用户请求，将用户所需内容传送到用户。<br>如果这台缓存服务器上并没有用户想要的内容，而负载均衡设备依然将它分配给了用户，那么这台服务器就要向它的上一级缓存服务器请求内容，直至追溯到网站的源服务器将内容拉取到本地。<br><a href="https://blog.csdn.net/lihao21/article/details/52808747" target="_blank" rel="external">来源</a></li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20161013175340580" alt=""></p>
+<h2 id="二，发送HTTP请求"><a href="#二，发送HTTP请求" class="headerlink" title="二，发送HTTP请求"></a>二，发送HTTP请求</h2><h3 id="1-应用层协议"><a href="#1-应用层协议" class="headerlink" title="1. 应用层协议"></a>1. 应用层协议</h3><ul>
+<li>应用层的具体内容就是规定应用进程在通信时所遵循的协议。</li>
+<li>为了解决具体的应用问题而彼此通信的进程就称为应用进程。</li>
+<li>应用层的许多协议都是基于客户服务器方式。</li>
+</ul>
+<h3 id="2-万维网协议"><a href="#2-万维网协议" class="headerlink" title="2. 万维网协议"></a>2. 万维网协议</h3><ul>
+<li>万维网是一个大规模的、联机式的信息储藏所。</li>
+<li>万维网是分布式超媒体(hypermedia)系统，它是超文本(hypertext)系统的扩充。</li>
+<li>使用统一资源定位符 URL (Uniform Resource Locator)来唯一标志万维网上的各种文档。</li>
+<li>在万维网客户程序与万维网服务器程序之间进行交互所使用的协议，是超文本传送协议 HTTP (HyperText Transfer Protocol)。</li>
+</ul>
+<h3 id="3-HTTP协议"><a href="#3-HTTP协议" class="headerlink" title="3. HTTP协议"></a>3. HTTP协议</h3><ul>
+<li>HTTP 是一个应用层协议，它使用 TCP 连接进行可靠的传送。 </li>
+<li>HTTP 是面向事务的客户服务器协议。</li>
+<li>HTTP 协议是无状态的(stateless)，无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。。</li>
+<li>HTTP 协议本身也是无连接的，无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。。</li>
+<li>由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
+<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。<br><a href="https://www.jianshu.com/p/483fd92d9ede" target="_blank" rel="external">来源</a></li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66e2dc3a92c.png" alt=""></p>
+<h3 id="4-HTTP-1-1"><a href="#4-HTTP-1-1" class="headerlink" title="4. HTTP/1.1"></a>4. HTTP/1.1</h3><ul>
+<li>万维网服务器在发送响应后仍然在一段时间内保持这条连接，使同一个客户（浏览器）和该服务器可以继续在这条连接上传送后续的 HTTP 请求报文和响应报文。</li>
+<li>这并不局限于传送同一个页面上链接的文档，而是只要这些文档都在同一个服务器上就行。</li>
+<li>目前一些流行的浏览器（例如，IE 6.0）的默认设置就是使用 HTTP/1.1。</li>
+</ul>
+<h3 id="5-HTTP报文结构"><a href="#5-HTTP报文结构" class="headerlink" title="5. HTTP报文结构"></a>5. HTTP报文结构</h3><ul>
+<li>由于 HTTP 是面向正文的(text-oriented)，此在报文中的每一个字段都是一些 ASCII 码串，因而每个字段的长度都是不确定的。</li>
+<li>http请求由三部分组成，分别是：请求行、消息报头、请求正文。</li>
+<li>请求行以一个方法符号开头，以空格分开，后面跟着请求的URI和协议的版本</li>
+<li>HTTP响应也是由三个部分组成，分别是：状态行、消息报头、响应正文。</li>
+<li>状态行包括三项内容，即 HTTP 的版本，状态码，以及解释状态码的简单短语。 </li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66e32eb0dd1.png" alt=""></p>
+<h3 id="6-状态码分类"><a href="#6-状态码分类" class="headerlink" title="6. 状态码分类"></a>6. 状态码分类</h3><ul>
+<li>1** 信息，服务器收到请求，需要请求者继续执行操作，如请求收到了或正在进行处理。</li>
+<li>2** 成功，操作被成功接收并处理。</li>
+<li>3** 重定向，需要进一步的操作以完成请求。</li>
+<li>4** 客户端错误，请求包含语法错误或无法完成请求。</li>
+<li>5** 服务器错误，服务器在处理请求的过程中发生了错。</li>
+</ul>
+<h3 id="7-状态码列表"><a href="#7-状态码列表" class="headerlink" title="7. 状态码列表"></a>7. 状态码列表</h3><ul>
+<li>100 Continue    继续。客户端应继续其请求。</li>
+<li>101 Switching Protocols 切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议。</li>
+<li>200 OK  请求成功。一般用于GET与POST请求。</li>
+<li>201 Created 已创建。成功请求并创建了新的资源。</li>
+<li>202 Accepted    已接受。已经接受请求，但未处理完成。</li>
+<li>203 Non-Authoritative Information   非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本。</li>
+<li>204 No Content  无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档。</li>
+<li>205 Reset Content   重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域。</li>
+<li>206 Partial Content 部分内容。服务器成功处理了部分GET请求。</li>
+<li>300 Multiple Choices    多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择。</li>
+<li>301 Moved Permanently   永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替。</li>
+<li>302 Found   临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI。</li>
+<li>303 See Other   查看其它地址。与301类似。使用GET和POST请求查看。</li>
+<li>304 Not Modified    未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源。</li>
+<li>305 Use Proxy   使用代理。所请求的资源必须通过代理访问。</li>
+<li>306 Unused  已经被废弃的HTTP状态码。</li>
+<li>307 Temporary Redirect  临时重定向。与302类似。使用GET请求重定向。</li>
+<li>400 Bad Request 客户端请求的语法错误，服务器无法理解。</li>
+<li>401 Unauthorized    请求要求用户的身份认证。</li>
+<li>402 Payment Required    保留，将来使用。</li>
+<li>403 Forbidden   服务器理解请求客户端的请求，但是拒绝执行此请求。</li>
+<li>404 Not Found   服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置”您所请求的资源无法找到”的个性页面。</li>
+<li>405 Method Not Allowed  客户端请求中的方法被禁止。</li>
+<li>406 Not Acceptable  服务器无法根据客户端请求的内容特性完成请求。</li>
+<li>407 Proxy Authentication Required   请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权。</li>
+<li>408 Request Time-out    服务器等待客户端发送的请求时间过长，超时。</li>
+<li>409 Conflict    服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突。</li>
+<li>410 Gone    客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置。</li>
+<li>411 Length Required 服务器无法处理客户端发送的不带Content-Length的请求信息。</li>
+<li>412 Precondition Failed 客户端请求信息的先决条件错误。</li>
+<li>413 Request Entity Too Large    由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息。</li>
+<li>414 Request-URI Too Large   请求的URI过长（URI通常为网址），服务器无法处理。</li>
+<li>415 Unsupported Media Type  服务器无法处理请求附带的媒体格式。</li>
+<li>416 Requested range not satisfiable 客户端请求的范围无效。</li>
+<li>417 Expectation Failed  服务器无法满足Expect的请求头信息。</li>
+<li>500 Internal Server Error   服务器内部错误，无法完成请求。</li>
+<li>501 Not Implemented 服务器不支持请求的功能，无法完成请求。</li>
+<li>502 Bad Gateway 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。</li>
+<li>503 Service Unavailable 由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中。</li>
+<li>504 Gateway Time-out    充当网关或代理的服务器，未及时从远端服务器获取请求。</li>
+<li>505 HTTP Version not supported  服务器不支持请求的HTTP协议的版本，无法完成处理。</li>
+</ul>
+<h2 id="三，TCP传输报文"><a href="#三，TCP传输报文" class="headerlink" title="三，TCP传输报文"></a>三，TCP传输报文</h2><h3 id="1-运输层协议"><a href="#1-运输层协议" class="headerlink" title="1. 运输层协议"></a>1. 运输层协议</h3><ul>
+<li>运输层向它上面的应用层提供通信服务，它属于面向通信部分的最高层，同时也是用户功能中的最低层。</li>
+<li>当网络的边缘部分中的两个主机使用网络的核心部分的功能进行端到端的通信时，只有位于网络边缘部分的主机的协议栈才有运输层，而网络核心部分中的路由器在转发分组时都只用到下三层的功能。</li>
+<li>运输层为应用进程之间提供端到端的逻辑通信。</li>
+<li>运输层还要对收到的报文进行差错检测。</li>
+<li>运输层需要有两种不同的运输协议，即面向连接的 TCP 和无连接的 UDP。    </li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66e2dc36ff8.png" alt=""></p>
+<h3 id="2-运输层与应用层联系"><a href="#2-运输层与应用层联系" class="headerlink" title="2. 运输层与应用层联系"></a>2. 运输层与应用层联系</h3><ul>
+<li>两个主机进行通信实际上就是两个主机中的应用进程互相通信。 </li>
+<li>应用进程之间的通信又称为端到端的通信。 </li>
+<li>运输层的一个很重要的功能就是复用和分用。应用层不同进程的报文通过不同的端口向下交到运输层，再往下就共用网络层提供的服务。</li>
+<li>运输层提供应用进程间的逻辑通信：运输层之间的通信好像是沿水平方向传送数据。但事实上这两个运输层之间并没有一条水平方向的物理连接。</li>
+</ul>
+<h3 id="3-运输层和网络层"><a href="#3-运输层和网络层" class="headerlink" title="3. 运输层和网络层"></a>3. 运输层和网络层</h3><p><img src="https://i.loli.net/2018/08/05/5b66e27be3dd2.png" alt=""></p>
+<h3 id="4-TCP与UDP对比"><a href="#4-TCP与UDP对比" class="headerlink" title="4. TCP与UDP对比"></a>4. TCP与UDP对比</h3><ul>
+<li>当运输层采用面向连接的 TCP 协议时，尽管下面的网络是不可靠的（只提供尽最大努力服务），但这种逻辑通信信道就相当于一条全双工的可靠信道。</li>
+<li>当运输层采用无连接的 UDP 协议时，逻辑通信信道是一条不可靠信道。</li>
+<li>TCP(User Datagram Protocol)传送的数据单位协议是 TCP 报文段。</li>
+<li>UDP(Transmission Control Protocol)传送的数据单位协议是 UDP 报文或用户数据报。 </li>
+<li>UDP 在传送数据之前不需要先建立连接。对方的运输层在收到 UDP 报文后，不需要给出任何确认。</li>
+<li>TCP 则提供面向连接的服务。TCP 不提供广播或多播服务。</li>
+</ul>
+<h3 id="5-端口号"><a href="#5-端口号" class="headerlink" title="5. 端口号"></a>5. 端口号</h3><ul>
+<li>运行在计算机中的进程是用进程标识符来标志的。</li>
+<li>为了使运行不同操作系统的计算机的应用进程能够互相通信，就必须用统一的方法对 TCP/IP 体系的应用进程进行标志。 </li>
+<li>我们往往需要利用目的主机提供的功能来识别终点，而不需要知道实现这个功能的进程。</li>
+<li>解决这个问题的方法就是在运输层使用协议端口号(protocol port number)，或通常简称为端口(port)。</li>
+<li>在协议栈层间的抽象的协议端口是软件端口。</li>
+<li>路由器或交换机上的端口是硬件端口。</li>
+<li>硬件端口是不同硬件设备进行交互的接口，而软件端口是应用层的各种协议进程与运输实体进行层间交互的一种地址。 </li>
+<li>端口号只具有本地意义，即端口号只是为了标志本计算机应用层中的各进程。在因特网中不同计算机的相同端口号是没有联系的。</li>
+</ul>
+<h3 id="6-UDP"><a href="#6-UDP" class="headerlink" title="6. UDP"></a>6. UDP</h3><ul>
+<li>UDP只在 IP 的数据报服务之上增加了很少一点的功能，即端口的功能和差错检测的功能。</li>
+<li>UDP是无连接的，即发送数据之前不需要建立连接。</li>
+<li>UDP使用尽最大努力交付，即不保证可靠交付，同时也不使用拥塞控制。</li>
+<li>UDP是面向报文的。UDP 没有拥塞控制，很适合多媒体通信的要求。 </li>
+<li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li>
+<li>UDP的首部开销小，只有 8 个字节。 </li>
+<li>发送方UDP对应用程序交下来的报文，在添加首部后就向下交付 IP 层。</li>
+<li>UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。</li>
+<li>应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</li>
+<li>接收方UDP对IP 层交上来的UDP用户数据报，在去除首部后就原封不动地交付上层的应用进程，一次交付一个完整的报文。</li>
+<li>应用程序必须选择合适大小的报文。</li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66e9c12e186.png" alt=""></p>
+<h3 id="7-TCP"><a href="#7-TCP" class="headerlink" title="7. TCP"></a>7. TCP</h3><ul>
+<li>TCP 是面向连接的运输层协议。</li>
+<li>每一条 TCP 连接只能有两个端点(endpoint)，每一条 TCP 连接只能是点对点的（一对一）。 </li>
+<li>TCP 提供可靠交付的服务。</li>
+<li>TCP 提供全双工通信。</li>
+<li>面向字节流。  </li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66ede069b49.png" alt=""></p>
+<ul>
+<li>TCP 连接是一条虚连接而不是一条真正的物理连接。</li>
+<li>TCP 对应用进程一次把多长的报文发送到TCP 的缓存中是不关心的。</li>
+<li>TCP 根据对方给出的窗口值和当前网络拥塞的程度来决定一个报文段应包含多少个字节（UDP 发送的报文长度是应用进程给出的）。</li>
+<li>TCP 可把太长的数据块划分短一些再传送。TCP也可等待积累有足够多的字节后再构成报文段发送出去。 </li>
+<li>TCP 把连接作为最基本的抽象。</li>
+<li>每一条 TCP 连接有两个端点。</li>
+<li>TCP 连接的端点不是主机，不是主机的IP 地址，不是应用进程，也不是运输层的协议端口。TCP 连接的端点叫做套接字(socket)或插口。</li>
+<li>端口号拼接到(contatenated with) IP 地址即构成了套接字。   </li>
+</ul>
+<h3 id="8-停止等待协议-自动重传请求ARQ-Automatic-Repeat-reQuest"><a href="#8-停止等待协议-自动重传请求ARQ-Automatic-Repeat-reQuest" class="headerlink" title="8. 停止等待协议/自动重传请求ARQ(Automatic Repeat reQuest)"></a>8. 停止等待协议/自动重传请求ARQ(Automatic Repeat reQuest)</h3><ul>
+<li>使用ARQ可以在不可靠的传输网络上实现可靠的通信。</li>
+<li>停止等待协议的优点是简单，但缺点是信道利用率太低。 </li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b66efaa8181c.png" alt=""><br><img src="https://i.loli.net/2018/08/05/5b66efaa7fe9a.png" alt=""></p>
+<h3 id="9-TCP-报文段的首部格式"><a href="#9-TCP-报文段的首部格式" class="headerlink" title="9. TCP 报文段的首部格式"></a>9. TCP 报文段的首部格式</h3><ul>
+<li>源端口和目的端口字段——各占2字节。端口是运输层与应用层的服务接口。运输层的复用和分用功能都要通过端口才能实现。  </li>
+<li>序号字段——占 4 字节。TCP 连接中传送的数据流中的每一个字节都编上一个序号。序号字段的值则指的是本报文段所发送的数据的第一个字节的序号。 </li>
+<li>确认号字段——占 4 字节，是期望收到对方的下一个报文段的数据的第一个字节的序号。 </li>
+<li>数据偏移（即首部长度）——占 4 位，它指出 TCP 报文段的数据起始处距离 TCP 报文段的起始处有多远。</li>
+<li>紧急URG —— 当 URG=1 时，表明紧急指针字段有效。它告诉系统此报文段中有紧急数据，应尽快传送(相当于高优先级的数据)。 </li>
+<li>确认 ACK —— 只有当 ACK=1 时确认号字段才有效。当ACK=0时，确认号无效。 </li>
+<li>推送 PSH (PuSH) —— 接收TCP收到PSH=1的报文段，就尽快地交付接收应用进程，而不再等到整个缓存都填满了后再向上交付。 </li>
+<li>复位 RST (ReSeT) —— 当 RST  1 时，表明 TCP 连接中出现严重差错（如由于主机崩溃或其他原因），必须释放连接，然后再重新建立运输连接。 </li>
+<li>同步 SYN —— 同步 SYN = 1 表示这是一个连接请求或连接接受报文。 </li>
+<li>终止 FIN (FINis) —— 用来释放一个连接。FIN=1表明此报文段的发送端的数据已发送完毕，并要求释放运输连接。 </li>
+</ul>
+<p><img src="https://i.loli.net/2018/08/05/5b6704483de85.png" alt=""></p>
+<h3 id="10-连续ARQ协议-滑动窗口协议"><a href="#10-连续ARQ协议-滑动窗口协议" class="headerlink" title="10. 连续ARQ协议/滑动窗口协议"></a>10. 连续ARQ协议/滑动窗口协议</h3><p><strong>发送窗口</strong></p>
+<ol>
+<li><p>Sent and Acknowledged：这些数据表示已经发送成功并已经被确认的数据。</p>
+</li>
+<li><p>Send But Not Yet Acknowledged：这部分数据称为发送但没有被确认，数据被发送出去，没有收到接收端的ACK，认为并没有完成发送，这个属于窗口内的数据。</p>
+</li>
+<li><p>Not Sent，Recipient Ready to Receive：这部分是尽快发送的数据，这部分数据已经被加载到缓存中，也就是窗口中了，等待发送，其实这个窗口是完全有接收方告知的，接收方告知还是能够接受这些包，所以发送方需要尽快的发送这些包。</p>
+</li>
+<li><p>Not Sent，Recipient Not Ready to Receive： 这些数据属于未发送，同时接收端也不允许发送的，因为这些数据已经超出了发送端所接收的范围。</p>
+</li>
+</ol>
+<p><strong>接收窗口</strong></p>
+<ol>
+<li>Received and ACK Not Send to Process：这部分数据属于接收了数据但是还没有被上层的应用程序接收，也是被缓存在窗口内。</li>
+<li>Received  Not ACK: 已经接收并，但是还没有回复ACK，这些包可能输属于Delay ACK的范畴了</li>
+<li>Not Received：有空位，还没有被接收的数据。</li>
+</ol>
+<p><a href="https://blog.csdn.net/wdscq1234/article/details/52444277" target="_blank" rel="external">来源</a></p>
+<p><strong>窗口状态</strong></p>
+<ol>
+<li>当窗口左边缘靠近右边缘时称窗口闭合（window closes）。发送方窗口闭合发生在数据已经发送并被确认的情况下。接受方发生在已经确认了数据的正确性，需要向对方发送确认响应ACK，又因为这些数据还没有被应用进程取走。</li>
+<li>当窗口右边缘向右移动时称窗口打开（window opens）。发送方发生在左边缘窗口闭合了，为达到设定的窗口大小而发生。接受方窗口打开发生在另一端的接收进程读取已确认数据的时候，它释放了TCP接收缓冲区的空间。</li>
+<li>当窗口右边缘向左移动时称窗口收缩（window shrinks）。Host Requirement RFC强烈不鼓励这种做法，但TCP必须能够在一端发生这种情况时进行处理。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/freebird92/p/6442155.html" target="_blank" rel="external">来源</a></p>
+<p><strong>累积确认</strong></p>
+<ul>
+<li>即不必对收到的分组逐个发送确认，而是对按序到达的最后一个分组发送确认，这样就表示：到这个分组为止的所有分组都已正确收到了。</li>
+<li>缺点是：不能向发送方反映出接收方已经正确收到的所有分组的信息。</li>
+</ul>
+<p><strong>Go-back-N（回退 N）</strong></p>
+<ul>
+<li>连续发送的几个分组，接受方没有收到第N个，后面的分组会暂时缓存，保留第N个的位置，等待一段时间之后第N个依旧不来，则会抛弃N后面的分组，二发送方因为没有收到N及N后面分组的确认，则会重发N及N后面分组。</li>
+</ul>
+<p><strong>缓存区</strong></p>
+<ul>
+<li>发送缓存用来暂时存放：发送应用程序传送给发送方 TCP 准备发送的数据；TCP 已发送出但尚未收到确认的数据。</li>
+<li>接收缓存用来暂时存放：按序到达的、但尚未被接收应用程序读取的数据；不按序到达的数据。 </li>
+</ul>
+<h3 id="11-拥塞控制和流量控制的差别"><a href="#11-拥塞控制和流量控制的差别" class="headerlink" title="11. 拥塞控制和流量控制的差别"></a>11. 拥塞控制和流量控制的差别</h3><ul>
+<li>所谓拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提，就是网络能承受现有的网络负荷。</li>
+<li>流量控制往往指的是点对点通信量的控制，是个端到端的问题。流量控制所要做的就是控制发送端发送数据的速率，以便使接收端来得及接受。</li>
+</ul>
+<h3 id="12-流量控制"><a href="#12-流量控制" class="headerlink" title="12. 流量控制"></a>12. 流量控制</h3><ul>
+<li>流量控制(flow control)就是让发送方的发送速率不要太快，既要让接收方来得及接收，也不要使网络发生拥塞。</li>
+<li>利用滑动窗口机制可以很方便地在 TCP 连接上实现流量控制。 </li>
+<li>利用可变窗口大小进行流量控制。</li>
+<li>由接收端返回的rwnd控制。</li>
+<li>零窗口时启动持续计时器，到时间就发送一个零窗口探测报文段，打破死锁僵局。</li>
+<li>发送报文时机：<ol>
+<li>只要缓存中存放的数据达到 MSS 字节时，就组装成一个 TCP 报文段发送出去。</li>
+<li>由发送方的应用进程指明要求发送报文段，即 TCP 支持的推送(push)操作。</li>
+<li>发送方的一个计时器期限到了，这时就把当前已有的缓存数据装入报文段（但长度不能超过 MSS）发送出去。</li>
+</ol>
+</li>
+</ul>
+<h3 id="13-拥塞控制"><a href="#13-拥塞控制" class="headerlink" title="13. 拥塞控制"></a>13. 拥塞控制</h3><ul>
+<li>拥塞窗口指某一源端数据流在一个RTT内可以最多发送的数据包数。</li>
+<li>发送端主动控制控制cwnd。</li>
+</ul>
+<p><strong>慢启动原理：</strong></p>
+<ol>
+<li>当主机开始发送数据时，如果立即将较大的发送窗口的全部数据字节都注入到网络中，那么由于不清楚网络的情况，有可能引其网络拥塞。</li>
+<li>比较好的方法是试探一下，即从小到达逐渐增大发送端的拥塞控制窗口数值。</li>
+<li>通常在刚刚开始发送报文段时可先将拥塞窗口cwnd设置为一个最大报文段的MSS的数值。在每收到一个对新报文段确认后，将拥塞窗口增加至多一个MSS的数值，当rwind足够大的时候，为了防止拥塞窗口cwind的增长引起网络拥塞，还需要另外一个变量—慢开始门限ssthresh。</li>
+</ol>
+<p><strong>拥塞控制具体过程为:</strong></p>
+<ol>
+<li>TCP连接初始化，将拥塞窗口设置为1。</li>
+<li>执行慢开始算法，cwind按指数规律增长，知道cwind == ssthress开始执行拥塞避免算法，cwnd按线性规律增长。</li>
+<li>当网络发生拥塞，把ssthresh值更新为拥塞前ssthresh值的一半，cwnd重新设置为1，按照步骤（2）执行。</li>
+<li>无论在慢开始阶段还是在拥塞避免阶段，只要发送方没有收到确认，就认为这时候拥塞了。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/newwy/p/3254029.html" target="_blank" rel="external">来源</a></p>
+<p><strong>快重传的机制是：</strong></p>
+<ol>
+<li>接收方建立这样的机制，如果一个包丢失，则对后续的包继续发送针对该包的重传请求；</li>
+<li>一旦发送方接收到三个一样的确认，就知道该包之后出现了错误，立刻重传该包；</li>
+<li>此时发送方开始执行“快恢复”算法。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/woaiyy/p/3554182.html" target="_blank" rel="external">来源</a></p>
+<p><strong>快恢复：</strong></p>
+<ul>
+<li>把cwnd值设置为门限ssthresh减半后的数值（即cwnd不是设置为1而是设置为12），然后开始执行的是拥塞避免算法，使拥塞窗口缓慢地线性增大。</li>
+<li>由于接收方只有在收到另一个报文段时才会产生重复的ACK，所以还告诉我们该报文段已经进入了接收方的缓存。也就是说，在收发两端之间仍然有流动的数据，而我们不想执行慢启动来突然减少数据流。</li>
+</ul>
+<p><a href="https://blog.csdn.net/seu_calvin/article/details/53198282" target="_blank" rel="external">来源</a></p>
+<h3 id="13-三次握手"><a href="#13-三次握手" class="headerlink" title="13. 三次握手"></a>13. 三次握手</h3><p><img src="https://i.loli.net/2018/08/05/5b6710fb16e73.png" alt=""></p>
+<h3 id="14-四次挥手"><a href="#14-四次挥手" class="headerlink" title="14. 四次挥手"></a>14. 四次挥手</h3><p><img src="https://i.loli.net/2018/08/05/5b6710fb0f35c.png" alt=""></p>
+<h2 id="四，IP寻址"><a href="#四，IP寻址" class="headerlink" title="四，IP寻址"></a>四，IP寻址</h2><ul>
+<li>主要解决逻辑寻址和网络通用数据传输格式两个问题。</li>
+<li>一个网络设备的 IP 地址可以更换，但是 MAC 硬件地址（就像身份证号）一般是固定不变的。</li>
+<li>首先使用 ARP 协议来找到目标主机的 MAC 硬件地址。</li>
+<li>通信的双方不在同一个局域网时，需要多次中转（路由器）才能找到最终的目标，在中转的过程中还需要通过下一个中转站的 MAC 地址来搜索下一个中转目标。</li>
+<li>传输层传来的 TCP 报文会在这一层被 IP 封装成网络通用传输格式——IP数据包，IP 数据包是真正在网络间进行传输的数据基本单元。</li>
+<li>通过逻辑寻址定位到前面应用层 DNS 解析出来的 IP 地址的主机网络位置，然后把数据以 IP 数据包的格式发送到那去。</li>
+</ul>
+<h2 id="五，封装成帧"><a href="#五，封装成帧" class="headerlink" title="五，封装成帧"></a>五，封装成帧</h2><ul>
+<li>数据链路层负责将 IP 数据包封装成适合在物理网络上传输的帧格式并传输。</li>
+<li>设计数据链路层的主要目的就是在原始的、有差错的物理传输线路的基础上，采取差错检测、差错控制与流量控制等方法，将有差错的物理线路改进成逻辑上无差错的数据链路，向网络层提供高质量的服务。</li>
+<li>当采用复用技术时，一条物理链路上可以有多条数据链路。</li>
+</ul>
+<h2 id="六，物理传输"><a href="#六，物理传输" class="headerlink" title="六，物理传输"></a>六，物理传输</h2><ul>
+<li>物理层则是通过各种传输介质（双绞线，电磁波，光纤等）以信号的形式将上面各层封装好的数据物理传送过去。</li>
+<li>至此一个 http 请求漂洋过海终于到达了服务器，接下来就是从物理层到应用层向上传递，将封装的数据一层层剥开，服务器在应用层拿到最原始的请求信息后快速处理完，然后就开始向客户端发送响应信息。这次是以服务器为起点，客户端为终点再走一遍五层协议栈。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/跨域知识总结.html" rel="next" title="跨域知识总结">
+                <i class="fa fa-chevron-left"></i> 跨域知识总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/从输入网址到页面展示之页面渲染.html" rel="prev" title="从输入网址到页面展示之页面渲染">
+                从输入网址到页面展示之页面渲染 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提要："><span class="nav-number">2.</span> <span class="nav-text">提要：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，DNS解析IP"><span class="nav-number"></span> <span class="nav-text">一，DNS解析IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-域名"><span class="nav-number"></span> <span class="nav-text">1. 域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DNS服务器"><span class="nav-number"></span> <span class="nav-text">2. DNS服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查询过程"><span class="nav-number"></span> <span class="nav-text">3. 查询过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-DNS的记录类型"><span class="nav-number"></span> <span class="nav-text">4. DNS的记录类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查询方式"><span class="nav-number"></span> <span class="nav-text">5. 查询方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-性能优化"><span class="nav-number"></span> <span class="nav-text">6. 性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-加入CDN的DNS"><span class="nav-number"></span> <span class="nav-text">7. 加入CDN的DNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，发送HTTP请求"><span class="nav-number"></span> <span class="nav-text">二，发送HTTP请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-应用层协议"><span class="nav-number"></span> <span class="nav-text">1. 应用层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-万维网协议"><span class="nav-number"></span> <span class="nav-text">2. 万维网协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HTTP协议"><span class="nav-number"></span> <span class="nav-text">3. HTTP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-HTTP-1-1"><span class="nav-number"></span> <span class="nav-text">4. HTTP/1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-HTTP报文结构"><span class="nav-number"></span> <span class="nav-text">5. HTTP报文结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-状态码分类"><span class="nav-number"></span> <span class="nav-text">6. 状态码分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-状态码列表"><span class="nav-number"></span> <span class="nav-text">7. 状态码列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，TCP传输报文"><span class="nav-number"></span> <span class="nav-text">三，TCP传输报文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-运输层协议"><span class="nav-number"></span> <span class="nav-text">1. 运输层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-运输层与应用层联系"><span class="nav-number"></span> <span class="nav-text">2. 运输层与应用层联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-运输层和网络层"><span class="nav-number"></span> <span class="nav-text">3. 运输层和网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-TCP与UDP对比"><span class="nav-number"></span> <span class="nav-text">4. TCP与UDP对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-端口号"><span class="nav-number"></span> <span class="nav-text">5. 端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-UDP"><span class="nav-number"></span> <span class="nav-text">6. UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-TCP"><span class="nav-number"></span> <span class="nav-text">7. TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-停止等待协议-自动重传请求ARQ-Automatic-Repeat-reQuest"><span class="nav-number"></span> <span class="nav-text">8. 停止等待协议/自动重传请求ARQ(Automatic Repeat reQuest)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-TCP-报文段的首部格式"><span class="nav-number"></span> <span class="nav-text">9. TCP 报文段的首部格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-连续ARQ协议-滑动窗口协议"><span class="nav-number"></span> <span class="nav-text">10. 连续ARQ协议/滑动窗口协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-拥塞控制和流量控制的差别"><span class="nav-number"></span> <span class="nav-text">11. 拥塞控制和流量控制的差别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-流量控制"><span class="nav-number"></span> <span class="nav-text">12. 流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-拥塞控制"><span class="nav-number"></span> <span class="nav-text">13. 拥塞控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-三次握手"><span class="nav-number"></span> <span class="nav-text">13. 三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-四次挥手"><span class="nav-number"></span> <span class="nav-text">14. 四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，IP寻址"><span class="nav-number"></span> <span class="nav-text">四，IP寻址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，封装成帧"><span class="nav-number"></span> <span class="nav-text">五，封装成帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六，物理传输"><span class="nav-number"></span> <span class="nav-text">六，物理传输</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
