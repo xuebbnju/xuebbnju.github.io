@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="摘要：总结了原型链的几个重要概念以及最终形成的原理。介绍了几种实现继承的方法。">
+<meta name="description" content="摘要：由浏览器多线程和js单线程讲起，描述了eventloop整个机制的具体运行过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js知识复习总结之原型链">
-<meta property="og:url" content="http://yoursite.com/2017/08/20/js知识复习总结之原型链/index.html">
+<meta property="og:title" content="Event Loop">
+<meta property="og:url" content="http://yoursite.com/blog/Event-Loop.html">
 <meta property="og:site_name" content="xuebb的个人博客">
-<meta property="og:description" content="摘要：总结了原型链的几个重要概念以及最终形成的原理。介绍了几种实现继承的方法。">
+<meta property="og:description" content="摘要：由浏览器多线程和js单线程讲起，描述了eventloop整个机制的具体运行过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2017/08/13/59902f82266fd.png">
-<meta property="og:updated_time" content="2017-08-20T13:35:28.732Z">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77d64144377.png">
+<meta property="og:updated_time" content="2018-08-19T14:16:16.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js知识复习总结之原型链">
-<meta name="twitter:description" content="摘要：总结了原型链的几个重要概念以及最终形成的原理。介绍了几种实现继承的方法。">
-<meta name="twitter:image" content="https://i.loli.net/2017/08/13/59902f82266fd.png">
+<meta name="twitter:title" content="Event Loop">
+<meta name="twitter:description" content="摘要：由浏览器多线程和js单线程讲起，描述了eventloop整个机制的具体运行过程。">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/18/5b77d64144377.png">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/20/js知识复习总结之原型链/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/Event-Loop.html"/>
 
 
 
 
 
-  <title>js知识复习总结之原型链 | xuebb的个人博客</title>
+  <title>Event Loop | xuebb的个人博客</title>
   
 
 
@@ -268,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/20/js知识复习总结之原型链/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/Event-Loop.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuebb">
@@ -285,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js知识复习总结之原型链</h1>
+          <h1 class="post-title" itemprop="name headline">Event Loop</h1>
         
 
         <div class="post-meta">
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T20:46:50+08:00">
-                2017-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T18:08:17+08:00">
+                2018-08-19
               </time>
             
 
@@ -335,29 +335,53 @@
       
 
       
-        <p><blockquote class="blockquote-center">摘要：总结了原型链的几个重要概念以及最终形成的原理。介绍了几种实现继承的方法。</blockquote><br> <a id="more"></a></p>
-<h2 id="一，函数和对象的关系"><a href="#一，函数和对象的关系" class="headerlink" title="一，函数和对象的关系"></a>一，函数和对象的关系</h2><ul>
-<li>对象都是通过函数创建的。</li>
-<li>而函数却又是一种对象。</li>
+        <p><blockquote class="blockquote-center">摘要：由浏览器多线程和js单线程讲起，描述了eventloop整个机制的具体运行过程。</blockquote><br> <a id="more"></a></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，浏览器多线程"><a href="#一，浏览器多线程" class="headerlink" title="一，浏览器多线程"></a>一，浏览器多线程</h2><ol>
+<li>js引擎线程(js引擎有多个线程，一个主线程，其它的后台配合主线程)作用：执行js任务(执行js代码，用户输入，网络请求)</li>
+<li>ui渲染线程作用：渲染页面(js可以操作dom，影响渲染，所以js引擎线程和UI线程是互斥的。js执行时会阻塞页面的渲染。)</li>
+<li>浏览器事件触发线程 作用：控制交互，响应用户</li>
+<li>http请求线程作用：ajax请求等</li>
+<li>定时触发器线程作用：setTimeout和setInteval</li>
+<li>事件轮询处理线程作用：轮询消息队列，event loop</li>
+</ol>
+<p>所以异步是浏览器的两个或者两个以上线程共同完成的。比如ajax异步请求和setTimeout</p>
+<p><img src="https://i.loli.net/2018/08/18/5b77d64144377.png" alt=""></p>
+<h2 id="二，js单线程"><a href="#二，js单线程" class="headerlink" title="二，js单线程"></a>二，js单线程</h2><ul>
+<li>js是基于单线程的，而这个线程就是浏览器的js引擎。</li>
+<li>在JavaScript引擎运行脚本期间，浏览器渲染线程都是处于挂起状态的,也就是说被”冻结”了。</li>
+<li>在脚本中执行对界面进行更新操作，如添加结点，删除结点或改变结点的外观等更新并不会立即体现出来,这些操作将保存在一个队列中,待JavaScript引擎空闲时才有机会渲染出来。</li>
 </ul>
-<h2 id="二，prototype原型"><a href="#二，prototype原型" class="headerlink" title="二，prototype原型"></a>二，prototype原型</h2><ul>
-<li>每个函数都有一个属性叫做<code>prototype</code>。</li>
-<li><code>prototype</code>的属性值是一个对象（属性的集合，再次强调！），默认的只有一个叫做<code>constructor</code>的属性，指向这个函数本身。</li>
-<li>每个对象都有一个<strong>proto</strong>，可称为隐式原型，指向创建该对象的函数的prototype。</li>
+<p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">来源</a></p>
+<h2 id="三，基于事件驱动"><a href="#三，基于事件驱动" class="headerlink" title="三，基于事件驱动"></a>三，基于事件驱动</h2><ul>
+<li>浏览器中的JavaScript引擎是基于事件驱动的,这里的事件可看作是浏览器派给它的各种任务。</li>
+<li>这些任务可以源自JavaScript引擎当前执行的代码块，如调用setTimeout添加一个任务；</li>
+<li>也可来自浏览器内核的其它线程，如界面元素鼠标点击事件,定时触发器时间到达通知,异步请求状态变更通知等；</li>
+<li>从代码角度看来任务实体就是各种回调函数，JavaScript引擎一直等待着任务队列中任务的到来。</li>
+<li>由于单线程关系,这些任务得进行排队,一个接着一个被引擎处理。</li>
 </ul>
-<p><strong>以上几条达到的结果是：</strong>Fn是一个函数，fn对象是从Fn函数new出来的，这样fn对象就可以调用<code>Fn.prototype</code>中的属性。</p>
-<h2 id="三，环形结构"><a href="#三，环形结构" class="headerlink" title="三，环形结构"></a>三，环形结构</h2><ul>
-<li>自定义函数的<code>prototype</code>本质上就是和 <code>var obj = {}</code>是一样的，都是被Object创建，所以它的<code>__proto__</code>指向的就是<code>Object.prototype</code>。</li>
-<li><code>Object.prototype</code>确实一个特例——它的<code>__proto__</code>指向的是<code>null</code>。</li>
-<li>函数也是一种对象，函数也有<code>__proto__</code>，Function创建了函数,所以指向<code>Function.prototype</code>。</li>
-<li><code>Function.__proto__</code>指向<code>Function.prototype</code>。</li>
-<li>Function.prototype指向的对象，它的<strong>proto</strong>也指向Object.prototype</li>
+<p><a href="https://www.cnblogs.com/hksac/p/6596105.html" target="_blank" rel="external">来源</a></p>
+<h2 id="四，任务队列"><a href="#四，任务队列" class="headerlink" title="四，任务队列"></a>四，任务队列</h2><ul>
+<li>同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；</li>
+<li>异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</li>
+<li>一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+<li>所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。</li>
+<li>异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</li>
+<li>“任务队列”是一个先进先出的数据结构，排在前面的事件，优先被主线程读取。主线程的读取过程基本上是自动的，只要执行栈一清空，”任务队列”上第一位的事件就自动进入主线程。</li>
+<li>除了放置异步任务的事件，”任务队列”还可以放置定时事件，即指定某些代码在多少时间之后执行。这叫做”定时器”（timer）功能，也就是定时执行的代码。</li>
 </ul>
-<p><img src="https://i.loli.net/2017/08/13/59902f82266fd.png" alt=""></p>
-<h2 id="四，实现继承"><a href="#四，实现继承" class="headerlink" title="四，实现继承"></a>四，实现继承</h2><p><strong>父类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 定义一个动物类</div><div class="line">function Animal (name) &#123;</div><div class="line">  // 属性</div><div class="line">  this.name = name || &apos;Animal&apos;;</div><div class="line">  // 实例方法</div><div class="line">  this.sleep = function()&#123;</div><div class="line">    console.log(this.name + &apos;正在睡觉！&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// 原型方法</div><div class="line">Animal.prototype.eat = function(food) &#123;</div><div class="line">  console.log(this.name + &apos;正在吃：&apos; + food);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1. 原型链继承"></a>1. 原型链继承</h3><p><strong>实现原理:</strong> 将父类的实例作为子类的原型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Cat()&#123;  </div><div class="line">&#125;</div><div class="line">Cat.prototype = new Animal();</div><div class="line">Cat.prototype.name = &apos;cat&apos;;</div><div class="line">//　Test Code</div><div class="line">var cat = new Cat();</div><div class="line">console.log(cat.name);</div><div class="line">console.log(cat.eat(&apos;fish&apos;));</div><div class="line">console.log(cat.sleep());</div><div class="line">console.log(cat instanceof Animal); //true </div><div class="line">console.log(cat instanceof Cat); //true</div></pre></td></tr></table></figure></p>
-<h3 id="2-构造继承"><a href="#2-构造继承" class="headerlink" title="2.构造继承"></a>2.构造继承</h3><p><strong>实现原理:</strong> 使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Cat(name)&#123;</div><div class="line">  Animal.call(this);</div><div class="line">  this.name = name || &apos;Tom&apos;;</div><div class="line">&#125;</div><div class="line">// Test Code</div><div class="line">var cat = new Cat();</div><div class="line">console.log(cat.name);</div><div class="line">console.log(cat.sleep());</div><div class="line">console.log(cat instanceof Animal); // false</div><div class="line">console.log(cat instanceof Cat); // true</div></pre></td></tr></table></figure></p>
-<p>后续更新</p>
+<p><a href="https://blog.csdn.net/github_34514750/article/details/76577663" target="_blank" rel="external">来源</a></p>
+<h2 id="五，主线程执行"><a href="#五，主线程执行" class="headerlink" title="五，主线程执行"></a>五，主线程执行</h2><ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈。 </li>
+<li>主线程之外，还存在一个”任务队列”。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</li>
+<li>一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。 </li>
+<li>主线程不断重复上面的第三步。</li>
+</ol>
+<ul>
+<li>主线程从”任务队列”中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）。</li>
+</ul>
 
       
     </div>
@@ -382,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/20/js知识复习总结之ajax-json-正则表达式/" rel="next" title="js知识复习总结之ajax,json,正则表达式">
-                <i class="fa fa-chevron-left"></i> js知识复习总结之ajax,json,正则表达式
+              <a href="/blog/web安全.html" rel="next" title="web安全">
+                <i class="fa fa-chevron-left"></i> web安全
               </a>
             
           </div>
@@ -392,8 +416,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/20/js知识复习总结之执行上下文，this，闭包/" rel="prev" title="js知识复习总结之执行上下文，this，闭包">
-                js知识复习总结之执行上下文，this，闭包 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/居中-多栏布局-flex总结.html" rel="prev" title="居中+多栏布局+flex总结">
+                居中+多栏布局+flex总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -471,7 +495,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -510,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，函数和对象的关系"><span class="nav-number">1.</span> <span class="nav-text">一，函数和对象的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，prototype原型"><span class="nav-number">2.</span> <span class="nav-text">二，prototype原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，环形结构"><span class="nav-number">3.</span> <span class="nav-text">三，环形结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，实现继承"><span class="nav-number">4.</span> <span class="nav-text">四，实现继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原型链继承"><span class="nav-number">4.1.</span> <span class="nav-text">1. 原型链继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-构造继承"><span class="nav-number">4.2.</span> <span class="nav-text">2.构造继承</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，浏览器多线程"><span class="nav-number"></span> <span class="nav-text">一，浏览器多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，js单线程"><span class="nav-number"></span> <span class="nav-text">二，js单线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，基于事件驱动"><span class="nav-number"></span> <span class="nav-text">三，基于事件驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，任务队列"><span class="nav-number"></span> <span class="nav-text">四，任务队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，主线程执行"><span class="nav-number"></span> <span class="nav-text">五，主线程执行</span></a></div>
             
 
           </div>
@@ -533,7 +557,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

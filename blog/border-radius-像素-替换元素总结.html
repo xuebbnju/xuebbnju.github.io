@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要：总结了border-radius的设置原理，几种像素以及几种字体单位的概念，最后描述了替换元素的特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="border-radius+像素+替换元素总结">
+<meta property="og:url" content="http://yoursite.com/blog/border-radius-像素-替换元素总结.html">
+<meta property="og:site_name" content="xuebb的个人博客">
+<meta property="og:description" content="摘要：总结了border-radius的设置原理，几种像素以及几种字体单位的概念，最后描述了替换元素的特性。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://camo.githubusercontent.com/ab5ed1c0a848d65856d748771eab199965e7a6d9/68747470733a2f2f7773312e73696e61696d672e636e2f6c617267652f303036744e6337396779316667396c6162703165626a3330737130616a616d6d2e6a7067">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b7661347d42f.jpg">
+<meta property="og:updated_time" content="2018-08-19T13:55:33.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="border-radius+像素+替换元素总结">
+<meta name="twitter:description" content="摘要：总结了border-radius的设置原理，几种像素以及几种字体单位的概念，最后描述了替换元素的特性。">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/ab5ed1c0a848d65856d748771eab199965e7a6d9/68747470733a2f2f7773312e73696e61696d672e636e2f6c617267652f303036744e6337396779316667396c6162703165626a3330737130616a616d6d2e6a7067">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/border-radius-像素-替换元素总结.html"/>
+
+
+
+
+
+  <title>border-radius+像素+替换元素总结 | xuebb的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xuebb的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己前端的学习之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/border-radius-像素-替换元素总结.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuebb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xuebb的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">border-radius+像素+替换元素总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T21:21:53+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><blockquote class="blockquote-center">摘要：总结了border-radius的设置原理，几种像素以及几种字体单位的概念，最后描述了替换元素的特性。</blockquote><br> <a id="more"></a></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，border-radius"><a href="#一，border-radius" class="headerlink" title="一，border-radius"></a>一，border-radius</h2><p><a href="https://www.zhangxinxu.com/wordpress/2015/11/css3-border-radius-tips/" target="_blank" rel="external">来源</a></p>
+<ul>
+<li>不同属性的百分比值相对的内容是不一样的,translate是自身，width/height是父级，background-position需要尺寸差计算。</li>
+<li>border-radius是相对于元素占据尺寸的百分比(类似jQuery outerWidth()/outerHeight()方法代表尺寸)，也就是包含边框，padding后的尺寸。而不是单纯地相对于width/height值。（所以包含边框也成为圆角，是点击事件的有效区域）</li>
+<li>border-radius还有一个大值特性，也就是值很大的时候，只会使用能够渲染的圆角大小渲染。</li>
+<li>border-radius单值实际上是一种简写：border-radius: 左上角水平圆角半径大小 右上角水平圆角半径大小 右下角水平圆角半径大小 左下角水平圆角半径大小/左上角垂直圆角半径大小 右上角垂直圆角半径大小 右下角垂直圆角半径大小 左下角垂直圆角半径大小;</li>
+<li>CSS3圆角除了大值特性，还有一个等比例特性，就是水平半径和垂直半径的比例是恒定不变的（等于设定值的比例）。</li>
+<li>border-top-left-radius:单独指定某个角落的圆角大小，支持最多两个值，必须使用空格分隔；中间两个方位关键字，如top/left的前后顺序不能改变，否则会被认为是不合法。</li>
+<li>有时候我们想使用透明边框优雅增加元素的点击区域，此时的圆角大小值需要把透明边框的宽度也计算在内。例如，希望圆角2像素，结果外面扩展了2像素的透明边框；此时，实际设置的border-radius值应该是4px。（边框增加了高度和宽度要想达到没有边框时的效果，要相应地加上边框的圆角）</li>
+</ul>
+<h2 id="二，像素"><a href="#二，像素" class="headerlink" title="二，像素"></a>二，像素</h2><h3 id="1-物理像素-DP"><a href="#1-物理像素-DP" class="headerlink" title="1. 物理像素(DP)"></a>1. 物理像素(DP)</h3><ul>
+<li>又称设备像素，指设备能控制显示的最小物理单位，意指显示器上一个个的点。</li>
+<li>从屏幕在工厂生产出的那天起，它上面设备像素点就固定不变了，单位 pt。</li>
+<li>pt 在 css 单位中属于真正的绝对单位，1pt = 1/72(inch), inch及英寸，而1英寸等于2.54厘米。</li>
+<li>所以设备像素的特点就是大小固定，不可变。</li>
+<li>iPhone 5 的分辨率为 640 x 1136px。（所以分辨率是指物理像素的大小和多少）</li>
+<li>我们通常所说的显示器分辨率，其实是指桌面设定的分辨率，而不是显示器的物理分辨率。只不过现在液晶显示器成为主流，由于液晶的显示原理与CRT不同，只有在桌面分辨率与物理分辨率一致的情况下，显示效果最佳，所以现在我们的桌面分辨率几乎总是与显示器的物理分辨率一致了。</li>
+</ul>
+<p><a href="https://github.com/jawil/blog/issues/21" target="_blank" rel="external">来源</a></p>
+<h3 id="2-CSS像素"><a href="#2-CSS像素" class="headerlink" title="2. CSS像素"></a>2. CSS像素</h3><ul>
+<li>又称为虚拟像素，也可以理解为直觉像素。</li>
+<li>CSS 像素是 Web 编程的概念，指的是 CSS 样式代码中使用的逻辑像素。</li>
+<li>px 是一个相对单位，相对的是前面所说的设备像素(device pixel)。</li>
+<li>px 相对单位指的是图像显示的基本单元，它既不是一个确定的物理量，也不是一个点或者小方块，而是一个抽象概念。</li>
+<li>CSS中的1px（CSS像素 可变）!== 设备的1px（设备像素 不可变）。<br><a href="https://www.cnblogs.com/libin-1/p/7148377.html" target="_blank" rel="external">来源</a><h3 id="3-CSS-像素的真正含义"><a href="#3-CSS-像素的真正含义" class="headerlink" title="3. CSS 像素的真正含义"></a>3. CSS 像素的真正含义</h3></li>
+<li>按照 CSS 规范的定义，CSS 中的 px 是一个相对长度，它相对的，是 viewing device 的分辨率。（和设备像素有区别）</li>
+<li>由于不同的物理设备的物理像素的大小是不一样的，所以 CSS 认为浏览器应该对 CSS 中的像素进行调节，使得浏览器中 1个 CSS 像素的大小在不同物理设备上看上去大小总是差不多，目的是为了保证阅读体验的一致。</li>
+<li>为了达到这一点，浏览器可以直接按照设备的物理像素大小进行换算，而 CSS 规范中使用参考像素来进行换算。</li>
+<li>综上，px 是一个相对单位，而且在特定设备上总是一个近似值（原则是尽量接近参考像素）。</li>
+</ul>
+<h3 id="4-ppi和dpi"><a href="#4-ppi和dpi" class="headerlink" title="4. ppi和dpi"></a>4. ppi和dpi</h3><ul>
+<li>ppi：每英寸多少像素数，放到显示器上说的是每英寸多少物理像素及显示器设备的点距。</li>
+<li>dpi：每英寸多少点。</li>
+<li>当用于描述显示器设备时ppi与dpi是同一个概念 ，但是移动端不是如此。</li>
+<li>ppi越高，每英寸像素点越多，图像越清晰；我们可以类比物体的密度，密度越大，单位体积的质量就越大，ppi越高，单位面积的像素越多。</li>
+</ul>
+<h3 id="5-设备像素-DP-与CSS像素之间的关系"><a href="#5-设备像素-DP-与CSS像素之间的关系" class="headerlink" title="5. 设备像素(DP)与CSS像素之间的关系"></a>5. 设备像素(DP)与CSS像素之间的关系</h3><ul>
+<li>获得设备像素比（dpr）后，便可得知设备像素与CSS像素之间的比例。</li>
+<li>这个比率为1:1时，使用1个设备像素显示1个CSS像素。当这个比率为2:1时，使用4个设备像素显示1个CSS像素，当这个比率为3:1时，使用9（3*3）个设备像素显示1个CSS像素。</li>
+<li>DPR = 设备像素/CSS像素</li>
+<li>设备像素比（dpr 描述的是未缩放状态下，物理像素和CSS像素的初始比例关系</li>
+<li>指在移动开发中1个css像素占用多少设备像素，如2代表1个css像素用2x2个设备像素来绘制。<br><a href="http://yunkus.com/physical-pixel-device-independent-pixels/" target="_blank" rel="external">来源</a><h3 id="6-DIP-Device-independent-Pixel"><a href="#6-DIP-Device-independent-Pixel" class="headerlink" title="6. DIP(Device independent Pixel)"></a>6. DIP(Device independent Pixel)</h3></li>
+<li>设备独立像素，也称为逻辑像素，简称dip。</li>
+<li>CSS像素 =设备独立像素 = 逻辑像素</li>
+<li>设备独立像素(device independent pixels)：（也可以称为设备无关的逻辑像素）<br>meta里面设置width=device-width，这个device-width就是设备独立像素</li>
+<li>在chrome里 看到的375<em>667 320</em>480等等都是设备独立像素，它们在数值上与css数值是相等的</li>
+<li>可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用并控制的虚拟像素(比如：CSS 像素,只是在android机中CSS 像素就不叫”CSS 像素”了而是叫”设备独立像素”)，然后由相关系统转换为物理像素。<br><a href="https://www.zhihu.com/question/32011095" target="_blank" rel="external">来源</a></li>
+</ul>
+<h3 id="7-Viewport"><a href="#7-Viewport" class="headerlink" title="7. Viewport"></a>7. Viewport</h3><ul>
+<li>移动端浏览器就决定默认情况下把viewport设为一个较宽的值，比如980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。（因为移动端分辨率高，在pc的1px所代表的距离大于移动端上的）</li>
+<li>ppk把这个浏览器默认的viewport叫做 layout viewport。</li>
+<li>layout viewport的宽度可以通过document.documentElement.clientWidth</li>
+<li>还需要一个viewport来代表 浏览器可视区域的大小，ppk把这个viewport叫做 visual viewport 。</li>
+<li>visual viewport的宽度可以通过window.innerWidth 来获取。</li>
+<li>还要有一个能完美适配移动设备的viewport，ppk把这个viewport叫做 ideal viewport，也就是第三个viewport——移动设备的理想viewport。</li>
+<li>ideal viewport并没有一个固定的尺寸，不同的设备拥有有不同的ideal viewport。所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。</li>
+<li>ideal viewport的宽度等于移动设备的屏幕宽度，只要在css中把某一元素的宽度设为ideal viewport的宽度(单位用px)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为100%的效果。</li>
+<li>ideal viewport 的意义在于，无论在何种分辨率的屏幕下，那些针对ideal viewport而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。<br><img src="https://camo.githubusercontent.com/ab5ed1c0a848d65856d748771eab199965e7a6d9/68747470733a2f2f7773312e73696e61696d672e636e2f6c617267652f303036744e6337396779316667396c6162703165626a3330737130616a616d6d2e6a7067" alt=""></li>
+</ul>
+<h3 id="8-利用meta标签对viewport进行控制"><a href="#8-利用meta标签对viewport进行控制" class="headerlink" title="8. 利用meta标签对viewport进行控制"></a>8. 利用meta标签对viewport进行控制</h3><ul>
+<li>移动设备默认的viewport是layout viewport，也就是那个比屏幕要宽的viewport。</li>
+<li><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></li>
+<li>要得到ideal viewport就必须把默认的layout viewport的宽度设为移动设备的屏幕宽度。因为meta viewport中的width能控制layout viewport的宽度，所以我们只需要把width设为width-device这个特殊的值就行了。</li>
+<li>缩放是相对于 ideal viewport来进行缩放的，当对ideal viewport进行100%的缩放，也就是缩放值为1的时候，不就得到了 ideal viewport 吗。</li>
+</ul>
+<h2 id="三，字体单位"><a href="#三，字体单位" class="headerlink" title="三，字体单位"></a>三，字体单位</h2><ul>
+<li>px：逻辑像素 pc端浏览器根据不同设备的物理像素进行调整，保持一致。</li>
+<li>em：相对于一种给定字体的font-size值。例如一个元素的font-size为14px,1em就等于14px。</li>
+<li>ex：1ex所用字体中小写x的高度。(此时是不是字体大小没法用ex设定了需要用其它单位设定)。</li>
+<li>rem：是指相对于根元素的字体大小的单位。简单的说它就是一个相对单位。</li>
+<li>rpx：rpx 只是定义一个绝对值 750 宽度，然后简单的根据不同设备的逻辑像素来进行 rpx 到 px 的换算。<br><img src="https://i.loli.net/2018/08/17/5b7661347d42f.jpg" alt="1534484755(1).jpg"></li>
+</ul>
+<h2 id="四，line-height"><a href="#四，line-height" class="headerlink" title="四，line-height"></a>四，line-height</h2><ul>
+<li>文本行基线之间的距离。不是字体大小，用来确定各个元素框的高度增加或者减少多少。</li>
+<li>应用到块级元素时，line-height定义了元素中文本基线的最小距离，实际上可能会比这个设定值大。</li>
+<li>应用到替换元素（替换元素里行内元素，意思是行内元素也可以设定line-height，具体见第七章），但是不影响布局.</li>
+<li>文本行中的每个元素，会生成内容区，由文字大小确定，不存在其他因素的话，此元素生成的行内框就是该元素的内容区。</li>
+<li>Line-height产生的行间距就是会增加或者介绍行内框高度的因素之一。Line-height和字体大小之差是行间距。再除以2分别应用到内容区的顶部或底部，生成最终的行内框。</li>
+<li>所有行内框生成之后，接下来构造行框，行框的高度需要恰好足以包含最高行内框的顶端和最低行内框的低端。</li>
+<li>取值：默认normal，不同代理不一样，通常是字体大小的1.2倍；大多数取简单的长度度量（如18px,2em），其中em和ex都是相对于font-size计算。</li>
+<li>会继承：继承的是父元素的计算值不是声明。但是如果父元素指定的行高不是一个具体值，而是一个无单位纯数字的缩放因子时，则继承的不是计算值，而是每层都缩放。</li>
+</ul>
+<h2 id="五，替换元素与非替换元素"><a href="#五，替换元素与非替换元素" class="headerlink" title="五，替换元素与非替换元素"></a>五，替换元素与非替换元素</h2><ul>
+<li>非替换元素：元素的内容包含在文档中。</li>
+<li>替换元素：作为其他内容占位符的元素，如img， 还有大多数表单元素。</li>
+</ul>
+<h3 id="1-替换元素"><a href="#1-替换元素" class="headerlink" title="1. 替换元素"></a>1. 替换元素</h3><ul>
+<li>替换元素整体高度（内容固有高度+内外边距+边框）定义元素的行内框，然后再确定行框。</li>
+<li>行内替换元素的line-height不再影响行内块高度，但是vertical-align百分数定位时需要基于它计算。</li>
+<li>内边距和边框向平常一样应用到替换元素，因为是行内框的一部分会进而影响到行框。</li>
+<li>外边距也包含在行内框中，取负值时会减小行内框高度。</li>
+<li>行内替换元素的对齐是基于下外边界而不像行内非替换元素是基于基线。</li>
+<li>行内块元素会作为替换元素放在行中，行内块元素的底端默认放在文本行的基线上，内部没有行分隔符。</li>
+</ul>
+<h3 id="2-非替换元素"><a href="#2-非替换元素" class="headerlink" title="2. 非替换元素"></a>2. 非替换元素</h3><ul>
+<li>非替换元素的内外边距和边框不会对行内元素或其生成的框产生垂直影响，也就是说不会影响行内框的高度。</li>
+<li>行间距：只用于非替换元素，由line-height和font-size共同决定。</li>
+<li>先确定内容高度（font-size取值）通过line-height计算出行间距，一分为二加到内容区上下形成行内框vertical-align定位确定行框。</li>
+<li>line-height小于font-size时，实际的行内框会低于内容区高度。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/浏览器缓存.html" rel="next" title="浏览器缓存">
+                <i class="fa fa-chevron-left"></i> 浏览器缓存
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/H5新特性补充.html" rel="prev" title="H5新特性补充">
+                H5新特性补充 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.jpg"
+               alt="xuebb" />
+          <p class="site-author-name" itemprop="name">xuebb</p>
+           
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，border-radius"><span class="nav-number"></span> <span class="nav-text">一，border-radius</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，像素"><span class="nav-number"></span> <span class="nav-text">二，像素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-物理像素-DP"><span class="nav-number"></span> <span class="nav-text">1. 物理像素(DP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CSS像素"><span class="nav-number"></span> <span class="nav-text">2. CSS像素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CSS-像素的真正含义"><span class="nav-number"></span> <span class="nav-text">3. CSS 像素的真正含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ppi和dpi"><span class="nav-number"></span> <span class="nav-text">4. ppi和dpi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-设备像素-DP-与CSS像素之间的关系"><span class="nav-number"></span> <span class="nav-text">5. 设备像素(DP)与CSS像素之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-DIP-Device-independent-Pixel"><span class="nav-number"></span> <span class="nav-text">6. DIP(Device independent Pixel)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Viewport"><span class="nav-number"></span> <span class="nav-text">7. Viewport</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-利用meta标签对viewport进行控制"><span class="nav-number"></span> <span class="nav-text">8. 利用meta标签对viewport进行控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，字体单位"><span class="nav-number"></span> <span class="nav-text">三，字体单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，line-height"><span class="nav-number"></span> <span class="nav-text">四，line-height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，替换元素与非替换元素"><span class="nav-number"></span> <span class="nav-text">五，替换元素与非替换元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-替换元素"><span class="nav-number"></span> <span class="nav-text">1. 替换元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-非替换元素"><span class="nav-number"></span> <span class="nav-text">2. 非替换元素</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuebb</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

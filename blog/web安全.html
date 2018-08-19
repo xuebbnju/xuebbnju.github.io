@@ -94,19 +94,17 @@
 
 
 
-<meta name="description" content="摘要：介绍了float的基本概念和两大特性。总结了清楚浮动带来影响的几种基本方法和原理。">
+<meta name="description" content="摘要：介绍了XSS，CSRF，DDoS三种web安全方面常见的攻击原理和预防方式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="float复习总结">
-<meta property="og:url" content="http://yoursite.com/2017/08/20/float复习总结/index.html">
+<meta property="og:title" content="web安全">
+<meta property="og:url" content="http://yoursite.com/blog/web安全.html">
 <meta property="og:site_name" content="xuebb的个人博客">
-<meta property="og:description" content="摘要：介绍了float的基本概念和两大特性。总结了清楚浮动带来影响的几种基本方法和原理。">
+<meta property="og:description" content="摘要：介绍了XSS，CSRF，DDoS三种web安全方面常见的攻击原理和预防方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png">
-<meta property="og:updated_time" content="2017-08-20T13:21:10.698Z">
+<meta property="og:updated_time" content="2018-08-19T13:53:05.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="float复习总结">
-<meta name="twitter:description" content="摘要：介绍了float的基本概念和两大特性。总结了清楚浮动带来影响的几种基本方法和原理。">
-<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png">
+<meta name="twitter:title" content="web安全">
+<meta name="twitter:description" content="摘要：介绍了XSS，CSRF，DDoS三种web安全方面常见的攻击原理和预防方式。">
 
 
 
@@ -135,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/20/float复习总结/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/web安全.html"/>
 
 
 
 
 
-  <title>float复习总结 | xuebb的个人博客</title>
+  <title>web安全 | xuebb的个人博客</title>
   
 
 
@@ -268,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/20/float复习总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/web安全.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuebb">
@@ -285,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">float复习总结</h1>
+          <h1 class="post-title" itemprop="name headline">web安全</h1>
         
 
         <div class="post-meta">
@@ -297,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T20:43:18+08:00">
-                2017-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T18:07:47+08:00">
+                2018-08-19
               </time>
             
 
@@ -335,25 +333,49 @@
       
 
       
-        <p><blockquote class="blockquote-center">摘要：介绍了float的基本概念和两大特性。总结了清楚浮动带来影响的几种基本方法和原理。</blockquote><br> <a id="more"></a></p>
-<h1 id="一，float的概述"><a href="#一，float的概述" class="headerlink" title="一，float的概述"></a>一，float的概述</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><p>float一般的定义为浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。因此float一般被用来实现多列布局。但其实float最初的设计目的是为了实现<font color="Coral">文字环绕效果</font>，所以具有了<strong>包裹性</strong>和<strong>破坏性</strong>两大特性。</p>
-<h2 id="2-float的破坏性"><a href="#2-float的破坏性" class="headerlink" title="2.float的破坏性"></a>2.float的破坏性</h2><ul>
-<li>被设置了float的元素会脱离文档流。（父元素高度坍塌，宽度不变的，但由于浮动元素仍在凡间DOM tree，父元素宽度没有坍塌）</li>
-<li>因为脱离了文档流，文档的普通流中的其它元素表现得就像浮动框不存在一样地正常排列，而由于float被设计的初衷——实现<font color="Coral">文字环绕效果</font>,所以如果有文字(其实不止局限于文字，内联元素和内联块元素也是如此)是在float元素的覆盖范围内，即只要与float元素相接触时，会以环绕的方式排列在元素周围，甚至会脱离所在容器。</li>
-<li>破坏性会去空格化，并使元素block化，所以适合砌砖头。回车空格如果在标签末尾就不会显示。“清空格”这一特性的根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。</li>
+        <p><blockquote class="blockquote-center">摘要：介绍了XSS，CSRF，DDoS三种web安全方面常见的攻击原理和预防方式。</blockquote><br> <a id="more"></a></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，XSS"><a href="#一，XSS" class="headerlink" title="一，XSS"></a>一，XSS</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
+<li>跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。</li>
+<li>恶意攻击者往Web页面里注入恶意Script代码，用户浏览这些网页时，就会执行其中的恶意代码，可对用户进行盗取cookie信息、会话劫持等各种攻击。</li>
 </ul>
-<h2 id="3-float的包裹性"><a href="#3-float的包裹性" class="headerlink" title="3.float的包裹性"></a>3.float的包裹性</h2><ul>
-<li>div设置了float之后，其宽度会自动调整为包裹住内容宽度，而不是撑满整个父容器。</li>
-<li>因为包裹性，浮动元素所在那一行的行框被缩短，从而给浮动框留出空间，行框围绕浮动。</li>
-<li>有多个浮动元素时，如下图所示，如果包含框太窄，无法容纳水平排列的三个浮动元素，那么其它浮动块向下移动，直到有足够的空间。如果浮动元素的高度不同，那么当它们向下移动时可能被其它浮动元素“卡住”：</li>
+<p><a href="https://blog.csdn.net/a401461843/article/details/77622299" target="_blank" rel="external">来源</a></p>
+<h3 id="2-防御"><a href="#2-防御" class="headerlink" title="2. 防御"></a>2. 防御</h3><ul>
+<li>使用HTTPs代替HTTP，（运营商经常会通过注入广告）</li>
+<li>输入过滤。永远不要相信用户的输入，对用户输入的数据做一定的过滤。</li>
+<li>输出编码。服务器端输出到浏览器的数据，可以使用系统的安全函数来进行编码或转义来防范XSS攻击。</li>
+<li>安全编码。开发需尽量避免Web客户端文档重写、重定向或其他敏感操作，同时要避免使用客户端数据，这些操作需尽量在服务器端使用动态页面来实现。</li>
+<li>HttpOnly Cookie。预防XSS攻击窃取用户cookie最有效的防御手段。Web应用程序在设置cookie时，将其属性设为HttpOnly，就可以避免该网页的cookie被客户端恶意JavaScript窃取，保护用户cookie信息。</li>
+<li>WAF(Web Application Firewall)，Web应用防火墙，主要的功能是防范诸如网页木马、<br>XSS以及CSRF等常见的Web漏洞攻击。</li>
 </ul>
-<p><img src="https://ooo.0o0.ooo/2017/08/13/598f4b58555a8.png" alt=""></p>
-<h1 id="二，清除float带来的影响–解决高度塌陷的问题"><a href="#二，清除float带来的影响–解决高度塌陷的问题" class="headerlink" title="二，清除float带来的影响–解决高度塌陷的问题"></a>二，清除float带来的影响–解决高度塌陷的问题</h1><ul>
-<li><strong><code>clear</code>去浮动：</strong>通过在所有浮动元素下方添加一个clear:both的元素，可以消除float的破坏性。可以通过伪元素<code>after</code>实现。clear 属性规定元素的哪一侧不允许其他浮动元素。</li>
-<li><strong>父元素包裹性去浮动：</strong>为父元素添加可以具有包裹性的css设置，如：<code>overflow:hidden ，zoom:1 ，display:inline-block ，position:absolute ，float:left</code>等。</li>
-<li><strong>通用方法：</strong>在浮动元素的父元素上如下设置样式。</li>
+<p><a href="https://blog.csdn.net/baochao95/article/details/52025180" target="_blank" rel="external">来源</a></p>
+<h2 id="二，CSRF"><a href="#二，CSRF" class="headerlink" title="二，CSRF"></a>二，CSRF</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
+<li>即跨站请求伪造。</li>
+<li>原理:CSRF攻击过程的受害者用户登录网站A，输入个人信息，在本地保存服务器生成的cookie。然后在A网站点击由攻击者构建一条恶意链接跳转到B网站,然后B网站携带着的用户cookie信息去访问B网站.让A网站造成是用户自己访问的假相,从而来进行一些列的操作,常见的就是转账.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.clearfix:after&#123;</div><div class="line">　　　　　　centent:&quot;&quot;;//设置内容为空</div><div class="line">　　　　　　height:0;//高度为0</div><div class="line">　　　　　　line-height:0;//行高为0</div><div class="line">　　　　　　display:block;//将文本转为块级元素</div><div class="line">　　　　　　visibility:hidden;//将元素隐藏</div><div class="line">　　　　　　clear:both//清除浮动</div><div class="line">　　　　　&#125;</div><div class="line">　　　　.clearfix&#123;</div><div class="line">　　　　　　zoom:1;为了兼容IE</div><div class="line">　　　　&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/baochao95/article/details/52025180" target="_blank" rel="external">来源</a></p>
+<h3 id="2-防御-1"><a href="#2-防御-1" class="headerlink" title="2. 防御"></a>2. 防御</h3><ul>
+<li>检查referer, X-Requested-With, Orign头。</li>
+<li>使用POST代替GET。</li>
+<li>添加校验Token至表单中。</li>
+<li>添加验证码或其他人机验证手段，如 Google 的 recaptcha。</li>
+<li>把Token放到自定义的HTTP Header, Cookie-to-Header Token。</li>
+<li>验证码。应用程序和用户进行交互过程中，特别是账户交易这种核心步骤，强制用户输入验证码，才能完成最终请求。</li>
+</ul>
+<p><a href="https://zhoukekestar.github.io/notes/2017/06/07/interview-answers.html" target="_blank" rel="external">来源</a></p>
+<h2 id="三，DDOS"><a href="#三，DDOS" class="headerlink" title="三，DDOS"></a>三，DDOS</h2><h3 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
+<li>在短时间内发起大量请求，耗尽服务器的资源，无法响应正常的访问，造成网站实质下线。</li>
+<li>DDOS 里面的 DOS 是 denial of service（停止服务）的缩写，表示这种攻击的目的，就是使得服务中断。最前面的那个 D 是 distributed （分布式），表示攻击不是来自一个地方，而是来自四面八方。</li>
+</ul>
+<h3 id="2-防御-2"><a href="#2-防御-2" class="headerlink" title="2. 防御"></a>2. 防御</h3><ul>
+<li>防范 DDOS 的第一步，就是你要有一个备份网站，或者最低限度有一个临时主页。</li>
+<li>如果恶意请求有特征，对付起来很简单：直接拦截它就行了。</li>
+<li>HTTP 请求的特征一般有两种：IP 地址和 User Agent 字段。就把带有这个字段词语的请求拦截。</li>
+<li>CDN 也是带宽扩容的一种方法，可以用来防御 DDOS 攻击。</li>
+</ul>
+<p><a href="http://www.ruanyifeng.com/blog/2018/06/ddos.html" target="_blank" rel="external">来源</a></p>
 
       
     </div>
@@ -378,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/20/CSS布局知识复习总结/" rel="next" title="CSS布局知识复习总结">
-                <i class="fa fa-chevron-left"></i> CSS布局知识复习总结
+              <a href="/blog/web性能优化.html" rel="next" title="web性能优化">
+                <i class="fa fa-chevron-left"></i> web性能优化
               </a>
             
           </div>
@@ -388,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/20/position复习总结/" rel="prev" title="position复习总结">
-                position复习总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Event-Loop.html" rel="prev" title="Event Loop">
+                Event Loop <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,7 +489,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -506,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一，float的概述"><span class="nav-number">1.</span> <span class="nav-text">一，float的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-float的破坏性"><span class="nav-number">1.2.</span> <span class="nav-text">2.float的破坏性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-float的包裹性"><span class="nav-number">1.3.</span> <span class="nav-text">3.float的包裹性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二，清除float带来的影响–解决高度塌陷的问题"><span class="nav-number">2.</span> <span class="nav-text">二，清除float带来的影响–解决高度塌陷的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，XSS"><span class="nav-number"></span> <span class="nav-text">一，XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number"></span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-防御"><span class="nav-number"></span> <span class="nav-text">2. 防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，CSRF"><span class="nav-number"></span> <span class="nav-text">二，CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-1"><span class="nav-number"></span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-防御-1"><span class="nav-number"></span> <span class="nav-text">2. 防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，DDOS"><span class="nav-number"></span> <span class="nav-text">三，DDOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-2"><span class="nav-number"></span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-防御-2"><span class="nav-number"></span> <span class="nav-text">2. 防御</span></a></div>
             
 
           </div>
@@ -529,7 +551,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

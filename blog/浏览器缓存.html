@@ -94,17 +94,20 @@
 
 
 
-<meta name="description" content="摘要：总结了野狗云的基本使用方法，以及弹幕墙的实现原理。">
+<meta name="description" content="摘要：总结了浏览器缓存的协商和判断过程，及返回码304的意义。   声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，概念 浏览器缓存就是把一个已经请求过的Web资源（如html页面，图片，js，数据等）拷贝一份副本储存在浏览器中。 缓存会根据进来的请求保存输出内容的副本。 当下一个请求来到的时候，如果是相同的URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="弹幕墙实例练习知识总结">
-<meta property="og:url" content="http://yoursite.com/2017/08/20/弹幕墙实例练习知识总结/index.html">
+<meta property="og:title" content="浏览器缓存">
+<meta property="og:url" content="http://yoursite.com/blog/浏览器缓存.html">
 <meta property="og:site_name" content="xuebb的个人博客">
-<meta property="og:description" content="摘要：总结了野狗云的基本使用方法，以及弹幕墙的实现原理。">
+<meta property="og:description" content="摘要：总结了浏览器缓存的协商和判断过程，及返回码304的意义。   声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，概念 浏览器缓存就是把一个已经请求过的Web资源（如html页面，图片，js，数据等）拷贝一份副本储存在浏览器中。 缓存会根据进来的请求保存输出内容的副本。 当下一个请求来到的时候，如果是相同的URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-20T14:48:55.559Z">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/621603/201709/621603-20170926102324948-838899513.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/1028513/201704/1028513-20170420165136790-834238622.png">
+<meta property="og:updated_time" content="2018-08-19T14:07:07.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弹幕墙实例练习知识总结">
-<meta name="twitter:description" content="摘要：总结了野狗云的基本使用方法，以及弹幕墙的实现原理。">
+<meta name="twitter:title" content="浏览器缓存">
+<meta name="twitter:description" content="摘要：总结了浏览器缓存的协商和判断过程，及返回码304的意义。   声明： 所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！  一，概念 浏览器缓存就是把一个已经请求过的Web资源（如html页面，图片，js，数据等）拷贝一份副本储存在浏览器中。 缓存会根据进来的请求保存输出内容的副本。 当下一个请求来到的时候，如果是相同的URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/621603/201709/621603-20170926102324948-838899513.png">
 
 
 
@@ -133,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/20/弹幕墙实例练习知识总结/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/浏览器缓存.html"/>
 
 
 
 
 
-  <title>弹幕墙实例练习知识总结 | xuebb的个人博客</title>
+  <title>浏览器缓存 | xuebb的个人博客</title>
   
 
 
@@ -266,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/20/弹幕墙实例练习知识总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/浏览器缓存.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuebb">
@@ -283,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">弹幕墙实例练习知识总结</h1>
+          <h1 class="post-title" itemprop="name headline">浏览器缓存</h1>
         
 
         <div class="post-meta">
@@ -295,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T20:55:49+08:00">
-                2017-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T18:09:41+08:00">
+                2018-08-19
               </time>
             
 
@@ -333,42 +336,52 @@
       
 
       
-        <p><blockquote class="blockquote-center">摘要：总结了野狗云的基本使用方法，以及弹幕墙的实现原理。</blockquote><br> <a id="more"></a></p>
+        <blockquote class="blockquote-center">摘要：总结了浏览器缓存的协商和判断过程，及返回码304的意义。</blockquote>
+
+
 <h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
 <p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
 </blockquote>
-<h2 id="一，野狗云"><a href="#一，野狗云" class="headerlink" title="一，野狗云"></a>一，野狗云</h2><h3 id="1-创建实例"><a href="#1-创建实例" class="headerlink" title="1. 创建实例"></a>1. 创建实例</h3><ul>
-<li>添加引用<code>&lt;script src=&quot;https://cdn.wilddog.com/sdk/js/2.5.8/wilddog.js&quot;&gt;&lt;/script&gt;</code>。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var config = &#123;syncURL: &quot;https://wd4762749852uxvqau.wilddogio.com&quot; &#125;;</div><div class="line">wilddog.initializeApp(config);</div><div class="line">var ref = wilddog.sync().ref();</div></pre></td></tr></table></figure>
-</li>
+<h2 id="一，概念"><a href="#一，概念" class="headerlink" title="一，概念"></a>一，概念</h2><ul>
+<li>浏览器缓存就是把一个已经请求过的Web资源（如html页面，图片，js，数据等）拷贝一份副本储存在浏览器中。</li>
+<li>缓存会根据进来的请求保存输出内容的副本。</li>
+<li>当下一个请求来到的时候，如果是相同的URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，还是向源服务器再次发送请求。。</li>
 </ul>
-<h3 id="2-基本操作"><a href="#2-基本操作" class="headerlink" title="2. 基本操作"></a>2. 基本操作</h3><ul>
-<li><code>ref.child(&#39;message&#39;).push(text);</code>为子节点<code>message</code>添加新的键值对，<code>text</code>为值，<code>key</code>会自动创建随机的名称，按时间顺序排列。</li>
-<li><code>ref.remove();</code>清空所有键值和子节点。</li>
-<li><code>ref.child(&quot;message&quot;).on(&quot;child_added&quot;,function(snapshot){})</code>为子节点添加事件监听，增加新的键值对节点时触发。</li>
-<li><code>snapshot.val()</code>获取添加的键值对的值内容。</li>
+<p><a href="https://www.cnblogs.com/shixiaomiao1122/p/7591556.html" target="_blank" rel="external">来源</a></p>
+<h2 id="二，缓存的好处"><a href="#二，缓存的好处" class="headerlink" title="二，缓存的好处"></a>二，缓存的好处</h2><ul>
+<li>减少网络带宽消耗：当Web缓存副本被使用时，只会产生极小的网络流量，可以有效的降低运营成本。</li>
+<li>降低服务器压力：减少对源服务器的请求，间接降低服务器的压力。搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器的压力。</li>
+<li>减少网络延迟，加快页面打开速度：对于最终用户，缓存的使用能够明显加快页面打开速度，达到更好的体验。</li>
 </ul>
-<h2 id="二，-实现原理"><a href="#二，-实现原理" class="headerlink" title="二， 实现原理"></a>二， 实现原理</h2><h3 id="1-基本操作原理"><a href="#1-基本操作原理" class="headerlink" title="1. 基本操作原理"></a>1. 基本操作原理</h3><ul>
-<li>点击发射按钮时为野狗云实例<code>message</code>子节点添加键值对，同时将输入框中的内容清空。</li>
-<li>按回车键时，通过<code>trigger(&quot;click&quot;);</code>触发发射按钮点击事件。</li>
-<li><code>message</code>子节点监听到添加键值对事件后，将添加的键值对的值内容取出压入保存弹幕内容的数组中。</li>
-<li><p>创建以此值内容为文本的弹幕<code>div</code>,并添加到弹幕框<code>div</code>中(注意要将DOM对象转化成jQuery对象):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj=$(&quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line"> obj.text(text);</div><div class="line">$(&quot;.dnm_show&quot;).append(obj);</div></pre></td></tr></table></figure>
-</li>
-<li><p>然后将此弹幕<code>div</code>实现运动。</p>
-</li>
-<li><ul>
-<li>由于每次新添加的弹幕<code>div</code>只会跑一次，为了让弹幕框里一直有弹幕滚动，设置一个定时器函数，每个一段时间就从保存弹幕内容的数组中随机抽一个弹幕出来，添加弹幕<code>div</code>让它实现移动。</li>
+<h2 id="三，两个概念"><a href="#三，两个概念" class="headerlink" title="三，两个概念"></a>三，两个概念</h2><ul>
+<li>强缓存：用户发送的请求，直接从客户端缓存中获取，不发送请求到服务器，不与服务器发生交互行为。</li>
+<li>协商缓存：用户发送的请求，发送到服务器后，由服务器判定是否从缓存中获取资源。</li>
+<li>两者共同点：客户端获得的数据最后都是从客户端缓存中获得。</li>
+<li>两者的区别：从名字就可以看出，强缓存不与服务器交互，而协商缓存则需要与服务器交互。</li>
 </ul>
-</li>
-<li>点击清屏按钮时调用<code>ref.remove();</code>清空所有键值和子节点。并情况保存弹幕内容的数组。</li>
+<p><img src="https://images2017.cnblogs.com/blog/621603/201709/621603-20170926102324948-838899513.png" alt=""></p>
+<h2 id="三，缓存控制"><a href="#三，缓存控制" class="headerlink" title="三，缓存控制"></a>三，缓存控制</h2><ul>
+<li>对于浏览器端的缓存来讲，缓存规则是在HTTP协议头和HTML页面的Meta标签中定义的。</li>
+<li>当浏览器向服务器发起请求时，服务器会将缓存规则放入HTTP响应报文的HTTP头中和请求结果一起返回给浏览器。</li>
+<li>控制强制缓存的字段分别是Expires和Cache-Control，其中Cache-Control优先级比Expires高。（还有一个http1.0 中的Pragma）。</li>
+<li>Cache-Control置了no-cache之后并不代表浏览器不缓存，而是在缓存前要向服务器确认资源是否被更改。</li>
 </ul>
-<h3 id="2-弹幕运用原理"><a href="#2-弹幕运用原理" class="headerlink" title="2. 弹幕运用原理"></a>2. 弹幕运用原理</h3><ol>
-<li>弹幕<code>div</code>需要<code>absolute</code>定位，<code>top</code>偏移每次都比上次多50px,以防重叠，到达弹幕框底部时，再归为初始值。</li>
-<li>左右偏移设置为<code>right</code>为0，让弹幕从弹幕框最右侧开始运动。</li>
-<li>为弹幕添加动画，通过目标值设为左偏移为负的自身宽度，让弹幕<code>div</code>从左到右运动一次。并随机添加颜色和时间设置。</li>
-<li>随机时间通过生产随机数实现，随机颜色通过从0-9和a-f中随机选取一个字符出来，随机地选6次组成颜色字符串。</li>
-<li>动画的回调函数需要设置成删除此<code>div</code>节点，否则一直存在，浪费空间。</li>
+<h2 id="四，校验是否使用缓存"><a href="#四，校验是否使用缓存" class="headerlink" title="四，校验是否使用缓存"></a>四，校验是否使用缓存</h2><ul>
+<li>从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。</li>
+<li>新鲜度（过期机制）：也就是缓存副本有效期。一个缓存副本必须满足以下条件，浏览器会认为它是有效的，足够新的，满足以下两个情况的一种，浏览器会直接从缓存中获取副本并渲染。<ol>
+<li>含有完整的过期时间控制头信息（HTTP协议报头），并且仍在有效期内；</li>
+<li>浏览器已经使用过这个缓存副本，并且在一个会话中已经检查过新鲜度；</li>
 </ol>
+</li>
+<li>校验值（验证机制）：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag）或者last Modified，它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</li>
+</ul>
+<p><a href="https://www.cnblogs.com/duiniweixiao/p/8884274.html" target="_blank" rel="external">来源</a></p>
+<h2 id="五，校验过程"><a href="#五，校验过程" class="headerlink" title="五，校验过程"></a>五，校验过程</h2><ul>
+<li>Expires是Web服务器响应消息头字段，在响应http请求时告诉浏览器在过期时间前浏览器可以直接从浏览器缓存取数据，而无需再次请求（200 from cash）。存在的问题：服务器时间与客户端时间的不一致，就会导致缓存跟期待效果出现偏差。</li>
+<li>如果过期浏览器再次进行请求时，会向服务器传送If-Modified-Since报头，询问Last-Modified时间点之后资源是否被修改过。如果没有修改，则返回码为304，使用缓存；如果修改过，则再次去服务器请求资源，返回码和首次请求相同为200，资源为服务器最新资源。</li>
+</ul>
+<p><img src="https://images2015.cnblogs.com/blog/1028513/201704/1028513-20170420165136790-834238622.png" alt=""></p>
+<p><a href="https://www.cnblogs.com/slly/p/6732749.html" target="_blank" rel="external">来源</a></p>
 
       
     </div>
@@ -393,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/20/致敬页面和个人主页实例练习总结/" rel="next" title="致敬页面和个人主页实例练习总结">
-                <i class="fa fa-chevron-left"></i> 致敬页面和个人主页实例练习总结
+              <a href="/blog/重绘和回流.html" rel="next" title="重绘和回流">
+                <i class="fa fa-chevron-left"></i> 重绘和回流
               </a>
             
           </div>
@@ -402,6 +415,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/border-radius-像素-替换元素总结.html" rel="prev" title="border-radius+像素+替换元素总结">
+                border-radius+像素+替换元素总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,7 +495,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -517,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，野狗云"><span class="nav-number"></span> <span class="nav-text">一，野狗云</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建实例"><span class="nav-number"></span> <span class="nav-text">1. 创建实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基本操作"><span class="nav-number"></span> <span class="nav-text">2. 基本操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，-实现原理"><span class="nav-number"></span> <span class="nav-text">二， 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本操作原理"><span class="nav-number"></span> <span class="nav-text">1. 基本操作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-弹幕运用原理"><span class="nav-number"></span> <span class="nav-text">2. 弹幕运用原理</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，概念"><span class="nav-number"></span> <span class="nav-text">一，概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，缓存的好处"><span class="nav-number"></span> <span class="nav-text">二，缓存的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，两个概念"><span class="nav-number"></span> <span class="nav-text">三，两个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，缓存控制"><span class="nav-number"></span> <span class="nav-text">三，缓存控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，校验是否使用缓存"><span class="nav-number"></span> <span class="nav-text">四，校验是否使用缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五，校验过程"><span class="nav-number"></span> <span class="nav-text">五，校验过程</span></a></div>
             
 
           </div>
@@ -540,7 +557,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

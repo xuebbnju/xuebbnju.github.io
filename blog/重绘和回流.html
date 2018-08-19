@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="摘要：介绍了盒子模型的知识点。总结了几种常用布局模式和居中技巧。">
+<meta name="description" content="摘要：解释了重绘和回流的概念，总结了发生的条件和避免方式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS布局知识复习总结">
-<meta property="og:url" content="http://yoursite.com/2017/08/20/CSS布局知识复习总结/index.html">
+<meta property="og:title" content="重绘和回流">
+<meta property="og:url" content="http://yoursite.com/blog/重绘和回流.html">
 <meta property="og:site_name" content="xuebb的个人博客">
-<meta property="og:description" content="摘要：介绍了盒子模型的知识点。总结了几种常用布局模式和居中技巧。">
+<meta property="og:description" content="摘要：解释了重绘和回流的概念，总结了发生的条件和避免方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-20T13:19:14.606Z">
+<meta property="og:updated_time" content="2018-08-19T14:07:02.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS布局知识复习总结">
-<meta name="twitter:description" content="摘要：介绍了盒子模型的知识点。总结了几种常用布局模式和居中技巧。">
+<meta name="twitter:title" content="重绘和回流">
+<meta name="twitter:description" content="摘要：解释了重绘和回流的概念，总结了发生的条件和避免方式。">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/20/CSS布局知识复习总结/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/重绘和回流.html"/>
 
 
 
 
 
-  <title>CSS布局知识复习总结 | xuebb的个人博客</title>
+  <title>重绘和回流 | xuebb的个人博客</title>
   
 
 
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/20/CSS布局知识复习总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/重绘和回流.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuebb">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS布局知识复习总结</h1>
+          <h1 class="post-title" itemprop="name headline">重绘和回流</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T20:42:48+08:00">
-                2017-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T18:09:10+08:00">
+                2018-08-19
               </time>
             
 
@@ -333,44 +333,47 @@
       
 
       
-        <p><blockquote class="blockquote-center">摘要：介绍了盒子模型的知识点。总结了几种常用布局模式和居中技巧。</blockquote><br> <a id="more"></a></p>
-<h2 id="一，盒子模型"><a href="#一，盒子模型" class="headerlink" title="一，盒子模型"></a>一，盒子模型</h2><h3 id="1-w3c盒子模型"><a href="#1-w3c盒子模型" class="headerlink" title="1.w3c盒子模型"></a>1.w3c盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）:</strong></p>
-<p>  Element空间高度 = content height + padding + border + margin</p>
-<p>  Element 空间宽度 = content width + padding + border + margin</p>
-<p><strong>内盒尺寸计算（元素大小）:</strong></p>
-<p>  Element Height = content height + padding + border （Height为内容高度）</p>
-<p>  Element Width = content width + padding + border （Width为内容宽度）</p>
-<h3 id="2-IE盒子模型"><a href="#2-IE盒子模型" class="headerlink" title="2. IE盒子模型"></a>2. IE盒子模型</h3><p><strong>外盒尺寸计算（元素空间尺寸）：</strong></p>
-<p>  Element空间高度 = content Height + margin (Height包含了元素内容宽度，边框宽度，内距宽度)</p>
-<p>  Element空间宽度 = content Width + margin (Width包含了元素内容宽度、边框宽度、内距宽度)</p>
-<p><strong> 内盒尺寸计算（元素大小）：</strong></p>
-<p>  Element Height = content Height(Height包含了元素内容宽度，边框宽度，内距宽度)</p>
-<p>  Element Width = content Width(Width包含了元素内容宽度、边框宽度、内距宽度)</p>
-<h2 id="二，多列布局"><a href="#二，多列布局" class="headerlink" title="二，多列布局"></a>二，多列布局</h2><h3 id="1-传统模式"><a href="#1-传统模式" class="headerlink" title="1. 传统模式"></a>1. 传统模式</h3><p><code>div+css</code>组合使用实现多列布局。但是float写出来的东西代码复杂，宽度调整不灵活，浏览器兼容性有问题。</p>
-<h3 id="2-table-cell布局"><a href="#2-table-cell布局" class="headerlink" title="2. table-cell布局"></a>2. <code>table-cell</code>布局</h3><p>举例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&quot;display:table-cell;width:20%&quot;&gt;</div><div class="line">  第一列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;&quot;&gt;</div><div class="line">  第二列</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div style=&quot;display:table-cell;width:20&quot;&gt;</div><div class="line">  第三列</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3 id="3-css3多列布局"><a href="#3-css3多列布局" class="headerlink" title="3. css3多列布局"></a>3. css3多列布局</h3><ul>
-<li><code>column-count</code>属性规定元素应该被分隔的列数。</li>
-<li><code>column-gap</code> 属性规定列之间的间隔。</li>
-<li><code>column-rule</code> 属性设置列之间的宽度、样式和颜色规则。</li>
-<li><code>column-span</code>规定元素应该横跨的列数。</li>
-<li><code>column-width</code>规定列的宽度。</li>
+        <p><blockquote class="blockquote-center">摘要：解释了重绘和回流的概念，总结了发生的条件和避免方式。</blockquote><br> <a id="more"></a></p>
+<h4 id="声明："><a href="#声明：" class="headerlink" title="声明："></a>声明：</h4><blockquote>
+<p>所含内容是从网上的资料总结而来，并非原创，所含文字图片侵权必删！</p>
+</blockquote>
+<h2 id="一，概念"><a href="#一，概念" class="headerlink" title="一，概念"></a>一，概念</h2><ul>
+<li>reflow:当render树中的一部分或者全部因为大小边距等问题发生改变而需要重建的过程叫做回流。</li>
+<li>repaint:当元素的一部分属性发生变化，如外观背景色不会引起布局变化而需要重新渲染的过程叫做重绘。</li>
+<li>当渲染树中的一部分或者全部因为页面中某些元素的布局、显示与隐藏、尺寸等改变需要重新构建，这就是回流。每个页面至少会发生一次回流,在页面第一次加载的时候发生。在回流的时候，浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成回流后，浏览器会重新绘制受影响的部分到屏幕中，该过程成为重绘。<br><strong>注意：</strong> 回流必将引起重绘，而重绘不一定会引起回流。回流比重绘的代价要高</li>
 </ul>
-<h2 id="三，一些布局技巧"><a href="#三，一些布局技巧" class="headerlink" title="三，一些布局技巧"></a>三，一些布局技巧</h2><h3 id="1-水平居中"><a href="#1-水平居中" class="headerlink" title="1. 水平居中"></a>1. 水平居中</h3><p><strong>行内元素居中：</strong><br>给父元素设置 <code>text-align:center</code>来实现的。</p>
-<p><strong>定宽块状元素居中：</strong>设置左右<code>margin</code>值为<code>auto</code>来实现居中的。</p>
-<p><strong>不定宽块状元素居中：</strong> 一共三种方法</p>
+<p><a href="https://www.cnblogs.com/dujingjie/p/5784890.html" target="_blank" rel="external">来源</a></p>
+<h2 id="二，回流何时发生"><a href="#二，回流何时发生" class="headerlink" title="二，回流何时发生"></a>二，回流何时发生</h2><ul>
+<li>当页面布局和几何属性改变时就需要回流。下述情况会发生浏览器回流：</li>
+</ul>
 <ol>
-<li>第一步：为需要设置的居中的元素外面加入一个 <code>table</code>标签 ( 包括 <code>&lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt;</code> )。第二步：为这个 <code>table</code>设置左右 <code>margin</code>居中（这个和定宽块状元素的方法一样）。</li>
-<li>改变块级元素的 <code>display</code> 为 <code>inline</code>类型（设置为 行内元素 显示），然后使用 <code>text-align:center</code> 来实现居中效果。</li>
-<li>通过给父元素设置 <code>float</code>，然后给父元素设置 <code>position:relative</code> 和 <code>left:50%</code>，子元素设置 <code>position:relative</code>和 <code>left: -50%</code>来实现水平居中。</li>
-<li>绝对定位<code>left:50%+margin-left:</code>负自身一半。</li>
+<li>添加或者删除可见的DOM元素；</li>
+<li>元素位置改变；</li>
+<li>元素尺寸改变——边距、填充、边框、宽度和高度</li>
+<li>内容改变——比如文本改变或者图片大小改变而引起的计算值宽度和高度改变；</li>
+<li>页面渲染初始化；</li>
+<li>浏览器窗口尺寸改变——resize事件发生时；</li>
+<li>获取一些属性时，浏览器为取得正确的值也会触发回流。这些属性包括：offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle() (currentStyle in IE)。所以，在多次使用这些值时应进行缓存。</li>
 </ol>
-<h3 id="2-垂直居中"><a href="#2-垂直居中" class="headerlink" title="2. 垂直居中"></a>2. 垂直居中</h3><p><strong>父元素高度确定的单行文本：</strong>设置父元素的 <code>height</code>和<code>line-height</code> 高度一致来实现的。</p>
-<p><strong>父元素高度确定的多行文本、图片等的竖直居中的方法有两种：</strong></p>
-<ol>
-<li>方法一：使用插入 <code>table</code> (包括<code>tbody、tr、td</code>)标签，同时设置 <code>vertical-align：middle</code>。css 中有一个用于竖直居中的属性 <code>vertical-align</code>，在父元素设置此样式时，会对inline-block类型的子元素都有用。</li>
-<li>在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 <code>display</code> 为<code>table-cell</code>（设置为表格单元显示），激活 <code>vertical-align</code>属性，但注意 IE6、7 并不支持这个样式, 兼容性比较差。</li>
+<h2 id="三，如何影响性能"><a href="#三，如何影响性能" class="headerlink" title="三，如何影响性能"></a>三，如何影响性能</h2><ul>
+<li>页面上任何一个结点触发reflow，都会导致它的子结点及祖先结点重新渲染。</li>
+<li>每次重绘和回流发生时，浏览器会根据对应的css重新绘制需要渲染的部分，如果你的选择器不优化，就会导致效率降低，所以优化选择器的重要性可见一斑。</li>
+<li>等队列中的操作到了一定的数量或者到了一定的时间间隔，浏览器就会flush队列，进行一个批处理。这样就会让多次的回流、重绘变成一次回流重绘。</li>
+</ul>
+<h2 id="四，避免"><a href="#四，避免" class="headerlink" title="四，避免"></a>四，避免</h2><ul>
+<li>将那些改变样式的操作集合在一次完事，直接改变className或者cssText。尽可能在 DOM 树的最末端</li>
+<li>让要操作的元素进行离线处理，处理完事以后再一起更新<ol>
+<li>使用DocumentFragment进行缓存操作，引发一次回流和重绘。</li>
+<li>使用display:none,只引发两次回流和重绘。道理跟上面的一样。因为display:none的元素不会出现在render树</li>
+<li>使用cloneNode和replaceChild技术，引发一次回流和重绘（这条其实没太明白）</li>
 </ol>
+</li>
+<li>不要经常访问会引起浏览器flush队列的属性，非要高频访问的话建议缓存到变量；</li>
+<li>将需要多次重排的元素，position属性设为absolute或fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素。例如有动画效果的元素就最好设置为绝对定位；</li>
+<li>尽量不要使用表格布局，如果没有定宽表格一列的宽度由最宽的一列决定，那么很可能在最后一行的宽度超出之前的列宽，引起整体回流造成table可能需要多次计算才能确定好其在渲染树中节点的属性，通常要花3倍于同等元素的时间。</li>
+<li>避免设置多项内联样式（Avoid setting multiple inline styles）</li>
+<li>避免使用CSS的JavaScript表达式 (仅 IE 浏览器)（Avoid JavaScript expressions in the CSS (IE only)）</li>
+</ul>
 
       
     </div>
@@ -395,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/20/CSS基础知识复习总结/" rel="next" title="CSS基础知识复习总结">
-                <i class="fa fa-chevron-left"></i> CSS基础知识复习总结
+              <a href="/blog/居中-多栏布局-flex总结.html" rel="next" title="居中+多栏布局+flex总结">
+                <i class="fa fa-chevron-left"></i> 居中+多栏布局+flex总结
               </a>
             
           </div>
@@ -405,8 +408,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/20/float复习总结/" rel="prev" title="float复习总结">
-                float复习总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/浏览器缓存.html" rel="prev" title="浏览器缓存">
+                浏览器缓存 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,7 +487,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -523,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，盒子模型"><span class="nav-number">1.</span> <span class="nav-text">一，盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-w3c盒子模型"><span class="nav-number">1.1.</span> <span class="nav-text">1.w3c盒子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-IE盒子模型"><span class="nav-number">1.2.</span> <span class="nav-text">2. IE盒子模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，多列布局"><span class="nav-number">2.</span> <span class="nav-text">二，多列布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-传统模式"><span class="nav-number">2.1.</span> <span class="nav-text">1. 传统模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-table-cell布局"><span class="nav-number">2.2.</span> <span class="nav-text">2. table-cell布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-css3多列布局"><span class="nav-number">2.3.</span> <span class="nav-text">3. css3多列布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，一些布局技巧"><span class="nav-number">3.</span> <span class="nav-text">三，一些布局技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-水平居中"><span class="nav-number">3.1.</span> <span class="nav-text">1. 水平居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-垂直居中"><span class="nav-number">3.2.</span> <span class="nav-text">2. 垂直居中</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明："><span class="nav-number">1.</span> <span class="nav-text">声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，概念"><span class="nav-number"></span> <span class="nav-text">一，概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，回流何时发生"><span class="nav-number"></span> <span class="nav-text">二，回流何时发生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三，如何影响性能"><span class="nav-number"></span> <span class="nav-text">三，如何影响性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四，避免"><span class="nav-number"></span> <span class="nav-text">四，避免</span></a></div>
             
 
           </div>
@@ -546,7 +549,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
